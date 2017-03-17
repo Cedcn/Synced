@@ -6,15 +6,17 @@
     "webpack": "bin/webpack-dev-server --inline",
     "build": "rails webpacker:compile",
     "clean": "rm -f public/packs/*",
-    "eslint": "eslint ./app/javascript"
+    "eslint": "eslint ./app/javascript --ext .jsx,.js"
   },
   "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
     "babel-preset-env": "^1.2.1",
+    "babel-preset-react": "^6.23.0",
     "compression-webpack-plugin": "^0.3.2",
     "eslint-config-airbnb": "^14.1.0",
     "flatpickr": "^2.4.4",
+    "eslint-import-resolver-webpack": "^0.8.1",
     "glob": "^7.1.1",
     "jquery-lazyload": "^1.9.7",
     "jquery-mousewheel": "^3.1.13",

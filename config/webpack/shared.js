@@ -28,12 +28,13 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js(\.erb)?$/,
+        test: /(\.js|\.jsx)(\.erb)?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: [
-            ['env', { modules: false }]
+            ['env', { 'modules': false }],
+            'react'
           ],
           plugins: [
             ["transform-object-rest-spread", { "useBuiltIns": true }]
@@ -71,7 +72,7 @@ const config = {
   ],
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     modules: [
       path.resolve('app/javascript'),
       path.resolve('node_modules')
@@ -83,7 +84,9 @@ const config = {
   },
 
   externals: {
-    "jquery": "jQuery"
+    "jquery": "jQuery",
+    "react": 'React',
+    "react-dom": 'ReactDOM'
   }
 }
 
