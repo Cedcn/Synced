@@ -45,7 +45,8 @@
     "db": true,
     "wx": true,
     "wxDefaultConfig": true,
-    "Waves": true
+    "Waves": true,
+    "particlesJS": true
   },
   "settings": {
     "import": {
