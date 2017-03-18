@@ -634,9 +634,6 @@ babel-plugin-transform-object-rest-spread@^6.23.0:
     babel-plugin-syntax-object-rest-spread "^6.8.0"
     babel-runtime "^6.22.0"
 
-<<<<<<< 2ea1a564ef62082d25d8e9f8f995bce71edc0356
-babel-plugin-transform-regenerator@^6.22.0:
-=======
 babel-plugin-transform-react-display-name@^6.23.0:
   version "6.23.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-transform-react-display-name/download/babel-plugin-transform-react-display-name-6.23.0.tgz#4398910c358441dc4cef18787264d0412ed36b37"
