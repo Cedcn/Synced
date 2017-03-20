@@ -30,16 +30,7 @@ const config = {
       {
         test: /(\.js|\.jsx)(\.erb)?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['env', { 'modules': false }],
-            'react'
-          ],
-          plugins: [
-            ["transform-object-rest-spread", { "useBuiltIns": true }]
-          ]
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.erb$/,

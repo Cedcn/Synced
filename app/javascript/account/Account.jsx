@@ -1,5 +1,6 @@
 import React from 'react';
 
+import BaseInfo from './BaseInfo';
 class Account extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Account extends React.Component {
   }
   render() {
     return (
-      <div>Account</div>
+      <div><BaseInfo /></div>
     );
   }
 }
