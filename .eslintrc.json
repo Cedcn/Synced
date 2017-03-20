@@ -50,6 +50,6 @@
     "particlesJS": true
   },
   "settings": {
-    "import/core-modules": ["jquery", "react", "react-dom"]
+    "import/core-modules": ["jquery"]
   }
 }

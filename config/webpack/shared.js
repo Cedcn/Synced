@@ -84,9 +84,7 @@ const config = {
   },
 
   externals: {
-    "jquery": "jQuery",
-    "react": 'React',
-    "react-dom": 'ReactDOM'
+    "jquery": "jQuery"
   }
 }
 

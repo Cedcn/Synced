@@ -1,3 +1,3 @@
-import account from '../account/index';
+import account from '../account';
 
 account();

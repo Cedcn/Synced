@@ -1,15 +1,15 @@
 import React from 'react';
 
-class Sessions extends React.Component {
+class Account extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
   }
   render() {
     return (
-      <div>sessions</div>
+      <div>Account</div>
     );
   }
 }
 
-export default Sessions;
+export default Account;

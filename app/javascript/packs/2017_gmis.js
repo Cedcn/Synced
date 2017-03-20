@@ -1,3 +1,3 @@
-import init from '../gmis/2017/index';
+import init from '../gmis/2017';
 
 init();
