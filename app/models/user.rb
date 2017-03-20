@@ -10,17 +10,14 @@ class User < ApplicationRecord
     format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ },
     allow_nil: true
   validates :mobile, uniqueness: true,
-    format: { with: /\A\d{11}\z/, message: 'only 11 numbers china mobile' },
+    format: { with: /\A\d{11}\z/, message: :only_chinese_mobile },
     allow_nil: true
-  validates :mobile, presence: { message: 'email and mobile at least have one' },
-                     on: :create, if: ->(user) { user.email.blank? }
+  validate :email_or_mobile, on: :create
 
   validates :username, length: { in: 4..20 },
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_]+\z/ },
     uniqueness: true, on: :update
   validates :password, length: { in: 6...32 }
-  validates_absence_of :password, message: 'You need set email or mobile first',
-    if: -> { email.blank? && mobile.blank? }
 
   before_create :generate_username
 
@@ -43,6 +40,11 @@ class User < ApplicationRecord
   def generate_username
     self[:username] = pinyin.slice(0, 20)
     self[:username] = SecureRandom.hex(10) while User.exists? username: username
+  end
+
+  def email_or_mobile
+    errors.add(:base, :need_mobile_or_email) if email.blank? && mobile.blank?
+    errors.add(:base, :only_mobile_or_email) if email.present? && mobile.present?
   end
 end
 

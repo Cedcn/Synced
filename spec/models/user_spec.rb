@@ -4,11 +4,16 @@ RSpec.describe User, type: :model do
   let!(:user) { create(:basic_user) }
 
   describe 'validation' do
-    let(:user_params) { attributes_for(:user, :with_password) }
-    it 'when set password no email or mobile will return error' do
-      user = User.new(user_params)
+    it 'should not valid without email and mobile' do
+      user = build(:user)
       user.valid?
-      expect(user.errors[:password]).to include('You need set email or mobile first')
+      expect(user.errors[:base]).to include('用户名和邮箱不能同时为空')
+    end
+
+    it 'should not valid with both email and mobile' do
+      user = build(:user, :with_email, :with_mobile)
+      user.valid?
+      expect(user.errors[:base]).to include('用户名或邮箱只能填写一项')
     end
   end
 
