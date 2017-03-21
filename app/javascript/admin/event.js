@@ -3,8 +3,9 @@ import _ from 'lodash';
 import Vue from 'vue/dist/vue.js';
 import 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import load_search_component from '../common/search_component';
 
-import { addSortUtil, searchUtil, clickAtOrigin } from '../common/tool';
+import { addSortUtil, searchUtil } from '../common/tool';
 
 const event = () => {
   $(document).on('turbolinks:load', () => {
@@ -69,59 +70,8 @@ const event = () => {
       });
     });
 
-    Vue.component('search_input', {
-      template:
-        "<div class='search_util'>" +
-          "<input type='text' v-on:input='search' v-on:focus='search'/>" +
-          "<div class='search_result collection'>" +
-            "<a class='btn collection-item' v-for='item, index in search_result' :data-id='item.id' v-on:click='clickResult(item)'>" +
-              '<span>{{item.name}}</span>' +
-            '</a>' +
-          '</div>' +
-        '</div>',
-      mounted() {
-        clickAtOrigin($(this.$el), this.emptySearchResult);
-      },
-      props: {
-        search_url: {
-          type: String,
-          require: true
-        },
-        query_key: {
-          type: String,
-          require: true
-        },
-        whenClickResult: {
-          type: Function,
-          require: true
-        }
-      },
-      data() {
-        return {
-          search_result: []
-        };
-      },
-      methods: {
-        emptySearchResult() {
-          this.search_result = [];
-        },
-        clickResult(event) {
-          this.whenClickResult(this.$el, event);
-        },
-        search(event) {
-          const target = $(event.target);
-          const text = target.val();
-          const v_this = this;
-          $.ajax({
-            url: v_this.search_url,
-            data: { [v_this.query_key]: text },
-            dataType: 'json'
-          }).done(data => {
-            v_this.search_result = data;
-          });
-        }
-      }
-    });
+    load_search_component();
+
     new Vue({
       el: '#vue-element',
       data: {
@@ -186,12 +136,15 @@ const event = () => {
         },
         deletePartnerCategory(category, index) {
           const v_this = this;
-          $.ajax({
-            method: 'DELETE',
-            url: `/admin/events/${event_id}/partner_categories/${category.id}`
-          }).done(() => {
-            v_this.partner_categories.splice(index, 1);
-          });
+          const result = confirm('Are you sure?');
+          if (result) {
+            $.ajax({
+              method: 'DELETE',
+              url: `/admin/events/${event_id}/partner_categories/${category.id}`
+            }).done(() => {
+              v_this.partner_categories.splice(index, 1);
+            });
+          }
         },
         createPartnerCategory() {
           const v_this = this;
@@ -219,12 +172,15 @@ const event = () => {
           });
         },
         deleteParnterCategoriesPartner(partner_category, partner_categories_partner, index) {
-          $.ajax({
-            method: 'DELETE',
-            url: `/admin/events/${event_id}/partner_categories/${partner_category.id}/partners/${partner_categories_partner.partner.id}`
-          }).done(() => {
-            partner_category.partner_categories_partners.splice(index, 1);
-          });
+          const result = confirm('Are you sure?');
+          if (result) {
+            $.ajax({
+              method: 'DELETE',
+              url: `/admin/events/${event_id}/partner_categories/${partner_category.id}/partners/${partner_categories_partner.partner.id}`
+            }).done(() => {
+              partner_category.partner_categories_partners.splice(index, 1);
+            });
+          }
         },
         renderResultItem() {
           return '<span>{{item.name}}</span>';

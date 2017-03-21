@@ -1,0 +1,86 @@
+.partner_manager {
+  input {
+    height: 30px;
+    line-height: 100%;
+    margin: 0;
+    padding: 0 5px;
+  }
+  .btn {
+    height: 30px;
+    line-height: 100%;
+    margin: 0;
+    padding: 0 5px;
+  }
+  .breadcrumbs-container {
+    input[type=text] {
+      width: 50%;
+    }
+    input[type=submit] {
+      margin-left: 5px;
+      width: 20%;
+    }
+  }
+  .wrapper-content {
+    .collection {
+      max-width: 1000px;
+      overflow: visible;
+      border: 0;
+      .collection-header {
+        .btn {
+          width: 80px;
+          margin-left: 5px;
+        }
+        .search_util {
+          display: inline-block;
+          width: 50%;
+          margin-left: 20px;
+          position: relative;
+          input {
+            width: 200px;
+            padding: 0;
+          }
+          .search_result {
+            z-index: 10;
+            width: 200px;
+            position: absolute;
+            margin-top: 0;
+            a.collection-item {
+              height: 30px;
+              width: 100%;
+              margin: 0;
+              text-align: left;
+            }
+          }
+        }
+      }
+      .collection-item {
+        height: 50px;
+        padding: 10px 20px;
+        span {
+          line-height: 100%;
+          display: inline-block;
+        }
+        a {
+          float: right;
+          width: 80px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+
+.add-partner-category {
+  form {
+    input{
+      display: inline-block;
+    }
+  }
+}
+
+.wrapper-content {
+  input[type=text] {
+    display: inline-block;
+    width: 200px;
+  }
+}

@@ -1,19 +1,20 @@
-#vue-element
+#vue-element.partner_manager
   .breadcrumbs-container.row
     .col.s6
       h5.breadcrumbs-title 合作伙伴管理
-    .col.s6.add-partner-category
-      input type='text' v-model='partner_category.name'
-      input.btn type='submit' v-on:click='createPartnerCategory'
+      .partner_form
+        input type='text' v-model='partner_category.name' placeholder='合作伙伴分类名'
+        input.btn type='submit' v-on:click='createPartnerCategory' value='添加'
   .partner_category_sort.wrapper-content data-event-id=@event.id
     .collection.with-header.partner_category_item v-for='partner_category, index in partner_categories' :data-index='index'
       .collection-header
         input type='text' v-model='partner_category.name'
-        input.btn type='submit' value='修改' v-on:click='updatePartnerCategory(partner_category)'
+        input.btn type='submit' value='修改' v-on:click='updatePartnerCategory(partner_category)' placeholder='输入新的分类名'
         input.btn.red type='submit' value='删除' v-on:click='deletePartnerCategory(partner_category, index)'
         search_input search_url='/admin/partners' query_key='q[name_cont]' :when-click-result='whenClickResult' :renderResultItem='renderResultItem'
       .js_partners_sort :data-partner-category-index='index'
         .collection-item.partner_item v-for='partner_categories_partner, index in partner_category.partner_categories_partners' :data-partner-index='index' v-bind:model='partner_categories_partner'
-          |{{partner_categories_partner.partner.name}}
+          span
+            |{{partner_categories_partner.partner.name}}
           a.btn.red v-on:click='deleteParnterCategoriesPartner(partner_category, partner_categories_partner, index)'
             | 删除
