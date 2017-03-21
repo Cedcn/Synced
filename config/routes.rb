@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+  match 'vote_up/:id', to: 'votes#vote_up', via: [:post, :put, :patch]
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
@@ -21,6 +24,4 @@ Rails.application.routes.draw do
     resources :guests, except: :show
     resources :partners, except: :show
   end
-
-  match 'vote_up/:id', to: 'votes#vote_up', via: [:post, :put, :patch]
 end
