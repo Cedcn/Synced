@@ -1,6 +1,10 @@
 class Admin::PartnersController < Admin::BaseController
   def index
     load_partners
+    respond_to do |format|
+      format.html
+      format.js { render json: @partners.to_json(only: [:id, :name]), methods: :default_logo }
+    end
   end
 
   def new
@@ -32,7 +36,8 @@ class Admin::PartnersController < Admin::BaseController
 
   def load_partners
     authorize :partner
-    @partners = Partner.order(created_at: :desc).page(params[:page]).per(10)
+    @q = Partner.ransack(params[:q])
+    @partners = @q.result.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def load_partner

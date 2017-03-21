@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
+import Vue from 'vue';
 
 export const scrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
@@ -46,7 +47,7 @@ export const addSortUtil = config => {
   };
   config = Object.assign({}, default_config, config);
   $(config.elementSelector).sortable({
-    axis: 'y',
+    axis: 'xy',
     items: config.itemSelector,
     helper: (event, row) => {
       row.children().each(function () {
@@ -69,6 +70,36 @@ export const addSortUtil = config => {
   });
 };
 
+export const search_component = () => {
+  Vue.component('search_input', {
+    template: "<div class='search_util'>" +
+        "<input type='text' v-on:input='search' v-on:focus='search'/>" +
+        "<div class='search_result collection'>" +
+          "<a class='btn collection-item' v-for='item in search_result' :data-id='item.id'>" +
+            '<span>{{item.name}}</span>' +
+          '</a>' +
+        '</div>' +
+      '</div>',
+    data() {
+      return {
+        search_result: []
+      };
+    },
+    methods: {
+      search(event) {
+        const target = event.target;
+        const text = target.val();
+        const v_this = this;
+        $.ajax({
+          url: '/admin/partners',
+          params: { 'q[name_cont]': text }
+        }).done(data => {
+          v_this.search_result = data;
+        });
+      }
+    }
+  });
+};
 // need a serch_util as container, need a search_input as input field , need a result dom to display search result.
 export const searchUtil = config => {
   const default_config = {
