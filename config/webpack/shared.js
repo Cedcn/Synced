@@ -48,7 +48,13 @@ const config = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader!autoprefixer-loader',
-        include: /node_modules/
+        include: /node_modules/,
+        exclude: /flexboxgrid/
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules',
+        include: /flexboxgrid/
       },
       {
         test: /\.(ttf|eot|svg|mp4|woff(2)?)(\?[a-z0-9]+)?$/,

@@ -9,3 +9,90 @@
   width: 800px;
   margin: 0 auto;
 }
+
+header.header {
+  display: flex;
+}
+
+section.sidebar {
+  .user-wrapper {
+    display: flex;
+    padding: 0 20px;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    background-color: #eee;
+  }
+
+  .intro {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .job {
+    color: #9e9e9e;
+  }
+}
+
+.wrapper {
+  margin-top: 20px;
+}
+
+.base-info {
+  .avatar-crop {
+    display: inline-block;
+    position: relative;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-color: #eee;
+
+    .tip {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+      line-height: 2;
+      color: #fff;
+    }
+  }
+
+  .preview-avatar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .avatar-cropper {
+    position: absolute;
+    top: 30%;
+    right: -600px;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+}

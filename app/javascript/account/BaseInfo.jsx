@@ -3,22 +3,26 @@ import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import 'cropperjs/dist/cropper.css';
+
+import CitySelect from './components/CitySelect';
+import AvatarCrop from './components/AvatarCrop';
 
 class BaseInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
   state = {
     value: 1
   }
+
   handleChange = (event, index, value) => this.setState({ value })
+  _crop = () => {
+    // this.setState({ img: this.refs.cropper.getCroppedCanvas().toDataURL() });
+  }
 
   render() {
     return (
-      <div className="container">
+      <div className="base-info">
+        <AvatarCrop />
+        <br />
         <TextField
           floatingLabelText="昵称*"
           defaultValue="Default Value"
@@ -45,20 +49,21 @@ class BaseInfo extends React.Component {
           floatingLabelText="出生日期"
           mode="landscape"
         />
-        <br />
         <TextField
           floatingLabelText="公司"
           defaultValue="Default Value"
           onChange={(e, v) => console.log(v)}
         />
         <br />
+        <CitySelect />
         <TextField
-          floatingLabelText="职位"
+          multiLine
+          rows={2}
+          floatingLabelText="简介"
           defaultValue="Default Value"
           onChange={(e, v) => console.log(v)}
         />
         <br />
-        <RaisedButton label="提交修改" primary />
       </div>
     );
   }
