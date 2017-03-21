@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get 'account', to: 'account#index'
+  get 'account/:nothings', to: 'account#index'
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis

@@ -5,8 +5,8 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import 'cropperjs/dist/cropper.css';
 
-import CitySelect from './components/CitySelect';
-import AvatarCrop from './components/AvatarCrop';
+import CitySelect from '../components/CitySelect';
+import AvatarCrop from '../components/AvatarCrop';
 
 class BaseInfo extends React.Component {
   state = {

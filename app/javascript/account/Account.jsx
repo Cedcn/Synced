@@ -4,9 +4,15 @@ import Avatar from 'material-ui/Avatar';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
+
 import Header from './Header';
 import SideBar from './SideBar';
-import Main from './Main';
+import BaseInfo from './main/BaseInfo';
 
 
 class Account extends React.Component {
@@ -24,17 +30,21 @@ class Account extends React.Component {
             <Avatar src="https://o7h2xtq3g.qnssl.com/uploads/user/avatar/9ddec0bf-6de4-4bf3-9924-4b89d648e5c6/11457566__.png" />
           }
         />
-        {/* <Header /> */}
-        <Grid className="wrapper">
-          <Row>
-            <Col md={3}>
-              <SideBar />
-            </Col>
-            <Col md={9}>
-              <Main />
-            </Col>
-          </Row>
-        </Grid>
+        <BrowserRouter basename="/account">
+          <Grid className="wrapper">
+            <Row>
+              <Col md={3}>
+                <SideBar />
+              </Col>
+              <Col md={9}>
+                <Switch>
+                  <Route path="/my" component={Header} />
+                  <Route path="/security" component={BaseInfo} />
+                </Switch>
+              </Col>
+            </Row>
+          </Grid>
+        </BrowserRouter>
       </div>
     );
   }

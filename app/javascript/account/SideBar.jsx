@@ -8,6 +8,7 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import { blue500, yellow600 } from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider';
+import { Link } from 'react-router-dom';
 
 const style = {
   paper: {
@@ -35,12 +36,10 @@ class SideBar extends React.Component {
             </div>
           </List>
           <Divider />
-          <List>
-            <ListItem primaryText="基本信息" leftAvatar={<Avatar icon={<ContentInbox />} backgroundColor={blue500} />} />
-            <ListItem primaryText="账户安全" leftAvatar={<Avatar icon={<ActionGrade />} />} />
-            <ListItem primaryText="第三方账户" leftAvatar={<Avatar icon={<ContentSend />} />} />
-            <ListItem primaryText="邮件订阅" leftAvatar={<Avatar icon={<ContentDrafts />} />} />
-          </List>
+          <li><Link to="/my">基本信息</Link></li>
+          <li><Link to="/security">账户安全</Link></li>
+          <li><Link to="/third">第三方账户</Link></li>
+          <li><Link to="/email-subscriptions">邮件订阅</Link></li>
         </Paper>
       </section>
     );
