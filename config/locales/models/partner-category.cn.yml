@@ -1,0 +1,8 @@
+zh-CN:
+  activerecord:
+    models:
+      partner_category: '合作伙伴分类'
+    attributes:
+      partner_category:
+        name: '名字'
+

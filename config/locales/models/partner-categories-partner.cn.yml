@@ -1,0 +1,8 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        partner_categories_partner:
+          attributes:
+            partner_category_id:
+              cant_add_repeat: '不能重复添加'
