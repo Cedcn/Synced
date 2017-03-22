@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   enum event_type: { common: 1, gmis: 2 }
   enum status: { preparing: 0, normal: 10, applying: 20, processing: 30, end: 99 }
 
-  has_many :events_guests, dependent: :destroy
+  has_many :events_guests, -> { rank(:rank_order) }, dependent: :destroy
   has_many :guests, through: :events_guests, source: :guest
   has_many :votes, as: :votable
   has_many :partner_categories, -> { rank(:rank_order) }
