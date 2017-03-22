@@ -10,11 +10,10 @@ section.vote#vote data-scroll-index="3"
       .moon-elem
     .vote-content#js-vote-content
       - @event.votes.first.vote_items.each do |item|
-        - catch item do
-          .vote-option data-vote= item.count data-url= "/vote_up/#{item.id}"
-            a.vote-btn.js-vote-btn href="javascript:;"
-              = item.name
-            .vote-progress
-              = render 'gmis/2017/shared/spinner_line'
+        .vote-option data-vote= item.count data-url= "/vote_up/#{item.id}"
+          a.vote-btn.js-vote-btn href="javascript:;"
+            = item.name
+          .vote-progress
+            = render 'gmis/2017/shared/spinner_line'
 
-              span.vote-number 0
+            span.vote-number 0

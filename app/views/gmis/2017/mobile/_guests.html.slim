@@ -3,7 +3,7 @@ section.guests-mobile#guests data-scroll-index="1"
 
   .guests-mobile--list
     - guests.each_with_index do |guest, index|
-      - catch guest do
+      - cache guest do
         a.guest-mobile--item href="javascript:;" data-index="#{index + 2}"
           .avatar.js-lazy data-original=guest.default_avatar.file_url
           .mask

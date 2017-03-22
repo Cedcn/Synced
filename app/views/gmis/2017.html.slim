@@ -1,90 +1,3 @@
-- guests = [{ \
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Facebook 机器学习应用负责人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-02.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-03.jpg',
-    'name' => 'Elon Musk',
-    'company' => ''\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-04.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-05.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-06.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }, {\
-    'avatar' => 'http://olgabnvpe.bkt.clouddn.com/guest-img-01.jpg',
-    'name' => 'Elon Musk',
-    'company' => 'Tesla、SpaceX 创始人 & CEO OpenAI 联合创始人'\
-  }]
-
-
 doctype html
 html lang= 'en'
   head
@@ -98,7 +11,7 @@ html lang= 'en'
     = javascript_include_tag 'entries/gmis2017'
 
   body class="#{controller_name + ' ' + controller_name + '-' + action_name} #{'mobile' if device_mobile?}"
-    -cache @event do
+    - cache [:header_piece, @event] do
       = render 'gmis/2017/header'
       = render 'gmis/2017/banner'
       = render 'gmis/2017/video'
@@ -110,12 +23,13 @@ html lang= 'en'
 
       = render 'gmis/2017/agenda'
       = render 'gmis/2017/ime'
-      = render 'gmis/2017/vote'
+    = render 'gmis/2017/vote'
+    - cache [:body_piece, @event]
       = render 'gmis/2017/tickets'
       = render 'gmis/2017/address'
       = render 'gmis/2017/contact'
       = render 'gmis/2017/cooperative'
       = render 'gmis/2017/extension'
 
-      = render 'shared/wechat_config' if browser.wechat?
+    = render 'shared/wechat_config' if browser.wechat?
     = javascript_pack_tag "2017_gmis"
