@@ -46,7 +46,7 @@ export const addSortUtil = config => {
   };
   config = Object.assign({}, default_config, config);
   $(config.elementSelector).sortable({
-    axis: 'y',
+    axis: 'xy',
     items: config.itemSelector,
     helper: (event, row) => {
       row.children().each(function () {

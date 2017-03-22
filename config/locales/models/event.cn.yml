@@ -1,0 +1,13 @@
+zh-CN:
+  activerecord:
+    models:
+      event: '活动'
+    attributes:
+      event:
+        name: '标题'
+        short_name: '短名称'
+        event_type: '活动类型'
+        status: '状态'
+        description: '描述'
+        start_date: '开始时间'
+        end_date: '结束时间'

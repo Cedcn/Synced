@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   has_many :events_guests, dependent: :destroy
   has_many :guests, through: :events_guests, source: :guest
   has_many :votes, as: :votable
-  has_many :partner_categories
+  has_many :partner_categories, -> { rank(:rank_order) }
 end
 
 # == Schema Information

@@ -1,5 +1,11 @@
 class Admin::Events::PartnersController < Admin::BaseController
   before_action :load_partner_category
+
+  def index
+    @partner_categories_partners = @partner_category.partner_categories_partners.rank(:rank_order)
+    render json: @partner_categories_partners.to_json(include: :partner)
+  end
+
   def create
     load_partner
     load_partner_category

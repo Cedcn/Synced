@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       scope module: 'events' do
         resources :guests, except: [:show, :new, :edit]
         resources :partner_categories, except: [:show, :new, :edit] do
-          resources :partners, only: [:create, :update, :destroy]
+          resources :partners, except: [:show, :new, :edit]
         end
       end
     end

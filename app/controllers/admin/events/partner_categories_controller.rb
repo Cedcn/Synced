@@ -2,12 +2,24 @@ class Admin::Events::PartnerCategoriesController < Admin::BaseController
   def index
     load_event
     @partner_categories = @event.partner_categories
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: @partner_categories.to_json(
+          include: {
+            partner_categories_partners: {
+              include: :partner
+            }
+          }
+        )
+      end
+    end
   end
 
   def create
     load_event
     @partner_category = @event.partner_categories.new(partner_category_params)
-    @partner_category.save
+    @partner_category.save!
     render json: @partner_category
   end
 
