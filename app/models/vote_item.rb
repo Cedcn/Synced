@@ -1,7 +1,7 @@
 class VoteItem < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :vote_id }
 
-  belongs_to :vote
+  belongs_to :vote, touch: true
 
   def vote_up
     increment(:count)

@@ -2,7 +2,7 @@ class Vote < ApplicationRecord
   validates :name, presence: true
 
   has_many :vote_items
-  belongs_to :votable, polymorphic: true
+  belongs_to :votable, polymorphic: true, touch: true
 end
 
 # == Schema Information
