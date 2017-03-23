@@ -1,6 +1,8 @@
 class GmisController < ApplicationController
   layout false
 
+  before_action :set_request_variant
+
   def index
     @event = Event.includes(votes: [:vote_items]).find_by(short_name: 'gmis2017')
     @guests = @event.guests.references(:events_guests).where(events_guests: { show: true })
