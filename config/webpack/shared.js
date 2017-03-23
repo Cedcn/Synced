@@ -53,8 +53,8 @@ const config = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]--[hash:base64:5]!postcss-loader?sourceMap&sourceComments',
-        include: [/flexboxgrid/, /react-toolbox/, /app/]
+        loader: 'style-loader!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]--[hash:base64:8]!postcss-loader?sourceMap&sourceComments',
+        include: [/flexboxgrid/, /react-toolbox/, /app\/javascript/]
       },
       {
         test: /\.(ttf|eot|svg|mp4|woff(2)?)(\?[a-z0-9]+)?$/,

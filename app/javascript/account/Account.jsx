@@ -1,6 +1,4 @@
 import React from 'react';
-// import AppBar from 'material-ui/AppBar';
-import Avatar from 'material-ui/Avatar';
 import AppBar from 'react-toolbox/lib/app_bar';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -8,13 +6,13 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
-import Header from './Header';
 import SideBar from './SideBar';
 import BaseInfo from './main/BaseInfo';
-
+import Security from './main/Security';
 
 class Account extends React.Component {
   constructor(props) {
@@ -26,10 +24,6 @@ class Account extends React.Component {
       <div>
         <AppBar
           title="账号中心"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          iconElementRight={
-            <Avatar src="https://o7h2xtq3g.qnssl.com/uploads/user/avatar/9ddec0bf-6de4-4bf3-9924-4b89d648e5c6/11457566__.png" />
-          }
         />
         <BrowserRouter basename="/account">
           <Grid className="wrapper">
@@ -39,8 +33,10 @@ class Account extends React.Component {
               </Col>
               <Col md={9}>
                 <Switch>
-                  <Route path="/my" component={Header} />
-                  <Route path="/security" component={BaseInfo} />
+                  <Route exact path="/" render={() => <Redirect to="/my" />} />
+                  <Route path="/my" component={BaseInfo} />
+                  <Route path="/security" component={Security} />
+                  <Route path="/*" render={() => <Redirect to="/my" />} />
                 </Switch>
               </Col>
             </Row>

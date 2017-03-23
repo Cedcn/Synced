@@ -1,7 +1,7 @@
 @import 'normalize-rails';
 
 body {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 * {
@@ -36,9 +36,10 @@ header.header {
 }
 
 .base-info {
-  .avatar-crop {
-    display: inline-block;
+  .avatar-crop-wrapper {
+    display: block;
     position: relative;
+    margin-bottom: 10px;
   }
 
   input[type="file"] {
@@ -58,7 +59,7 @@ header.header {
       width: 100%;
       text-align: center;
       font-size: 14px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(48, 63, 159, 0.7);
       line-height: 2;
       color: #fff;
     }
@@ -72,12 +73,35 @@ header.header {
 
   .avatar-cropper {
     position: absolute;
-    top: 30%;
-    right: -600px;
+    top: 10%;
+    right: -20px;
     display: none;
+    transform: translateX(100%);
+    z-index: 50;
 
     &.show {
       display: block;
     }
   }
+}
+
+.column-title {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+
+  h3 {
+    display: inline-block;
+    margin: 0;
+  }
+
+  span {
+    padding-left: 5px;
+  }
+}
+
+.text-label {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.26);
 }

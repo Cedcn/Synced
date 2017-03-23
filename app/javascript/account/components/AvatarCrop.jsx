@@ -32,12 +32,12 @@ class AvatarCrop extends React.Component {
 
   render() {
     return (
-      <div className="avatar-crop">
-        <p>头像设置</p>
+      <div className="avatar-crop-wrapper">
+        <div className="text-label">头像设置</div>
         <input ref="imageInput" type="file" accept="image/*" onChange={this.upLoadImage} />
         <div className="avatar" onClick={() => $(this.refs.imageInput).trigger('click')} >
           <div className="preview-avatar" />
-          <div className="tip">上传头像</div>
+          <div className="tip">更新头像</div>
         </div>
         <div className={`${this.state.isShow ? 'show' : ''} avatar-cropper`}>
           <h5>裁切（选择区域）</h5>

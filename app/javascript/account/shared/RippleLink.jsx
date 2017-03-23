@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
-import Ripple from 'react-toolbox/lib/ripple';
-import { Link } from 'react-router-dom';
+import Ripple from 'react-toolbox/lib/ripple/Ripple';
+import { NavLink } from 'react-router-dom';
 
 const CustomLink = props => {
   const { children, theme, ...other } = props;
   return (
-    <Link {...other} style={{ position: 'relative' }}>
+    <NavLink {...other} style={{ position: 'relative' }}>
       {children}
-    </Link>
+    </NavLink>
   );
 };
 

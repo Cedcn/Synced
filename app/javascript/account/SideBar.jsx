@@ -19,25 +19,25 @@ class SideBar extends React.Component {
         </div>
         <ul>
           <li>
-            <RippleLink to="/my">
+            <RippleLink to="/my" activeClassName="active">
               <i className="iconfont icon-userinfo" />
               基本信息
             </RippleLink>
           </li>
           <li>
-            <RippleLink to="/security">
+            <RippleLink to="/security" activeClassName="active">
               <i className="iconfont icon-safe" />
               账户安全
             </RippleLink>
           </li>
           <li>
-            <RippleLink to="/third">
+            <RippleLink to="/third" activeClassName="active">
               <i className="iconfont icon-bind" />
               第三方账户
             </RippleLink>
           </li>
           <li>
-            <RippleLink to="/email-subscriptions">
+            <RippleLink to="/email-subscriptions" activeClassName="active">
               <i className="iconfont icon-subscribe" />
               邮件订阅
             </RippleLink>

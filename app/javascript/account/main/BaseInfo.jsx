@@ -1,11 +1,15 @@
 import React from 'react';
 
-import Input from 'react-toolbox/lib/input';
-import DatePicker from 'react-toolbox/lib/date_picker';
+import Input from 'react-toolbox/lib/input/Input';
+import DatePicker from 'react-toolbox/lib/date_picker/DatePicker';
 // import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 import RadioGroup from 'react-toolbox/lib/radio/RadioGroup';
 import RadioButton from 'react-toolbox/lib/radio/RadioButton';
 // import CitySelect from '../components/CitySelect';
+
+import { Row, Col } from 'react-flexbox-grid';
+
+import ColumnTitle from '../shared/ColumnTitle';
 import AvatarCrop from '../components/AvatarCrop';
 
 class BaseInfo extends React.Component {
@@ -25,53 +29,64 @@ class BaseInfo extends React.Component {
   render() {
     return (
       <div className="base-info">
-        <AvatarCrop />
-        <br />
-        <Input
-          type="text"
-          label="昵称*"
-          name="name"
-          value={this.state.name}
-          onChange={value => this.TextChange('name', value)}
-          maxLength={15}
-        />
-        <br />
-        <Input
-          type="text"
-          label="真实姓名"
-          name="realname"
-          value={this.state.realname}
-          onChange={value => this.TextChange('realname', value)}
-        />
-        <br />
-        <RadioGroup name="gender" value={this.state.gender} onChange={value => this.TextChange('gender', value)}>
-          <RadioButton label="The Walking Dead" value="1" />
-          <RadioButton label="From Hell" value="2" />
-          <RadioButton label="V for a Vendetta" value="3" />
-        </RadioGroup>
-        <br />
-        <DatePicker
-          label="生日"
-          sundayFirstDayOfWeek
-          onChange={value => this.TextChange('birthdate', value)}
-          value={this.state.birthdate}
-        />
-        <Input
-          type="text"
-          label="公司"
-          name="company"
-          value={this.state.company}
-          onChange={value => this.TextChange('company', value)}
-        />
-        <br />
+        <Row>
+          <Col md={12}>
+            <ColumnTitle title="基本信息" en="info" />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <AvatarCrop />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Input
+              type="text"
+              label="昵称"
+              name="name"
+              required
+              value={this.state.name}
+              onChange={value => this.TextChange('name', value)}
+              maxLength={15}
+            />
+            <Input
+              type="text"
+              label="真实姓名"
+              name="realname"
+              value={this.state.realname}
+              onChange={value => this.TextChange('realname', value)}
+            />
+            <div className="text-label">性别</div>
+            <RadioGroup name="gender" value={this.state.gender} onChange={value => this.TextChange('gender', value)}>
+              <RadioButton label="男" value="1" />
+              <RadioButton label="女" value="2" />
+              <RadioButton label="其他" value="3" />
+            </RadioGroup>
+            <DatePicker
+              label="生日"
+              sundayFirstDayOfWeek
+              onChange={value => this.TextChange('birthdate', value)}
+              value={this.state.birthdate}
+            />
+            <Input
+              type="text"
+              label="公司"
+              name="company"
+              value={this.state.company}
+              onChange={value => this.TextChange('company', value)}
+            />
+            <Input
+              type="text"
+              label="简介"
+              name="intro"
+              value={this.state.intro}
+              onChange={value => this.TextChange('intro', value)}
+            />
+          </Col>
+        </Row>
         {/* <CitySelect /> */}
-        <Input
-          type="text"
-          label="简介"
-          name="intro"
-          value={this.state.intro}
-          onChange={value => this.TextChange('intro', value)}
-        />
+
         <br />
       </div>
     );
