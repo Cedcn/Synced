@@ -1,7 +1,7 @@
 class PartnerCategoriesPartner < ApplicationRecord
   validates :partner_category_id, uniqueness: { scope: [:partner_id], message: :cant_add_repeat }
+  belongs_to :partner_category, touch: true
   belongs_to :partner
-  belongs_to :partner_category
   after_create :set_to_top
 
   include RankedModel

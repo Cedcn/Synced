@@ -7,8 +7,4 @@ module ApplicationHelper
   def active_when(name, value = controller_name)
     'active' if name == value
   end
-
-  def device_mobile?
-    browser.device.ipad? || browser.device.mobile?
-  end
 end

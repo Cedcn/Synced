@@ -38,4 +38,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referer || root_path)
   end
+
+  def set_request_variant
+    request.variant = :mobile if browser.device.ipad? || browser.device.mobile?
+  end
 end

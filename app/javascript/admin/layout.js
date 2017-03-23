@@ -9,6 +9,16 @@ const layout = () => {
 
     Waves.displayEffect();
 
+    $('.sidebar .collapsible-body li a').each((index, ele) => {
+      const $ele = $(ele);
+      if ($ele.attr('href') === window.location.pathname) {
+        $ele.closest('li').addClass('active');
+        $ele.closest('li.menu').find('.collapsible-header').addClass('active');
+        return false;
+      }
+    });
+    $('.collapsible').collapsible();
+
     // notification dropdown
     $('.notification-button').dropdown({
       inDuration: 300,

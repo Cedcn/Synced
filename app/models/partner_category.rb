@@ -1,7 +1,7 @@
 class PartnerCategory < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: [:event_id] }
 
-  belongs_to :event
+  belongs_to :event, touch: true
   has_many :partner_categories_partners, -> { rank(:rank_order) }
   has_many :partners, through: :partner_categories_partners, source: :partner
 
