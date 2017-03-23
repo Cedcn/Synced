@@ -47,14 +47,14 @@ const config = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader',
+        loader: 'style-loader!css-loader!postcss-loader',
         include: /node_modules/,
-        exclude: /flexboxgrid/
+        exclude: [/flexboxgrid/, /react-toolbox/]
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader?modules',
-        include: /flexboxgrid/
+        loader: 'style-loader!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]--[hash:base64:5]!postcss-loader?sourceMap&sourceComments',
+        include: [/flexboxgrid/, /react-toolbox/, /app/]
       },
       {
         test: /\.(ttf|eot|svg|mp4|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -65,7 +65,15 @@ const config = {
 
   plugins: [
     // new webpack.EnvironmentPlugin(Object.keys(process.env) || "NODE_ENV")
-    new webpack.EnvironmentPlugin(["NODE_ENV"])
+    new webpack.EnvironmentPlugin(["NODE_ENV"]),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          require('postcss-cssnext'),
+          require('postcss-import')
+        ]
+      }
+    })
   ],
 
   resolve: {

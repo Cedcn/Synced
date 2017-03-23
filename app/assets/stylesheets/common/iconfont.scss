@@ -1,10 +1,18 @@
 @font-face {
   font-family: 'iconfont';  /* project id 232308 */
+<<<<<<< ba23d790e682c496a762d85384ab34c18ac08f76:app/assets/stylesheets/gmis2017/iconfont.scss
   src: url('//at.alicdn.com/t/font_jn6u9p2m5dmcmcxr.eot');
   src: url('//at.alicdn.com/t/font_jn6u9p2m5dmcmcxr.eot?#iefix') format('embedded-opentype'),
   url('//at.alicdn.com/t/font_jn6u9p2m5dmcmcxr.woff') format('woff'),
   url('//at.alicdn.com/t/font_jn6u9p2m5dmcmcxr.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_jn6u9p2m5dmcmcxr.svg#iconfont') format('svg');
+=======
+  src: url('//at.alicdn.com/t/font_9eth45xrkgtx1or.eot');
+  src: url('//at.alicdn.com/t/font_9eth45xrkgtx1or.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_9eth45xrkgtx1or.woff') format('woff'),
+  url('//at.alicdn.com/t/font_9eth45xrkgtx1or.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_9eth45xrkgtx1or.svg#iconfont') format('svg');
+>>>>>>> Remove material-ui use react-toolbox:app/assets/stylesheets/common/iconfont.scss
 }
 
 .iconfont {
@@ -46,7 +54,24 @@
     content: '\e607';
   }
 
+<<<<<<< ba23d790e682c496a762d85384ab34c18ac08f76:app/assets/stylesheets/gmis2017/iconfont.scss
   &.icon-iphone:before {
     content: '\e62f'
+=======
+  &.icon-safe:before {
+    content: '\e604';
+  }
+
+  &.icon-userinfo:before {
+    content: '\e67a';
+  }
+
+  &.icon-bind:before {
+    content: '\e617';
+  }
+
+  &.icon-subscribe:before {
+    content: '\e671';
+>>>>>>> Remove material-ui use react-toolbox:app/assets/stylesheets/common/iconfont.scss
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
+// import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
+import AppBar from 'react-toolbox/lib/app_bar';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
