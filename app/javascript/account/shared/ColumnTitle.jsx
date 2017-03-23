@@ -10,7 +10,7 @@ const ColumnTitle = props => {
 };
 
 ColumnTitle.defaultProps = {
-  title: '个人中心',
+  title: '',
   en: ''
 };
 

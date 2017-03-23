@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { inject } from 'mobx-react';
 
 import RippleLink from './shared/RippleLink';
 
+@inject('userinfo')
 class SideBar extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
   }
   render() {
+    const { avatar, name } = this.props.userinfo;
     return (
       <section className="sidebar">
         <div className="user-wrapper">
-          <div className="preview-avatar avatar" />
+          <div className="avatar">
+            <img src={avatar} alt={name} />
+          </div>
           <div className="intro">
             <div className="name">Cedcn</div>
             <div className="job">Frontend</div>
@@ -47,5 +52,9 @@ class SideBar extends React.Component {
     );
   }
 }
+
+SideBar.propTypes = {
+  userinfo: PropTypes.object
+};
 
 export default SideBar;

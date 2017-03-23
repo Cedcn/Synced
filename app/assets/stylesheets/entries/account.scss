@@ -46,7 +46,7 @@ header.header {
     display: none;
   }
 
-  .avatar {
+  .avatar-wrapper {
     position: relative;
     width: 100px;
     height: 100px;
@@ -65,10 +65,14 @@ header.header {
     }
   }
 
-  .preview-avatar {
+  .avatar {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
 
   .avatar-cropper {

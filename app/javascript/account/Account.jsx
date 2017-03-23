@@ -1,5 +1,6 @@
 import React from 'react';
-import AppBar from 'react-toolbox/lib/app_bar';
+import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import { observer, inject } from 'mobx-react';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -14,6 +15,8 @@ import SideBar from './SideBar';
 import BaseInfo from './main/BaseInfo';
 import Security from './main/Security';
 
+
+@inject('userinfo') @observer
 class Account extends React.Component {
   constructor(props) {
     super(props);
