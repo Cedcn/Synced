@@ -1,3 +1,14 @@
+- agendas = [ \
+  { 'dateRange' => '9:00-10:10', 'title' => '主题分享：', 'detail' => 'A MACHINE THAT LEARNS？' }, \
+  { 'dateRange' => '10:10-11:30', 'title' => '嘉宾演讲', 'detail' => '' }, \
+  { 'dateRange' => '11:30-12:10', 'title' => '人机对战', 'detail' => '' }, \  
+  { 'dateRange' => '13:30-15:40', 'title' => 'Session1  人机交互与应用', 'detail' => '' }, \
+  { 'dateRange' => '15:40-17:00', 'title' => 'Session 2  先锋青年', 'detail' => '' }, \
+  { 'dateRange' => '17:00-17:40', 'title' => '圆桌论坛', 'detail' => '' }, \
+  { 'dateRange' => '18:30-20:30', 'title' => '机器之心「AI00」颁奖晚宴', 'detail' => '' }, \
+]
+
+
 .agenda-list.agenda-day-28
   .agenda-day-wrapper
     span.day.textfont-helvetica-bold Day 2
@@ -9,32 +20,14 @@
       span.unit th
       span.week 周日
   .agenda-info
-    .agenda-item
-      .theme-icon
-        i.iconfont.icon-time
-      .theme-content
-        .theme-time 9:00-11:30
-        .theme-title 主题分享：
-        .theme-detail A MACHINE THAT LEARNS？
-    .agenda-item
-      .theme-icon
-        i.iconfont.icon-time
-      .theme-content
-        .theme-time 11:30-12:00
-        .theme-title 人机大战
-    .agenda-item
-      .theme-icon
-        i.iconfont.icon-time
-      .theme-content
-        .theme-time 11:30-12:00
-        .theme-title Session1 AI女性
-        .theme-title Session2 先锋
-    .agenda-item
-      .theme-icon
-        i.iconfont.icon-time
-      .theme-content
-        .theme-time 18:00-20:00
-        .theme-title A100颁奖晚会
+    - agendas.each do |agenda|
+      .agenda-item
+        .theme-icon
+          i.iconfont.icon-time
+        .theme-content
+          .theme-time =agenda['dateRange']
+          .theme-title =agenda['title']
+          .theme-detail =agenda['detail']
     .agenda-item
       .theme-icon
         i.iconfont.icon-time

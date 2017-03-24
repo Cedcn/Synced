@@ -11,7 +11,7 @@ header.header {
   transition: all 0.3s;
 
   .synced-logo {
-    @include synced-logo(30px);
+    @include synced-logo(55px);
   }
 
   .header-content {

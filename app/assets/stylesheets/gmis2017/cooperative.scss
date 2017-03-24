@@ -18,8 +18,9 @@ section.cooperative {
   }
 
   .sponsor-title {
-    width: 110px;
+    width: 120px;
     font-size: 1.8rem;
+    text-align: right;
     padding-right: 10px;
     flex-shrink: 0;
     margin-top: 10px;
@@ -32,7 +33,6 @@ section.cooperative {
     width: $sponsor-logo-h * 130px / 45px;
     position: relative;
     transition: transform .3s;
-    background-color: #c6c6c5;
     padding: 0px 10px;
 
     &:hover {

@@ -9,6 +9,7 @@ const wechat = shareInfo => {
   const share = { ...defaultShare, ...shareInfo };
 
   wx.config({
+    debug: process.env.NODE_ENV === 'development',
     ...wxDefaultConfig,
     jsApiList: [
       'onMenuShareTimeline',
