@@ -2,13 +2,24 @@ class PartnerCategoriesPartner < ApplicationRecord
   validates :partner_category_id, uniqueness: { scope: [:partner_id], message: :cant_add_repeat }
   belongs_to :partner_category, touch: true
   belongs_to :partner
-  after_create :set_to_top
+  after_create :set_to_top, :set_logo
+
+  delegate :url, :name, to: :partner
 
   include RankedModel
   ranks :rank_order, with_same: :partner_category_id
 
   def set_to_top
     update!(rank_order_position: 0)
+  end
+
+  def set_logo
+    default_logo_id = partner.default_logo&.id
+    update(logo_id: default_logo_id) if default_logo_id
+  end
+
+  def logo
+    Image.find_by(id: logo_id)
   end
 end
 
@@ -22,6 +33,7 @@ end
 #  rank_order          :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  logo_id             :uuid
 #
 # Indexes
 #

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318041615) do
+ActiveRecord::Schema.define(version: 20170324081203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170318041615) do
     t.datetime "updated_at",                 null: false
     t.integer  "rank_order"
     t.boolean  "show",       default: false
+    t.uuid     "avatar_id"
     t.index ["event_id"], name: "index_events_guests_on_event_id", using: :btree
     t.index ["guest_id"], name: "index_events_guests_on_guest_id", using: :btree
   end
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170318041615) do
     t.integer  "rank_order"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.uuid     "logo_id"
     t.index ["partner_category_id"], name: "index_partner_categories_partners_on_partner_category_id", using: :btree
     t.index ["partner_id"], name: "index_partner_categories_partners_on_partner_id", using: :btree
   end

@@ -5,7 +5,7 @@ class GmisController < ApplicationController
 
   def index
     @event = Event.includes(votes: [:vote_items]).find_by(short_name: 'gmis2017')
-    @guests = @event.guests.references(:events_guests).where(events_guests: { show: true })
+    @event_guests = @event.events_guests.where(show: true).includes(:guest)
     @partner_categories = @event.partner_categories.includes(:partners)
     render template: 'gmis/2017'
   end
