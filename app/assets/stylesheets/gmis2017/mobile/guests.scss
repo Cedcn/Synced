@@ -31,6 +31,12 @@ section.guests-mobile {
     flex-wrap: wrap;
   }
 
+  .guests-tip {
+    color: $red;
+    font-size: 1.8rem;
+    padding: 20px 0 30px;
+  }
+
   .guest-mobile--item {
     width: 100% / 4 * 1;
     color: #fff;
@@ -50,13 +56,9 @@ section.guests-mobile {
       text-align: center;
     }
 
-    .company {
-      color: $red;
-      font-size: 1.2rem;
-    }
-
     .name {
       font-weight: bold;
+      color: $red;
     }
   }
 }
