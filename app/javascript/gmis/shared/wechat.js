@@ -1,8 +1,8 @@
 const defaultShare = {
-  title: 'Gmis 全球机器智能峰会!',
-  desc: 'Gmis 全球机器智能峰会!',
+  title: 'GMIS全球机器智能峰会重磅开启',
+  desc: 'A Machine That Learns？',
   link: 'http://gmis.jiqizhixin.com',
-  imgUrl: 'http://olgabnvpe.bkt.clouddn.com/gmis-share-icon.jpg'
+  imgUrl: 'http://image.jiqizhixin.com/gmis2017/gmis-share-icon.jpg'
 };
 
 const wechat = shareInfo => {
