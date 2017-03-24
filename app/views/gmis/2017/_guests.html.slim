@@ -9,7 +9,7 @@ section.guests#guests data-scroll-index="1"
             .mask
             .info
               .name=guest.name
-              .company=guest.company
-              .name=guest.title
+              .company=sanitize(guest.company)
+              .title=sanitize(guest.title)
     .guests-tip
       | 更多重磅嘉宾持续更新中……

@@ -8,5 +8,7 @@ section.guests-mobile#guests data-scroll-index="1"
           .avatar.js-lazy data-original=guest.avatar&.file_url
           .mask
           .info
-            .company=guest.company
             .name=guest.name
+            .company=sanitize(guest.company)
+            .title=sanitize(guest.title)
+
