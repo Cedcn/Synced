@@ -16,6 +16,7 @@ module Synced
     config.i18n.enforce_available_locales = false
     config.i18n.default_locale = 'zh-CN'
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.action_view.sanitized_allowed_tags = %w(strong em a br)
 
     config.generators do |g|
       g.helper false

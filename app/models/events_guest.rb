@@ -4,7 +4,7 @@ class EventsGuest < ApplicationRecord
   belongs_to :guest
   after_create :set_to_top, :set_avatar
 
-  delegate :name, :company, to: :guest
+  delegate :name, :company, :title, to: :guest
 
   include RankedModel
   ranks :rank_order, with_same: :event_id
