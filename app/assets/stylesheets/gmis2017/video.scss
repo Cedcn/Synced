@@ -121,8 +121,6 @@ section.video {
     }
 
     .gmis-palyer {
-      padding-bottom: 70%;
-
       .vjs-control-bar {
         padding-left: 2%;
         padding-right: 2%;
@@ -135,6 +133,7 @@ section.video {
 
     .video-hero-overlay {
       top: 35%;
+      background-color: transparent;
 
       .video-slogan {
         display: none;
