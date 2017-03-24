@@ -4,11 +4,11 @@ section.cooperative#cooperative data-scroll-index="7"
 
     .sponsor-content
       - @partner_categories.each do |partner_category|
-        - cache [:gmis2017, partner_category] do
-          .sponsor-list
-            .sponsor-title
-              .zh =partner_category.name
-            .sponsor-items
-              - partner_category.partner_categories_partners.each do |partner|
-                  a.item-logo href=partner.url title=partner.name target="_blank"
-                    img.js-lazy data-original=partner.logo&.file_url title="机器之心"
+        /- cache [:gmis2017, partner_category] do
+        .sponsor-list
+          .sponsor-title
+            .zh =partner_category.name
+          .sponsor-items
+            - partner_category.partner_categories_partners.each do |partner|
+                a.item-logo href=partner.url title=partner.name target="_blank"
+                  img.js-lazy data-original=partner.logo&.file_url title=partner.name
