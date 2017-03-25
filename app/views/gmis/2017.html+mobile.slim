@@ -11,19 +11,18 @@ html lang= 'en'
     = javascript_include_tag 'entries/gmis2017'
 
   body class="#{controller_name + ' ' + controller_name + '-' + action_name} mobile"
-    <!--- cache [:mobile, :header_piece, @event] do-->
-      = render 'gmis/2017/header'
-      = render 'gmis/2017/banner'
-      = render 'gmis/2017/video'
-      = render 'gmis/2017/mobile/guests', event_guests: @event_guests
-      = render 'gmis/2017/agenda'
-      = render 'gmis/2017/ime'
-    <!--- cache [:mobile, :body_piece, @event] do-->
-      = render 'gmis/2017/tickets'
-      = render 'gmis/2017/address'
-      = render 'gmis/2017/contact'
-      = render 'gmis/2017/cooperative'
-      = render 'gmis/2017/extension'
+    /- cache [:mobile, @event] do
+    = render 'gmis/2017/header'
+    = render 'gmis/2017/banner'
+    = render 'gmis/2017/video'
+    = render 'gmis/2017/mobile/guests', event_guests: @event_guests
+    = render 'gmis/2017/agenda'
+    = render 'gmis/2017/ime'
+    = render 'gmis/2017/tickets'
+    = render 'gmis/2017/address'
+    = render 'gmis/2017/contact'
+    = render 'gmis/2017/cooperative'
+    = render 'gmis/2017/extension'
 
     = render 'shared/wechat_config' if browser.wechat?
     = javascript_pack_tag "2017_gmis"
