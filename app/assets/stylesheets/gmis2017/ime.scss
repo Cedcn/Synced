@@ -32,6 +32,7 @@ section.ime {
     padding-left: 8%;
     padding-right: 8%;
     font-size: 1.4rem;
+    text-align: left;
 
     .container {
       padding: 0 8%;
@@ -40,6 +41,7 @@ section.ime {
     .ime-logo {
       width: 179px;
       height: 179px * 148 / 558;
+      margin-bottom: 35px;
     }
   }
 }
