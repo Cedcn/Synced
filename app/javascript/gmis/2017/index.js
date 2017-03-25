@@ -7,7 +7,6 @@ import header from './header';
 // import agenda from './agenda';
 import address from './address';
 import banner from './banner';
-import vote from './vote';
 import video from './video';
 
 import wechat from '../shared/wechat';
@@ -26,7 +25,6 @@ const init = () => $(() => {
   banner();
   video();
   // agenda();
-  vote();
   address();
 
 
