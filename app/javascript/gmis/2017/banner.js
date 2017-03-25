@@ -143,7 +143,7 @@ const banner = () => {
       scrollTo({
         selector: '#video',
         duration: 400,
-        offset: 75,
+        offset: 70,
         callback: () => {
           $window.on('mousewheel', scrollDown);
           $window.off('mousewheel', lockScroll);
