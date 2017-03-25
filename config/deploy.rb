@@ -22,6 +22,11 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to true if using ActiveRecord
 set :yarn_flags, nil
 
+# DB tasks
+set :db_local_clean, true
+set :db_remote_clean, true
+set :disallow_pushing, true
+
 ## Linked Files & Directories (Default None):
 set :linked_files, %w(.env)
 set :linked_dirs,  %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads node_modules)

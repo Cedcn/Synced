@@ -20,6 +20,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/puma'
 require 'capistrano/yarn'
+require 'capistrano-db-tasks'
 require 'slackistrano/capistrano'
 require 'dotenv'
 
