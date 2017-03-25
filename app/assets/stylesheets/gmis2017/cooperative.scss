@@ -11,10 +11,13 @@ section.cooperative {
     }
   }
 
+  .sponsor-content {
+    margin-top: 30px;
+  }
+
   .sponsor-list {
     display: flex;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 30px;
   }
 
   .sponsor-title {
@@ -55,6 +58,9 @@ section.cooperative {
       padding-left: 20px;
     }
 
+    .sponsor-content {
+      margin-top: 0px;
+    }
     .sponsor-title {
       text-align: center;
       width: 100%;
