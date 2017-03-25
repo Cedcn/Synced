@@ -10,5 +10,9 @@ section.cooperative#cooperative data-scroll-index="7"
             .zh =partner_category.name
           .sponsor-items
             - partner_category.partner_categories_partners.each do |partner|
-                a.item-logo href=partner.url title=partner.name target="_blank"
+              - if !partner.url.empty?
+                a.item-logo href=partner.url target="_blank"
+                  img.js-lazy data-original=partner.logo&.file_url title=partner.name
+              - else 
+                span.item-logo
                   img.js-lazy data-original=partner.logo&.file_url title=partner.name
