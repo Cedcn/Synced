@@ -1,7 +1,7 @@
 class Admin::Events::GuestsController < Admin::BaseController
   before_action :load_event
   def index
-    @events_guests = @event.events_guests.rank(:rank_order)
+    @events_guests = @event.events_guests
   end
 
   def create
