@@ -6,18 +6,24 @@ const video = () => {
   const player = videojs('gmis-player', {
     controls: true,
     autoplay: false,
-    preload: 'none'
+    techOrder: ['html5', 'flash'],
+    preload: 'auto'
   });
 
   const $overlay = $('#video-hero-overlay');
-
+  const $video = $overlay.closest('.video');
   player.on(['play', 'playing'], () => {
     $overlay.addClass('transparent');
-    $overlay.closest('.video').removeClass('hide-video');
+    $video.removeClass('hide-video');
   });
 
-  player.on(['pause'], () => {
+  player.on('pause', () => {
     $overlay.removeClass('transparent');
+  });
+
+  player.on('ended', () => {
+    player.load();
+    $video.addClass('hide-video');
   });
 };
 
