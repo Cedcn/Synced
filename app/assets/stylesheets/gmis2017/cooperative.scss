@@ -25,14 +25,14 @@ section.cooperative {
     font-size: 1.8rem;
     padding-right: 10px;
     flex-shrink: 0;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .item-logo {
     display: inline-block;
     margin: 10px 12px;
     height: $sponsor-logo-h;
-    width: $sponsor-logo-h * 130px / 45px;
+    width: $sponsor-logo-h * 240px / 90px;
     position: relative;
     transition: transform .3s;
     padding: 0px 10px;
