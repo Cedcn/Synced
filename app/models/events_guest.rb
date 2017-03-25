@@ -9,8 +9,6 @@ class EventsGuest < ApplicationRecord
   include RankedModel
   ranks :rank_order, with_same: :event_id
 
-  default_scope { rank(:rank_order) }
-
   def set_to_top
     update!(rank_order_position: 0)
   end
