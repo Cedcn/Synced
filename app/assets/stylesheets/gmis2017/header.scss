@@ -101,7 +101,7 @@ header.header {
   }
 }
 
-@media #{$container-and-down} {
+@media #{$medium-and-down} {
   header.header {
     height: 100vh;
     left: 0;
