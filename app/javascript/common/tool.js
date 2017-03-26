@@ -60,7 +60,7 @@ export const addSortUtil = config => {
       $.ajax({
         method: 'PATCH',
         data: config.getParams(ui.item, position),
-        url: config.getUrl($(config.elementSelector), ui.item),
+        url: config.getUrl($(event.target), ui.item),
         dataType: 'json'
       }).fail(() => {
         // alert erro need reload
