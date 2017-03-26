@@ -177,7 +177,7 @@ section.banner {
   }
 }
 
-@media #{$container-and-down} {
+@media #{$medium-and-down} {
   section.banner {
     padding-top: 0;
 
