@@ -24,6 +24,7 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
+    - config/routes.rb
 
 Metrics/CyclomaticComplexity:
   Max: 6
