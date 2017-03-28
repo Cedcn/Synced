@@ -3,23 +3,26 @@ class User < ApplicationRecord
 
   has_secure_password validation: false
 
-  validates :name, length: { in: 2..20 }, presence: true,
+  validates :name, length: { in: 2..20 }, allow_nil: true,
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+\z/ }
 
-  validates :email,  uniqueness: true,
+  validates :email,  uniqueness: { case_sensitive: false },
     format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ },
     allow_nil: true
   validates :mobile, uniqueness: true,
     format: { with: /\A\d{11}\z/, message: :only_chinese_mobile },
     allow_nil: true
-  validate :email_or_mobile, on: :create
-
-  validates :username, length: { in: 4..20 },
+  validates :username, length: { in: 2..20 },
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_]+\z/ },
-    uniqueness: true, on: :update
+    uniqueness: { case_sensitive: false }, on: :update
   validates :password, length: { in: 6...32 }
 
+  validate :email_or_mobile, on: :create
+  validate :check_phone_verify_code, if: proc { |u| u.mobile.present? && u.mobile_changed? }
+
   before_create :generate_username
+
+  attr_accessor :phone_verify_code
 
   class << self
     def search_by_login_name(identify)
@@ -35,16 +38,30 @@ class User < ApplicationRecord
     nil
   end
 
+  def nick_name
+    name || email_name || mobile
+  end
+
+  def email_name
+    email&.split('@')&.first
+  end
+
   private
 
   def generate_username
-    self[:username] = pinyin.slice(0, 20)
-    self[:username] = SecureRandom.hex(10) while User.exists? username: username
+    pinyin_name = PinYin.of_string(nick_name).join.downcase
+    self[:username] = pinyin_name.length > 11 ? PinYin.abbr(nick_name).slice(0, 11) : pinyin_name
+    self[:username] = username + '_' + SecureRandom.hex(3) while User.exists? username: username
   end
 
   def email_or_mobile
     errors.add(:base, :need_mobile_or_email) if email.blank? && mobile.blank?
     errors.add(:base, :only_mobile_or_email) if email.present? && mobile.present?
+  end
+
+  def check_phone_verify_code
+    return if phone_verify_code.present? && phone_verify_code == Rails.cache.fetch("phone_verify_code:#{mobile}")
+    errors.add(:mobile, :wrong_verify_code)
   end
 end
 

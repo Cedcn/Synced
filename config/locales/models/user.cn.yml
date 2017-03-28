@@ -11,3 +11,4 @@ zh-CN:
           need_mobile_or_email: '用户名和邮箱不能同时为空'
           only_mobile_or_email: '用户名或邮箱只能填写一项'
           only_chinese_mobile: '只支持11位中国大陆手机号'
+          wrong_verify_code: '手机验证码错误'
