@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from ActiveRecord::RecordInvalid, with: :render_error_message
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from CustomException, with: :render_error_message
 
   helper_method :current_user
 
@@ -22,8 +24,7 @@ class ApplicationController < ActionController::Base
 
   def render_error_message(e)
     respond_to do |format|
-      # format.html
-      format.js { render json: { message: e.message }, status: 422 }
+      format.js { render json: { error: e.message }, status: 422 }
     end
   end
 

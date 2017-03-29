@@ -28,7 +28,7 @@ class User < ApplicationRecord
     def search_by_login_name(identify)
       q = identify.to_s.downcase.chomp
       return unless q
-      find_by('lower(email) = ? or mobile = ? or username = ?', q, q, q)
+      find_by('lower(email) = ? or mobile = ? or lower(username) = ?', q, q, q)
     end
   end
 
