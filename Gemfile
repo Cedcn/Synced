@@ -15,9 +15,6 @@ gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 # Use warden for user authenticate
 gem 'warden'
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
@@ -57,9 +54,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim', '~> 3.0', '>= 3.0.7'
 gem 'webpacker', '~> 1.0'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Wechat sdk
 gem 'weixin_authorize'
+# Captcha
+gem 'rucaptcha'
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
