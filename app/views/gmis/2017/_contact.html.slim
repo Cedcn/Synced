@@ -1,7 +1,7 @@
 - contact_people = [ \
-  { 'title' => '商务合作', 'name' => '刘敏', 'email' => 'liumin@jiqizhixin.com' }, \
-  { 'title' => '媒体合作', 'name' => '季小姐', 'email' => 'mkt@jiqizhixin.com' }, \
-  { 'title' => '参会事宜', 'name' => '庄雨鑫', 'email' => 'zhuangyuxin@jiqizhixin.com' } \
+  { 'title' => '商务合作', 'name' => '刘敏', 'email' => 'liumin@jiqizhixin.com', 'iphone' => '156 0127 1122' }, \
+  { 'title' => '媒体合作', 'name' => '季小姐', 'email' => 'mkt@jiqizhixin.com', 'iphone' => '134 3929 1983' }, \
+  { 'title' => '参会事宜', 'name' => '庄雨鑫', 'email' => 'zhuangyuxin@jiqizhixin.com', 'iphone' => '139 2376 7086' } \
 ]
 
 section.contact#contact data-scroll-index="6"
@@ -17,3 +17,6 @@ section.contact#contact data-scroll-index="6"
             a.mailto href="mailto:#{person['email']}"
               i.iconfont.icon-email
               =person['email']
+          .iphone
+            i.iconfont.icon-iphone
+            =person['iphone']
