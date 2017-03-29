@@ -41,6 +41,15 @@ const config = {
         }
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader'
+          }
+        }
+      },
+      {
         test: /\.erb$/,
         enforce: 'pre',
         exclude: /node_modules/,
