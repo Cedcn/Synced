@@ -3,6 +3,19 @@ Rails.application.routes.draw do
 
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  match 'vote_up/:id', to: 'votes#vote_up', via: [:post, :put, :patch]
+
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+
+  resource :phone_verify_code, only: :create
+
+  namespace :settings do
+    resource :profile, only: [:index, :update]
+    resource :security, only: :index
+  end
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
@@ -21,6 +34,4 @@ Rails.application.routes.draw do
     resources :guests, except: :show
     resources :partners, except: :show
   end
-
-  match 'vote_up/:id', to: 'votes#vote_up', via: [:post, :put, :patch]
 end
