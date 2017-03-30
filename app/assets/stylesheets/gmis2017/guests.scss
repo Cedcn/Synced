@@ -49,7 +49,7 @@ section.guests {
 
   .guests-wall {
     position: relative;
-    padding-bottom: 116%;
+    padding-bottom: 155%;
   }
 
   .guests-tip {
@@ -149,7 +149,39 @@ section.guests {
     }
 
     &:nth-child(23) {
-      @include avatar(93%, 51%, 25%, 17%);
+      @include avatar(93%, 51%, 25%, 18%);
+    }
+
+    &:nth-child(24) {
+      @include avatar(116%, 0, 24%, 16%);
+    }
+
+    &:nth-child(25) {
+      @include avatar(108%, 23%, 26%, 18%);
+    }
+
+    &:nth-child(26) {
+      @include avatar(111%, 49%, 28%, 19%);
+    }
+
+    &:nth-child(27) {
+      @include avatar(115%, 77%, 22%, 19%);
+    }
+
+    &:nth-child(28) {
+      @include avatar(133%, 0, 24%, 18%);
+    }
+
+    &:nth-child(29) {
+      @include avatar(126%, 23%, 26%, 17%);
+    }
+
+    &:nth-child(30) {
+      @include avatar(134%, 70%, 27%, 20%);
+    }
+
+    &:nth-child(31) {
+      @include avatar(130%, 49%, 26%, 18%);
     }
   }
 
