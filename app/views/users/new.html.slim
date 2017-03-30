@@ -1,0 +1,24 @@
+section.signup-wrapper.session
+  .tabs
+    a.phone-sign.btn.active href="javascript:;" 手机号注册
+    a.email-sign.btn href="javascript:;" 邮箱注册
+  = form_for :user, url: "/signup" do |f|
+    .field
+      = f.text_field :login_name, placeholder: '请输入手机号(仅限中国大陆)'
+    .field.pic-code
+      = rucaptcha_input_tag(class: 'form-control', placeholder: '图形验证码')
+      = rucaptcha_image_tag(alt: '图形验证码')
+    .field.message-code
+      = f.text_field :message_code, placeholder: '短信验证码'
+      a.send href="javascript:;"
+        span 获取验证码
+    .field.password
+      = f.password_field :password, placeholder: '设置6-16位密码，字母区分大小写'
+      a#switch-password.iconfont.icon-eye href="javascript:;"
+    = submit_tag '立即注册'
+  .protocol
+    span 点击立即注册, 即表示您同意
+    a href="javascript:;" target="_blank"《机器之心用户协议》
+
+  = link_to '已有账号,立即登录', login_path, class: 'to-login'
+      

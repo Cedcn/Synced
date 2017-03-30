@@ -6,7 +6,11 @@ head
   meta http-equiv="X-UA-Compatible" content="ie=edge"/
   title =title
   = stylesheet_link_tag 'entries/sessions', media: 'all'
+  = javascript_include_tag 'entries/sessions'
 
 body
   = yield
+  .window-bg
+  #js-sessions-bg
   = javascript_pack_tag 'sessions'
+  

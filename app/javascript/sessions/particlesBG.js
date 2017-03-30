@@ -4,14 +4,14 @@ const particlesBG = () => {
   particlesJS('js-sessions-bg', {
     particles: {
       number: {
-        value: 80,
+        value: 60,
         density: {
           enable: true,
-          value_area: 800
+          value_area: 600
         }
       },
       color: {
-        value: '#ffffff'
+        value: '#4160cf'
       },
       shape: {
         type: 'circle',
@@ -19,26 +19,21 @@ const particlesBG = () => {
           width: 0
         },
         polygon: {
-          nb_sides: 5
-        },
-        image: {
-          src: 'img/github.svg',
-          width: 100,
-          height: 100
+          nb_sides: 6
         }
       },
       opacity: {
         value: 0.5,
         random: false,
         anim: {
-          enable: false,
+          enable: true,
           speed: 1,
-          opacity_min: 0.1,
+          opacity_min: 0.3,
           sync: false
         }
       },
       size: {
-        value: 3,
+        value: 6,
         random: true,
         anim: {
           enable: false,
@@ -50,13 +45,13 @@ const particlesBG = () => {
       line_linked: {
         enable: true,
         distance: 150,
-        color: '#ffffff',
+        color: '#b0c1ff',
         opacity: 0.4,
         width: 1
       },
       move: {
         enable: true,
-        speed: 6,
+        speed: 4,
         direction: 'none',
         random: false,
         straight: false,
@@ -77,8 +72,8 @@ const particlesBG = () => {
           mode: 'repulse'
         },
         onclick: {
-          enable: false,
-          mode: 'push'
+          enable: true,
+          mode: 'repulse'
         },
         resize: true
       },
