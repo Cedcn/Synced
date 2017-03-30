@@ -6,6 +6,7 @@ input {
   line-height: 2;
   font-size: 16px;
   outline: 0;
+  background: none;
 
   &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #818181;
@@ -45,7 +46,7 @@ button {
   position: relative;
   margin-bottom: 8px;
 
-  .btn {
+  .anchor-btn {
     width: 50%;
     border-bottom: 1px solid #959595;
     padding-top: 5px;
@@ -62,8 +63,7 @@ button {
     text-decoration: none;
   }
 
-  &:after {
-    content: '';
+  .anchor-bar {
     position: absolute;
     width: 50%;
     height: 3px;
@@ -77,13 +77,24 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  width: 350px;
-  border-radius: 3px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   z-index: 5;
+
+  .zoom {
+    background-color: #fff;
+    width: 350px;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s;
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
   form {
     padding: 10px 2px;
@@ -147,7 +158,11 @@ button {
   .field.message-code {
     position: relative;
 
-    a.send {
+    input {
+      padding-right: 90px;
+    }
+
+    a.send-code {
       position: absolute;
       right: 0;
       top: 50%;
@@ -160,6 +175,11 @@ button {
 
       &:hover {
         background-color: #f1f1f1;
+      }
+
+      &.disable {
+        background: none;
+        cursor: default;
       }
     }
   }
@@ -186,11 +206,20 @@ button {
       }
     }
 
-    &.show {
+    &.active {
       .icon-eye {
         color: #4166ec;
         text-decoration: none;
       }
+    }
+  }
+
+  .anchor-content {
+    display: none;
+    /* position: absolute; */
+
+    &.active {
+      display: block;
     }
   }
 }
