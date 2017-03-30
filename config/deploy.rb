@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.7.2'
+lock '3.8.0'
 
 set :application, 'Synced'
 set :repo_url, 'git@github.com:SyncedPSI/Synced.git'
@@ -20,7 +20,6 @@ set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to true if using ActiveRecord
-set :yarn_flags, nil
 
 # DB tasks
 set :db_local_clean, true
