@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 232308 */
-  src: url('//at.alicdn.com/t/font_p88zdq6555ng66r.eot');
-  src: url('//at.alicdn.com/t/font_p88zdq6555ng66r.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_p88zdq6555ng66r.woff') format('woff'),
-  url('//at.alicdn.com/t/font_p88zdq6555ng66r.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_p88zdq6555ng66r.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_3w2ibxy2yr38r529.eot');
+  src: url('//at.alicdn.com/t/font_3w2ibxy2yr38r529.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_3w2ibxy2yr38r529.woff') format('woff'),
+  url('//at.alicdn.com/t/font_3w2ibxy2yr38r529.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_3w2ibxy2yr38r529.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -72,5 +72,13 @@
 
   &.icon-eye:before {
     content: '\e62a';
+  }
+
+  &.icon-wechat:before {
+    content: '\e60b';
+  }
+
+  &.icon-weibo:before {
+    content: '\e60c';
   }
 }

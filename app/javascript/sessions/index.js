@@ -27,10 +27,12 @@ const sessions = () => {
     $anchor.on('click', function () {
       const $this = $(this);
       const seat = $this.position().left;
+      const $content = $anchorContent.eq($this.index());
 
       $bar.animate({ left: seat });
       $this.addClass('active').siblings().removeClass('active');
-      $anchorContent.eq($this.index()).addClass('active').siblings().removeClass('active');
+      $content.addClass('active').siblings().removeClass('active');
+      $content.find('input[autofocus="autofocus"]').first().focus();
     });
   });
 

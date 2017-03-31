@@ -114,8 +114,8 @@ button {
     transition: all 0.3s;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 5px;
+    padding: 2px;
 
     &:hover {
       background-color: #4166ec;
@@ -127,13 +127,20 @@ button {
     color: #a8a8a8;
 
     a {
-      color: #0038ff;
+      color: #4166ec;
     }
   }
 
-  .to-login {
-    display: block;
+  .redirect {
+    display: inline-block;
     margin-top: 40px;
+  }
+
+  .to-login {
+    color: #2cd072;
+  }
+
+  .to-signup {
     color: #ec9441;
   }
 
@@ -152,6 +159,10 @@ button {
         width: 130px;
         height: 130px * 70 / 200;
       }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -220,6 +231,86 @@ button {
 
     &.active {
       display: block;
+    }
+  }
+
+  .extra-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
+
+    .rember-me {
+      input {
+        width: auto;
+      }
+
+      label {
+        padding-left: 5px;
+        color: #767676;
+      }
+    }
+
+    .forget_password {
+      color: #4166ec;
+    }
+  }
+
+  .social-login {
+    font-size: 14px;
+
+    .social-title {
+      position: relative;
+
+      span {
+        position: relative;
+        z-index: 5;
+        background-color: #fff;
+        padding: 0 20px;
+        color: #3e3e3e;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 0;
+        left: 0;
+        top: 50%;
+        border-bottom: 1px solid #dfdfdf;
+      }
+    }
+
+    .social-button {
+      margin-top: 20px;
+
+      .iconfont {
+        font-size: 24px;
+      }
+
+      a.social-button-style {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #3e3e3e;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 35px;
+        margin: 0 10px;
+        color: #3e3e3e;
+        text-decoration: none;
+        transition: all 0.2s;
+
+        &.wechat:hover {
+          border-color: #2ca253;
+          color: #2ca253;
+        }
+
+        &.weibo:hover {
+          border-color: #da2b3e;
+          color: #da2b3e;
+        }
+      }
     }
   }
 }
