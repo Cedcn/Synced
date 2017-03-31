@@ -8,7 +8,7 @@ html lang= 'en'
     title 机器之心 | GMIS 2017 全球机器智能峰会
     = csrf_meta_tags
     = stylesheet_link_tag 'entries/gmis2017', media: 'all'
-    = javascript_include_tag 'entries/gmis2017'
+    = stylesheet_pack_tag '2017_gmis'
 
   body class="#{controller_name + ' ' + controller_name + '-' + action_name} mobile"
     - cache [:mobile, @event] do
