@@ -1827,6 +1827,10 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+expose-loader@^0.7.3:
+  version "0.7.3"
+  resolved "http://registry.npm.taobao.org/expose-loader/download/expose-loader-0.7.3.tgz#35fbd3659789e4faa81f59de8b7e9fc39e466d51"
+
 express@^4.13.3:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
@@ -2215,6 +2219,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+hammerjs@^2.0.4:
+  version "2.0.8"
+  resolved "http://registry.npm.taobao.org/hammerjs/download/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.4:
   version "1.2.5"
@@ -2659,6 +2667,20 @@ jquery-scroll@^1.1.1:
   dependencies:
     jquery "^2.1.4"
 
+jquery-ui@^1.12.1:
+  version "1.12.1"
+  resolved "http://registry.npm.taobao.org/jquery-ui/download/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+
+jquery-ujs@^1.2.2:
+  version "1.2.2"
+  resolved "http://registry.npm.taobao.org/jquery-ujs/download/jquery-ujs-1.2.2.tgz#6a8ef1020e6b6dda385b90a4bddc128c21c56397"
+  dependencies:
+    jquery ">=1.8.0"
+
+jquery@>=1.8.0, jquery@^3.2.1:
+  version "3.2.1"
+  resolved "http://registry.npm.taobao.org/jquery/download/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+
 jquery@^2.1.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
@@ -2822,6 +2844,10 @@ loader-utils@^1.0.1, loader-utils@^1.0.2:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
+loader@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/loader/download/loader-2.1.1.tgz#8848b12a3f00572e5a4249333ccdac79773fb402"
+
 lodash.assign@^4.0.3, lodash.assign@^4.0.6, lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -2897,6 +2923,14 @@ macaddress@^0.2.8:
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
+
+materialize-css@^0.98.1:
+  version "0.98.1"
+  resolved "http://registry.npm.taobao.org/materialize-css/download/materialize-css-0.98.1.tgz#7276895b2c998b53e26deaa0c23a0484c0851d99"
+  dependencies:
+    hammerjs "^2.0.4"
+    jquery "^2.1.4"
+    node-archiver "^0.3.0"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.16"
@@ -3056,6 +3090,13 @@ natural-compare@^1.4.0:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+node-archiver@^0.3.0:
+  version "0.3.0"
+  resolved "http://registry.npm.taobao.org/node-archiver/download/node-archiver-0.3.0.tgz#b9f1afe5006d0bdf29260181833a070978bc6947"
+  dependencies:
+    fstream "^1.0.10"
+    tar "^2.2.1"
 
 node-gyp@^3.3.1:
   version "3.6.0"
@@ -3390,6 +3431,10 @@ pbkdf2@^3.0.3:
   resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.9.tgz#f2c4b25a600058b3c3773c086c37dbbee1ffe693"
   dependencies:
     create-hmac "^1.1.2"
+
+perfect-scrollbar@^0.6.16:
+  version "0.6.16"
+  resolved "http://registry.npm.taobao.org/perfect-scrollbar/download/perfect-scrollbar-0.6.16.tgz#b1d61a5245cf3962bb9a8407a3fc669d923212fc"
 
 performance-now@^0.2.0:
   version "0.2.0"
@@ -4732,6 +4777,10 @@ tunnel-agent@^0.6.0:
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
   dependencies:
     safe-buffer "^5.0.1"
+
+turbolinks@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/turbolinks/download/turbolinks-5.0.0.tgz#94c73fa299716824b0d96639b993b2efd7ef0e44"
 
 tween.js@^16.6.0:
   version "16.6.0"

@@ -48,4 +48,4 @@ module.exports = {
   resolveLoader: {
     modules: [paths.node_modules]
   }
-}
+};
