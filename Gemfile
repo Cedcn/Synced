@@ -45,8 +45,8 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 # Front-End
 gem 'autoprefixer-rails'
 gem 'browser', '~> 2.3'
-gem 'materialize-sass'
 gem 'material_icons'
+gem 'materialize-sass'
 gem 'meta-tags', '~> 2.4'
 gem 'normalize-rails', '~> 4.1', '>= 4.1.1'
 gem 'perfect-scrollbar-rails'
@@ -73,7 +73,6 @@ group :development, :test do
   gem 'capistrano-db-tasks', require: false
   gem 'capistrano-rails',    require: false
   gem 'capistrano-rbenv',    require: false
-  gem 'capistrano-yarn',     require: false
   gem 'capistrano3-puma',    require: false
   gem 'slackistrano'
 

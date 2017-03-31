@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "npm run webpack",
-    "modernizr": "modernizr -c app/javascript/modernizr-config.json -d vendor/assets/javascripts",
+    "modernizr": "modernizr -c app/javascript/modernizr-config.json -d app/javascript/vendor",
     "watch": "bin/webpack-watcher",
     "webpack": "bin/webpack-dev-server --inline",
     "build": "rails webpacker:compile",
@@ -9,19 +9,32 @@
     "eslint": "eslint ./app/javascript"
   },
   "dependencies": {
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.4.0",
-    "babel-preset-env": "^1.2.1",
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "coffee-loader": "^0.7.3",
+    "coffee-script": "^1.12.4",
     "compression-webpack-plugin": "^0.3.2",
     "eslint-config-airbnb": "^14.1.0",
+    "expose-loader": "^0.7.3",
+    "extract-text-webpack-plugin": "^2.1.0",
     "flatpickr": "^2.4.4",
     "glob": "^7.1.1",
+    "jquery": "^3.2.1",
     "jquery-lazyload": "^1.9.7",
     "jquery-mousewheel": "^3.1.13",
     "jquery-scroll": "^1.1.1",
+    "jquery-ujs": "^1.2.2",
+    "js-yaml": "^3.8.2",
     "mdetect": "^1.2.3",
+    "node-sass": "^4.5.2",
     "path-complete-extname": "^0.1.0",
+    "postcss-loader": "^1.3.3",
+    "postcss-smart-import": "^0.6.10",
+    "precss": "^1.4.0",
     "rails-erb-loader": "^3.2.0",
+    "sass-loader": "^6.0.3",
     "screenfull": "^3.0.2",
     "scroll-parallax": "^1.1.0",
     "swiper": "^3.4.2",
@@ -29,13 +42,14 @@
     "tween.js": "^16.6.0",
     "video.js": "^5.17.0",
     "vue": "^2.2.4",
-    "webpack": "^2.2.1",
-    "webpack-merge": "^4.0.0"
+    "webpack": "^2.3.2",
+    "webpack-manifest-plugin": "^1.1.0",
+    "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "css-loader": "^0.27.1",
+    "css-loader": "^0.28.0",
     "eruda": "^1.2.2",
     "eslint": "^3.17.1",
     "eslint-plugin-import": "^2.2.0",
@@ -43,8 +57,8 @@
     "eslint-plugin-react": "^6.10.0",
     "file-loader": "^0.10.1",
     "modernizr": "^3.3.1",
-    "style-loader": "^0.13.2",
+    "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.2"
   }
 }

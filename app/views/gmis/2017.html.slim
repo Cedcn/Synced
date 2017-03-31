@@ -10,6 +10,7 @@ html lang= 'en'
     = csrf_meta_tags
     = stylesheet_link_tag 'entries/gmis2017', media: 'all'
     = javascript_include_tag 'entries/gmis2017'
+    = stylesheet_pack_tag '2017_gmis'
 
   body class="#{controller_name + ' ' + controller_name + '-' + action_name}"
     - cache @event do
@@ -25,4 +26,4 @@ html lang= 'en'
       = render 'gmis/2017/cooperative'
       = render 'gmis/2017/extension'
 
-    = javascript_pack_tag "2017_gmis"
+    = javascript_pack_tag '2017_gmis'
