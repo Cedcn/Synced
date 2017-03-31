@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/rails/webpacker.git
+  revision: a107b70f579e0cf34988e8b3627ba8d66ffb7f62
+  specs:
+    webpacker (1.1)
+      activesupport (>= 4.2)
+      multi_json (~> 1.2)
+      railties (>= 4.2)
+
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -374,10 +383,6 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webpacker (1.1)
-      activesupport (>= 4.2)
-      multi_json (~> 1.2)
-      railties (>= 4.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -447,7 +452,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   warden
   web-console (>= 3.3.0)
-  webpacker (~> 1.0)
+  webpacker!
   weixin_authorize
 
 BUNDLED WITH
