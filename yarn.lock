@@ -1451,14 +1451,14 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-doctrine@1.2.3, doctrine@^1.2.2:
+doctrine@1.2.3:
   version "1.2.3"
   resolved "http://registry.npm.taobao.org/doctrine/download/doctrine-1.2.3.tgz#6aec6bbd62cf89dd498cae70c0ed9f49da873a6a"
   dependencies:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-doctrine@1.5.0:
+doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
   resolved "http://registry.npm.taobao.org/doctrine/download/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
   dependencies:
@@ -4761,8 +4761,8 @@ typedarray@^0.0.6:
   resolved "http://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 uglify-js@^2.8.5:
-  version "2.8.19"
-  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-2.8.19.tgz#21dcb82101aa87054deb140aa9b6bccda5389c8e"
+  version "2.8.20"
+  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-2.8.20.tgz#be87100fbc18de3876ed606e9d24b4568311cecf"
   dependencies:
     source-map "~0.5.1"
     yargs "~3.10.0"
