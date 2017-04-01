@@ -44,7 +44,9 @@ module.exports = {
       resolve(paths.node_modules)
     ]
   },
-
+  externals: {
+    jquery: 'jQuery'
+  },
   resolveLoader: {
     modules: [paths.node_modules]
   }
