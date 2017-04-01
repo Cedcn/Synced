@@ -13,8 +13,8 @@
         input.btn.red type='submit' value='删除' v-on:click='deletePartnerCategory(partner_category, index)'
         search_input search_url='/admin/partners' query_key='q[name_cont]' :when-click-result='whenClickResult' :renderResultItem='renderResultItem'
       .js_partners_sort :data-partner-category-index='index'
-        .collection-item.partner_item v-for='partner_categories_partner, index in partner_category.partner_categories_partners' :data-partner-index='index' v-bind:model='partner_categories_partner'
+        .collection-item.partner_item v-for='partner_categories_partner, item_index in partner_category.partner_categories_partners' :data-partner-index='item_index' v-bind:model='partner_categories_partner'
           span
             |{{partner_categories_partner.partner.name}}
-          a.btn.red v-on:click='deleteParnterCategoriesPartner(partner_category, partner_categories_partner, index)'
+          a.btn.red v-on:click='deleteParnterCategoriesPartner(partner_category, partner_categories_partner, item_index)'
             | 删除
