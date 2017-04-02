@@ -5,5 +5,8 @@ head
   meta name="viewport" content="width=device-width, initial-scale=1.0"/
   meta http-equiv="X-UA-Compatible" content="ie=edge"/
   title =title
+  = csrf_meta_tags
+  = stylesheet_pack_tag "application"
 body
   = yield
+  = javascript_pack_tag "application"
