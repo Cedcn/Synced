@@ -1,0 +1,24 @@
+// This file is describe for basic UI element style, such as input, p, heading etc...
+a {
+  text-decoration: none;
+  color: $color-black;
+
+  &:hover,
+  &:active {
+    color: lighten($color-black, 30%);
+  }
+
+  &.link--white {
+    color: $color-white;
+  }
+
+  &.link--highlight {
+    color: $color-red;
+  }
+}
+
+input {
+  outline: none;
+  border: 0;
+  line-height: 2.5rem;
+}

@@ -1,0 +1,18 @@
+.header {
+  background-color: $color-black;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+}
+
+.header__functionality {
+  display: flex;
+}
+
+.header__links a {
+  margin: 0 1.6rem;
+}

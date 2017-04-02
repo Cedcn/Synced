@@ -1,0 +1,14 @@
+// lib style from node_modules
+@import 'normalize.css/normalize.css';
+
+// basic atomic style
+@import './colour';
+@import './global';
+@import './atom';
+
+// component level style
+
+// layout level style
+@import './layout/header';
+
+// page specific style
