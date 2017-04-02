@@ -10,7 +10,7 @@ const layout = () => {
 
   Waves.displayEffect();
 
-  $('.sidebar .collapsible-body li').removeClass('active')
+  $('.sidebar .collapsible-body li').removeClass('active');
   $('.sidebar .collapsible-body li a').each((index, ele) => {
     const $ele = $(ele);
     if ($ele.attr('href') === window.location.pathname) {
