@@ -41,9 +41,7 @@
     "three": "^0.84.0",
     "tween.js": "^16.6.0",
     "video.js": "^5.17.0",
-    "vue": "^2.2.6",
-    "vue-loader": "^11.3.4",
-    "vue-template-compiler": "^2.2.6",
+    "vue": "^2.2.4",
     "webpack": "^2.3.2",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"
