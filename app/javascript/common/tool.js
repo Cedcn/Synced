@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
+import 'jquery-ui/ui/widgets/sortable';
 
 export const scrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 

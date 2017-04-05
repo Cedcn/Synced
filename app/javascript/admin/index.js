@@ -1,4 +1,8 @@
 import $ from 'jquery';
+import 'jquery-ujs';
+import turbolinks from 'turbolinks';
+turbolinks.start();
+
 import { runPage } from '../common/tool';
 import layout from './layout';
 import guest from './guest';
