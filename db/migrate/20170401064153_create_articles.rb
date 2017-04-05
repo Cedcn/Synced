@@ -5,7 +5,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string  :description
       t.text    :content
       t.integer :status, default: 0
-      t.date    :publish_date
+      t.date    :published_at
 
       t.uuid    :user_id
       t.uuid    :category_id

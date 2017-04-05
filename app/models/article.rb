@@ -2,7 +2,7 @@ class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   belongs_to :category
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 end
 
 # == Schema Information
@@ -14,7 +14,7 @@ end
 #  description  :string
 #  content      :text
 #  status       :integer          default(0)
-#  publish_date :date
+#  published_at :date
 #  user_id      :uuid
 #  category_id  :uuid
 #  created_at   :datetime         not null

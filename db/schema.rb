@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170401064153) do
     t.string   "description"
     t.text     "content"
     t.integer  "status",       default: 0
-    t.date     "publish_date"
+    t.date     "published_at"
     t.uuid     "user_id"
     t.uuid     "category_id"
     t.datetime "created_at",               null: false
