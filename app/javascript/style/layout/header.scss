@@ -1,18 +1,42 @@
+$header-height: 80px;
+
 .header {
   background-color: $color-black;
 }
 
 .header__container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  min-height: 80px;
+  justify-content: space-between;
+  min-height: $header-height;
 }
 
 .header__functionality {
   display: flex;
+  align-items: center;
 }
 
 .header__links a {
+  padding: 0 5px;
+  display: inline-block;
   margin: 0 1.6rem;
+  border-bottom: 3px solid transparent;
+  line-height: $header-height - 2px;
+  transition: 0.3s all;
+
+  &:hover {
+    border-color: $color-red;
+  }
+}
+
+.header__search {
+  padding-left: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-left: 1px solid $color-white;
+}
+
+
+.header__search__icon {
+  
 }
