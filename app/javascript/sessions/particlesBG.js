@@ -4,36 +4,33 @@ const particlesBG = () => {
   particlesJS('js-sessions-bg', {
     particles: {
       number: {
-        value: 60,
+        value: 50,
         density: {
           enable: true,
           value_area: 600
         }
       },
       color: {
-        value: '#4160cf'
+        value: '#0038ff'
       },
       shape: {
         type: 'circle',
         stroke: {
           width: 0
-        },
-        polygon: {
-          nb_sides: 6
         }
       },
       opacity: {
-        value: 0.5,
+        value: 0.2,
         random: false,
         anim: {
           enable: true,
           speed: 1,
-          opacity_min: 0.3,
+          opacity_min: 0.1,
           sync: false
         }
       },
       size: {
-        value: 6,
+        value: 8,
         random: true,
         anim: {
           enable: false,
@@ -51,7 +48,7 @@ const particlesBG = () => {
       },
       move: {
         enable: true,
-        speed: 4,
+        speed: 3,
         direction: 'none',
         random: false,
         straight: false,

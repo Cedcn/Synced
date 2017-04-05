@@ -57,7 +57,7 @@ const sessions = () => {
     openStartFun: () => updateRucaptcha()
   });
 
-  $('form').ajaxForm({
+  $('#phone-form, #email-form').ajaxForm({
     error: xhr => {
       const msgArr = xhr.responseJSON;
       forEach(msgArr, arr => {

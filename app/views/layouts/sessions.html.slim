@@ -11,12 +11,6 @@ html lang="en"
 
   body
     = yield
-    .window-bg
-    #js-piccode-modal.piccode-modal
-      .piccode-modal-wrapper
-        = rucaptcha_input_tag(class: 'form-control', placeholder: '图形验证码')
-        = rucaptcha_image_tag(alt: '图形验证码')
-      a#js-accept-msg.submit-code href="javascript:;" 提 交
     #js-sessions-bg
     = javascript_pack_tag 'sessions'
   
