@@ -29,14 +29,26 @@ $header-height: 80px;
   }
 }
 
-.header__search {
+.header-search__input {
+  max-width: 0;
+  transition: 600ms all;
+  margin-right: 15px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.header-search {
   padding-left: 15px;
   margin-left: 15px;
   margin-right: 15px;
   border-left: 1px solid $color-white;
-}
+  display: flex;
+  align-items: center;
 
-
-.header__search__icon {
-  
+  &:hover {
+    .header-search__input {
+      max-width: 1000px;
+      opacity: 1;
+    }
+  }
 }

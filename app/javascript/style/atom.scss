@@ -21,6 +21,14 @@ input {
   outline: none;
   border: 0;
   line-height: 2.5rem;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.input--inverse {
+  color: $color-white;
+  background: transparent;
+  border: 1px solid $color-grey;
 }
 
 .search-group {
