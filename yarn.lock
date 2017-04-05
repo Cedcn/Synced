@@ -2781,6 +2781,12 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
+jquery-form@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/jquery-form/download/jquery-form-4.2.1.tgz#867d3415cb77b8e7223aaa701f0e481dd16ad5c2"
+  dependencies:
+    jquery ">=1.7"
+
 jquery-lazyload@^1.9.7:
   version "1.9.7"
   resolved "http://registry.npm.taobao.org/jquery-lazyload/download/jquery-lazyload-1.9.7.tgz#9982b388c533c0b611214b3c5aaa0b9fede071f7"
@@ -2795,7 +2801,7 @@ jquery-scroll@^1.1.1:
   dependencies:
     jquery "^2.1.4"
 
-jquery@^2.1.4:
+jquery@>=1.7, jquery@^2.1.4, jquery@^2.2.1:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
 
@@ -3171,6 +3177,12 @@ mobx@^3.1.7:
   version "3.1.7"
   resolved "http://registry.npm.taobao.org/mobx/download/mobx-3.1.7.tgz#910c01f6e2f7e88ec47baabefee5fe667d37ac00"
 
+modal-layer@^1.0.8:
+  version "1.0.8"
+  resolved "http://registry.npm.taobao.org/modal-layer/download/modal-layer-1.0.8.tgz#3b1b91620a91c4933e18494e804e66a04f6688d5"
+  dependencies:
+    jquery "^2.2.1"
+
 modernizr@^3.3.1:
   version "3.4.0"
   resolved "http://registry.npm.taobao.org/modernizr/download/modernizr-3.4.0.tgz#2eb7617677a6b6bb72a2d3b60fe4e702c4c9d067"
@@ -3347,6 +3359,10 @@ normalize-url@^1.4.0:
     prepend-http "^1.0.0"
     query-string "^4.1.0"
     sort-keys "^1.0.0"
+
+noty@^2.4.1:
+  version "2.4.1"
+  resolved "http://registry.npm.taobao.org/noty/download/noty-2.4.1.tgz#4327fb0985fe93f6aadb929fa6807fa3ccd86a07"
 
 "npmlog@0 || 1 || 2 || 3 || 4", npmlog@^4.0.0, npmlog@^4.0.2:
   version "4.0.2"
@@ -5231,6 +5247,12 @@ validate-npm-package-license@^3.0.1:
 value-equal@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/value-equal/download/value-equal-0.2.0.tgz#4f41c60a3fc011139a2ec3d3340a8998ae8b69c0"
+
+value-validate@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/value-validate/download/value-validate-1.0.1.tgz#c35847f0e892cdf2e7991b4178588a1d6db5a014"
+  dependencies:
+    lodash "^4.17.4"
 
 vary@~1.1.0:
   version "1.1.1"

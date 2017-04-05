@@ -1,11 +1,25 @@
 import $ from 'jquery';
+import 'jquery-form';
+import { validation } from 'value-validate';
+import ModalLayer from 'modal-layer';
+import 'modal-layer/dist/style.css';
+
+import forEach from 'lodash/forEach';
+import noty from 'noty';
 import particlesBG from './particlesBG';
+
 
 const sessions = () => {
   particlesBG();
-
   $('.zoom').addClass('active');
-  //
+
+  $.ajaxSetup({ dataType: 'json' });
+
+  // set noty
+  $.noty.defaults.layout = 'topCenter';
+  $.noty.defaults.timeout = 1800;
+
+  // Show or hide password
   const $eye = $('.js-switch-password');
   $eye.on('click', function () {
     const $this = $(this);
@@ -16,7 +30,7 @@ const sessions = () => {
     $input.attr('type', isShow ? 'text' : 'password');
   });
 
-  //
+  // Slide
   const $slideContainer = $('.slide-container');
   $slideContainer.each((index, item) => {
     const $item = $(item);
@@ -32,44 +46,100 @@ const sessions = () => {
       $bar.animate({ left: seat });
       $this.addClass('active').siblings().removeClass('active');
       $content.addClass('active').siblings().removeClass('active');
-      $content.find('input[autofocus="autofocus"]').first().focus();
     });
   });
 
-  //
+  // refresh picture code
+  const $rucaptchaImg = $('.rucaptcha-image');
+  $rucaptchaImg.on('click', () => updateRucaptcha());
+
+  const piccodeModal = new ModalLayer('#js-piccode-modal', {
+    openStartFun: () => updateRucaptcha()
+  });
+
+  $('form').ajaxForm({
+    error: xhr => {
+      const msgArr = xhr.responseJSON;
+      forEach(msgArr, arr => {
+        forEach(arr, item => {
+          noty({ text: item, type: 'error' });
+        });
+      });
+    },
+    success: data => {
+      console.log(data);
+      noty({ text: '注册成功', type: 'success' });
+    }
+  });
+
+  // send phone verification code
   (() => {
-    const $sendCode = $('#js-send-code');
-    const cycle = 30;
+    const $phoneForm = $('#phone-form');
+    const $sendCode = $phoneForm.find('#js-send-code');
+    const $phone = $phoneForm.find('input[id="mobile"]');
+
+    const codeCycle = 30;
     let status = 'default';
 
-    $sendCode.on('click', function () {
+    $sendCode.on('click', () => {
       if (status === 'await') return;
-      const $this = $(this);
 
-      // $.ajax({
-      //   url: 'http://www.jiqizhixin.com',
-      //   method: 'GET'
-      // }).done(() => {
-      //
-      // });
-      status = 'await';
-      $this.addClass('disable');
-      let time = cycle;
-      $this.text(`重新发送(${time}s)`);
+      // verify phone correct
+      const result = validation($phone.val(), ['required', 'phone']);
+      if (!result.isPass) {
+        noty({ text: '请输入正确的手机号', type: 'error' });
+        return;
+      }
 
-      const countdown = setInterval(() => {
-        time -= 1;
-        if (time <= 0) {
-          status = 'default';
-          $this.removeClass('disable');
-          $this.text('重新发送');
-          clearInterval(countdown);
-          return;
+      piccodeModal.open();
+    });
+
+    const $acceptMsg = $('#js-accept-msg');
+    $acceptMsg.on('click', function () {
+      const $input = $(this).closest('.piccode-modal').find('input[name="_rucaptcha"]');
+
+      $.ajax({
+        url: '/phone_verify_code',
+        method: 'POST',
+        data: {
+          mobile: $phone.val(),
+          _rucaptcha: $input.val()
         }
-        $this.text(`重新发送(${time}s)`);
-      }, 1000);
+      }).done(() => {
+        piccodeModal.close();
+        $input.val('');
+        noty({ text: '验证码已发送', type: 'success' });
+
+        status = 'await';
+        $sendCode.addClass('disable');
+
+        let time = codeCycle;
+        $sendCode.text(`重新发送(${time}s)`);
+
+        const countdown = setInterval(() => {
+          time -= 1;
+          if (time <= 0) {
+            status = 'default';
+            $sendCode.removeClass('disable');
+            $sendCode.text('重新发送');
+            clearInterval(countdown);
+            return;
+          }
+          $sendCode.text(`重新发送(${time}s)`);
+        }, 1000);
+      }).fail(xhr => {
+        noty({
+          text: xhr.responseJSON.error,
+          type: 'error'
+        });
+      });
     });
   })();
+
+  function updateRucaptcha() {
+    const $rucaptcha = $('.rucaptcha-image');
+    $rucaptcha.attr('src', $rucaptcha.attr('src'));
+  }
 };
 
 export default sessions;

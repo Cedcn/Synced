@@ -6,33 +6,29 @@ section.signup-wrapper.session
         a.anchor-btn href="javascript:;" 邮箱注册
         span.anchor-bar
       .form-slide.slide-content data-slide="phone"
-        = form_for :user, url: "/signup", html: { class: 'anchor-content active'} do |f|
+        = form_for :user, url: "/signup", html: { id: 'phone-form', class: 'anchor-content active' } do |f|
           .field
-            = f.text_field :login_name, placeholder: '请输入手机号(仅限中国大陆)', autofocus: 'autofocus'
-          .field.pic-code
-            = rucaptcha_input_tag(class: 'form-control', placeholder: '图形验证码')
-            = rucaptcha_image_tag(alt: '图形验证码')
+            = f.text_field :mobile, placeholder: '请输入手机号(仅限中国大陆)', id: 'mobile'
           .field.message-code
-            = f.text_field :message_code, placeholder: '短信验证码'
+            = f.text_field :phone_verify_code, placeholder: '短信验证码', id: 'phone_verify_code'
             a#js-send-code.send-code href="javascript:;"
               | 获取验证码
           .field.password
-            = f.password_field :password, placeholder: '设置6-16位密码，字母区分大小写'
+            = f.password_field :password, placeholder: '设置6-16位密码，字母区分大小写', id: 'password'
             a.js-switch-password.iconfont.icon-eye href="javascript:;"
-          = submit_tag '立即注册'
-        = form_for :user, url: "/signup", html: { class: 'anchor-content'} do |f|
+          input type="submit" value="立即注册"
+        = form_for :user, url: "/signup", html: { id: 'email-form', class: 'anchor-content' } do |f|
           .field
-            = f.text_field :login_name, placeholder: '请输入邮箱', autofocus: 'autofocus'
+            = f.text_field :email, placeholder: '请输入邮箱'
           .field.pic-code
             = rucaptcha_input_tag(class: 'form-control', placeholder: '图形验证码')
             = rucaptcha_image_tag(alt: '图形验证码')
           .field.password
             = f.password_field :password, placeholder: '设置6-16位密码，字母区分大小写'
             a.js-switch-password.iconfont.icon-eye href="javascript:;"
-          = submit_tag '立即注册'
+          input type="submit" value="立即注册"
     .protocol
       span 点击立即注册, 即表示您同意
       a href="javascript:;" target="_blank"《机器之心用户协议》
-
-    = link_to '已有账号，立即登录', login_path, class: 'redirect to-login'
       
+    = link_to '已有账号，立即登录', login_path, class: 'redirect to-login'
