@@ -1,0 +1,82 @@
+#article_index
+  .breadcrumbs-container
+    h5.breadcrumbs-title 文章管理
+    .right-btn
+      .float-action-btn
+        .hover-btn-background
+        a.float-btn.red href=new_admin_guest_path
+          i.material-icons
+            |mode_edit
+        ul
+          li
+            a.float-btn.small-btn.blue v-on:click='show_new_page'
+              |文章
+          li
+            a.float-btn.small-btn.green href='#'
+              |视频
+  .wrapper-content
+    table
+      thead
+        tr
+          th 标题
+          th 作者
+          th 发布时间
+          th 操作
+      tbody
+        tr.striped v-for='(article, index) in articles'
+          td
+            | {{ article.title }}
+          td
+            | {{ (article.author || {}).username }}
+          td
+            | {{ article.pulished_at }}
+          td
+            a href='#'
+              |编辑
+            ||
+            a href='#'
+              |删除
+  transition name='fade'
+    .article_new v-show='show_new'
+      .new-header
+        .navbar-fixed
+          nav.nav-wrapper.cyan
+            .row
+              .col.s3
+                .btn-floating.waves-effect.waves-light.white
+                  i.material-icons
+                    |add
+              .col.s1.offset-s5
+                .btn
+                  |预览
+              .col.s1
+                .btn v-on:click='submitArticle'
+                  |保存草稿
+              .col.s1
+                .btn v-on:click='submitArticle'
+                  |定时发布
+              .col.s1
+                .btn v-on:click='submitArticle'
+                  |立即发布
+      .new-container
+        .form_container
+          form#new_article_form enctype='multipart/form-data'
+            .row
+              .input-field.col.s12
+                label for='title'
+                  |标题
+                input#title type='text' name='article[title]' v-model='article.title'
+            .row
+              .input-field.col.s5
+                select name='article[user_id]'
+                label
+                  |第一作者(显示在标题后面)
+              .input-field.col.s5.offset-s2
+                select
+                label
+                  |联合作者(显示在文末)
+            .row
+              .input-field.col.s12
+                label for='description'
+                  |摘要(140字以内)
+                input type='text' name='article[description]' v-model='article.description'
