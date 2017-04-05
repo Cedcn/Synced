@@ -1,5 +1,9 @@
 // global level config
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 10px;
   font-family: 'Helvetica Neue', 'Helvetica','Hiragino Sans GB', 'PingHei', 'PingFang SC', 'STHeitiSC-Light', 'Microsoft YaHei','Lantinghei SC', 'Arial', sans-serif;
@@ -22,3 +26,94 @@ body {
   display: none;
 }
 
+// This file is describe for basic UI element style, such as input, p, heading etc...
+a {
+  text-decoration: none;
+  color: $color-black;
+
+  &:not(.link--nohover):hover,
+  &:not(.link--nohover):active {
+    color: lighten($color-black, 30%);
+  }
+
+  &.link--white {
+    color: $color-white;
+  }
+
+  &.link--highlight {
+    color: $color-red;
+  }
+}
+
+input {
+  outline: none;
+  border: 0;
+  line-height: 2.5rem;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.input--inverse {
+  color: $color-white;
+  background: transparent;
+  border: 1px solid $color-grey;
+}
+
+.search-group {
+}
+
+.search-group__icon {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: $color-black;
+
+  &:hover,
+  &:active {
+    color: lighten($color-black, 30%);
+  }
+
+  &.link--white {
+    color: $color-white;
+  }
+
+  &.link--highlight {
+    color: $color-red;
+  }
+}
+
+input {
+  outline: none;
+  border: 0;
+  line-height: 2.5rem;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.input--inverse {
+  color: $color-white;
+  background: transparent;
+  border: 1px solid $color-grey;
+}
+
+.search-group {
+}
+
+.search-group__icon {
+  cursor: pointer;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 5px;
+  background-color: $color-red;
+  color: $color-white;
+  padding: 0 10px;
+  font-size: 1.4rem;
+  line-height: 1.8;
+
+  &:hover {
+    color: $color-white;
+  }
+}

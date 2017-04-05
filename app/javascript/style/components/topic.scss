@@ -1,0 +1,47 @@
+.topic {
+}
+
+.topic--cover {
+  position: relative;
+
+  .topic__cover {
+    width: 100%;
+    display: block;
+    background-size: cover;
+    height: 0px;
+    padding: 0;
+    padding-bottom: $ratio-image;
+  }
+
+  .topic__info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0px;
+    background: $gradient-black;
+    color: $color-white;
+    padding: 10px 40px;
+  }
+
+  .topic__summary {
+    max-height: 0;
+    overflow: hidden;
+    transition: 500ms all;
+    margin: 0;
+    padding-top: 5px;
+    font-size: 1.3rem;
+  }
+
+  .topic__author {
+    font-size: 1.3rem;
+  }
+
+  &:hover .topic__summary {
+    max-height: 100px;
+  }
+
+  .topic__title {
+    margin: 10px 0;
+    font-weight: 400;
+  }
+}

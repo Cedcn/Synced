@@ -2,14 +2,15 @@
 @import 'normalize.css/normalize.css';
 
 // basic atomic style
-@import './colour';
+@import './settings';
 @import './icon';
 @import './global';
-@import './atom';
 
 // component level style
+@import './components/topic'; // component for topic card
 
 // layout level style
 @import './layout/header';
+@import './layout/news';
 
 // page specific style
