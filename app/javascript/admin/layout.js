@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import screenfull from 'screenfull';
+import 'materialize-css';
+import 'perfect-scrollbar/jquery';
 
 const layout = () => {
   $('.sidebar-collapse').sideNav({
