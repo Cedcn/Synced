@@ -3,10 +3,10 @@
     <img :src='file_url' :class='{ be_delete: delete_checked }'/>
     <div class='upload_input'>
       <input type='file' :name='file_name' v-on:change='displayImage'/>
-      <div class='btn' v-on:click='clickChangeImage' v-show='!delete_checked'>{{image_blank ? '添加' : '替换'}}</div>
-      <div class='btn' v-on:click='clickDeleteImage' v-show='!image_blank'>{{delete_checked? '取消删除' : '删除'}}</div>
+      <div class='btn' v-on:click='clickChangeImage' v-show='upload_config.add_btn && !delete_checked'>{{image_blank ? '添加' : '替换'}}</div>
+      <div class='btn' v-on:click='clickDeleteImage' v-show='upload_config.destroy_btn && !image_blank'>{{delete_checked? '取消删除' : '删除'}}</div>
       <input class='delete_input' type='checkbox' :name='delete_name' value='1' />
-      <template v-if='!image_blank'><slot></slot></template>
+      <template v-if='upload_config.temp || !image_blank'><slot></slot></template>
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
     afterFileChange: {
       type: Function,
       default: function(){}
+    },
+    config: {
+      type: Object
     }
   },
   data() {
@@ -36,11 +39,17 @@ export default {
     };
   },
   computed: {
+    upload_config() {
+      const default_config = { add_btn: true, destroy_btn: true, file_key: 'file' };
+      const merged_config = Object.assign({}, default_config, this.config);
+      console.log(merged_config);
+      return merged_config;
+    },
     image_blank() {
       return this.file_url.length == 0;
     },
     file_name() {
-      return this.name_prefix + '[file]';
+      return this.name_prefix + `[${this.upload_config.file_key}]`;
     },
     delete_name() {
       return this.name_prefix + '[_destroy]';

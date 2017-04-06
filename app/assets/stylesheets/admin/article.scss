@@ -99,6 +99,38 @@
       width: 80%;
       margin: 0 auto;
       padding-top: 30px;
+      .upload_image_item {
+        height: auto;
+        width: 250px;
+        overflow: auto;
+        padding-bottom: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        &:hover {}
+        img {
+          width: 200px;
+          height: 150px;
+        }
+        .upload_input {
+          position: inherit;
+          top: 0px;
+          width: 200px;
+          height: auto;
+          .btn {
+            width: 150px;
+            margin-top: 0;
+          }
+        }
+      }
+      .copy-right-radio {
+        label {
+          font-size: 1rem;
+        }
+        .radio-item {
+          display: inline-block;
+        }
+      }
     }
   }
 }

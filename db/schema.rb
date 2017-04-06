@@ -17,15 +17,19 @@ ActiveRecord::Schema.define(version: 20170401064153) do
   enable_extension "uuid-ossp"
 
   create_table "articles", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string   "title",                    null: false
+    t.string   "title",                         null: false
     t.string   "description"
     t.text     "content"
-    t.integer  "status",       default: 0
+    t.string   "cover"
+    t.integer  "status",            default: 0
+    t.integer  "copyright",         default: 0
+    t.string   "copyright_content"
+    t.string   "check_content"
     t.date     "published_at"
     t.uuid     "user_id"
     t.uuid     "category_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["status"], name: "index_articles_on_status", using: :btree
     t.index ["title"], name: "index_articles_on_title", using: :btree
   end
