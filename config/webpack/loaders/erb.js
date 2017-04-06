@@ -6,4 +6,4 @@ module.exports = {
   options: {
     runner: 'DISABLE_SPRING=1 bin/rails runner'
   }
-}
+};

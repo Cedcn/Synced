@@ -8,4 +8,4 @@ module.exports = {
       js: 'babel-loader?presets[]=env'
     }
   }
-}
+};

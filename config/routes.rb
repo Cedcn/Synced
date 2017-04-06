@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resource :security, only: :index
   end
 
+  get 'account', to: 'account#index'
+  get 'account/:nothings', to: 'account#index'
+
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
     get ':year', to: 'gmis#show', constraints: { year: /2017/ }

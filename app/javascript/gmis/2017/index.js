@@ -19,8 +19,6 @@ const init = () => $(() => {
     window.webkitRequestAnimationFrame ||
     window.msRequestAnimationFrame;
 
-  $.ajaxSetup({ headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } });
-
   header();
   banner();
   video();
