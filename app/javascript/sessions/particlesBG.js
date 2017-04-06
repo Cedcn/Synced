@@ -23,7 +23,7 @@ const particlesBG = () => {
         value: 0.2,
         random: false,
         anim: {
-          enable: true,
+          enable: false,
           speed: 1,
           opacity_min: 0.1,
           sync: false

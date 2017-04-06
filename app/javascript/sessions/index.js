@@ -53,6 +53,7 @@ const sessions = () => {
   const $rucaptchaImg = $('.rucaptcha-image');
   $rucaptchaImg.on('click', () => updateRucaptcha());
 
+
   const piccodeModal = new ModalLayer('#js-piccode-modal', {
     openStartFun: () => updateRucaptcha()
   });
@@ -66,8 +67,8 @@ const sessions = () => {
         });
       });
     },
-    success: data => {
-      console.log(data);
+    success: () => {
+      window.location.href = `${window.location.origin}/account`;
       noty({ text: '注册成功', type: 'success' });
     }
   });

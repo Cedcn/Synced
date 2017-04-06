@@ -8,9 +8,14 @@ html lang="en"
     = csrf_meta_tags
     = stylesheet_link_tag 'entries/sessions', media: 'all'
     = javascript_include_tag 'entries/sessions'
-
+    
   body
     = yield
     #js-sessions-bg
     = javascript_pack_tag 'sessions'
+
+    - if Rails.env.development? && browser.device.mobile?
+      script src="//cdn.jsdelivr.net/eruda/1.2.2/eruda.min.js"
+      javascript:
+        eruda.init();
   
