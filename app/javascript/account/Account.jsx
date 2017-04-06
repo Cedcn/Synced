@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import AppBar from 'react-toolbox/lib/app_bar';
 import { observer, inject } from 'mobx-react';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';

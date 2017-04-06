@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import $ from 'jquery';
-import Input from 'react-toolbox/lib/input/Input';
-import DatePicker from 'react-toolbox/lib/date_picker/DatePicker';
-import RadioGroup from 'react-toolbox/lib/radio/RadioGroup';
-import RadioButton from 'react-toolbox/lib/radio/RadioButton';
+import Input from 'react-toolbox/lib/input';
+import DatePicker from 'react-toolbox/lib/date_picker';
+import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 // import CitySelect from '../components/CitySelect';
 import { observer, inject } from 'mobx-react';
 import { Row, Col } from 'react-flexbox-grid';

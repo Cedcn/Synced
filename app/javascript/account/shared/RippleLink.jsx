@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Ripple from 'react-toolbox/lib/ripple/Ripple';
+import Ripple from 'react-toolbox/lib/ripple';
 import { NavLink } from 'react-router-dom';
 
 const CustomLink = props => {
