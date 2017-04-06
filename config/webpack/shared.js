@@ -2,24 +2,24 @@
 /* eslint global-require: 0 */
 /* eslint import/no-dynamic-require: 0 */
 
-const webpack = require('webpack');
-const { basename, join, resolve } = require('path');
-const { sync } = require('glob');
-const { readdirSync } = require('fs');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const extname = require('path-complete-extname');
-const { env, paths, publicPath, loadersDir } = require('./configuration.js');
+const webpack = require('webpack')
+const { basename, join, resolve } = require('path')
+const { sync } = require('glob')
+const { readdirSync } = require('fs')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const extname = require('path-complete-extname')
+const { env, paths, publicPath, loadersDir } = require('./configuration.js')
 
-const extensionGlob = `*{${paths.extensions.join(',')}}*`;
-const packPaths = sync(join(paths.source, paths.entry, extensionGlob));
+const extensionGlob = `*{${paths.extensions.join(',')}}*`
+const packPaths = sync(join(paths.source, paths.entry, extensionGlob))
 
 module.exports = {
   entry: packPaths.reduce(
     (map, entry) => {
-      const localMap = map;
-      localMap[basename(entry, extname(entry))] = resolve(entry);
-      return localMap;
+      const localMap = map
+      localMap[basename(entry, extname(entry))] = resolve(entry)
+      return localMap
     }, {}
   ),
 
@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(env))),
     new ExtractTextPlugin(env.NODE_ENV === 'production' ? '[name]-[hash].css' : '[name].css'),
-    new ManifestPlugin({ fileName: paths.manifest, publicPath, writeToFileEmit: true })
+    new ManifestPlugin({ fileName: 'manifest.json', publicPath, writeToFileEmit: true })
   ],
 
   resolve: {
@@ -48,4 +48,4 @@ module.exports = {
   resolveLoader: {
     modules: [paths.node_modules]
   }
-};
+}

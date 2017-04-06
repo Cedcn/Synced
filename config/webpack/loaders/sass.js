@@ -13,7 +13,7 @@ module.exports = {
         }
       ]
     }),
-    exclude: [/flexboxgrid/, /react-toolbox/, /app\/javascript/]
+    exclude: [/flexboxgrid/, /react-toolbox/]
   }, {
     test: /\.css$/,
     use: ExtractTextPlugin.extract({
@@ -26,6 +26,6 @@ module.exports = {
         }
       ]
     }),
-    include: [/flexboxgrid/, /react-toolbox/, /app\/javascript/]
+    include: [/flexboxgrid/, /react-toolbox/]
   }]
 };
