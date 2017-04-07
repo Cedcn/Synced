@@ -6,6 +6,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import Input from 'react-toolbox/lib/input';
 import DatePicker from 'react-toolbox/lib/date_picker';
 import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
+import { Button } from 'react-toolbox/lib/button';
 
 import CitySelect from '../components/CitySelect';
 import ColumnTitle from '../shared/ColumnTitle';
@@ -87,6 +88,7 @@ class BaseInfo extends React.Component {
             <DatePicker
               label="生日"
               sundayFirstDayOfWeek
+              inputFormat={value => `${value.getFullYear()}年${value.getMonth() + 1}月${value.getDate()}日`}
               onChange={value => this.textChange('birthdate', value)}
               value={birthdate}
             />
@@ -108,6 +110,7 @@ class BaseInfo extends React.Component {
           </Col>
         </Row>
         <br />
+        <Button label="提 交" raised primary />
       </div>
     );
   }
