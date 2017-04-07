@@ -21,7 +21,7 @@ module.exports = {
     use: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: [
-        'css-loader?sourceMap&modules&localIdentName=[path][name]-[local]--[hash:base64:8]',
+        'css-loader?sourceMap&modules&localIdentName=[name]-[local]--[hash:base64:8]',
         {
           loader: 'postcss-loader',
           options: { config: '.postcssrc.yml' }

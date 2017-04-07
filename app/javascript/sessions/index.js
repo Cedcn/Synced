@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jquery-ujs';
 import 'jquery-form';
 import { validation } from 'value-validate';
 import ModalLayer from 'modal-layer';
@@ -130,7 +131,7 @@ const sessions = () => {
         }, 1000);
       }).fail(xhr => {
         noty({
-          text: xhr.responseJSON.error,
+          text: xhr.responseJSON.error || '异常错误',
           type: 'error'
         });
       });
