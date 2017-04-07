@@ -7,7 +7,8 @@
 @import './global';
 
 // component level style
-@import './components/topic'; // component for topic card
+@import './components/topic';
+@import './components/author-card';
 
 // layout level style
 @import './layout/header';

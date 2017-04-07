@@ -1,0 +1,29 @@
+.author-card {
+  padding: 1.5rem 3rem;
+
+  &__top {
+    display: flex;
+    align-items: center;
+  }
+
+  &__info {
+    margin-left: 2rem;
+  }
+
+  &__name {
+    font-size: 2.5rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  &__description {
+    border-left: 1px solid $color-black;
+    display: block;
+    padding-left: 1rem;
+    line-height: 1.5;
+    font-size: 1.4rem;
+  }
+}

@@ -20,7 +20,7 @@
     left: 0px;
     background: $gradient-black;
     color: $color-white;
-    padding: 10px 40px;
+    padding: 10px 30px;
   }
 
   .topic__summary {
@@ -41,7 +41,11 @@
   }
 
   .topic__title {
+    color: $color-white;
     margin: 10px 0;
-    font-weight: 400;
+
+    h2 {
+      font-weight: 400;
+    }
   }
 }
