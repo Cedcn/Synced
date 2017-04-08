@@ -24,3 +24,12 @@
     }
   }
 }
+
+.news--video-list {
+  display: flex;
+  justify-content: space-between;
+
+  .news__item {
+    width: 31%;
+  }
+}
