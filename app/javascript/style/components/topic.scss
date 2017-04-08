@@ -1,3 +1,4 @@
+// component for display topic
 .topic {
   overflow: hidden;
   $padding: 1rem 3rem;
@@ -97,7 +98,6 @@
 
   &.topic--full {
     display: flex;
-    align-items: center;
 
     .topic__cover__container {
       flex-shrink: 0;
@@ -115,6 +115,10 @@
 
     .topic__title h2 {
       font-size: 3.5rem;
+    }
+
+    .topic__info {
+      padding: 2rem 3rem;
     }
   }
 }

@@ -18,3 +18,13 @@
       - 2.times do 
         = render 'shared/components/topic_short', topic: @topic, classname: "news--banner__bottom__item"
   = render 'shared/components/topic_full', topic: @topic
+
+  .category.category--space-between.home-category-links
+    .category__left
+      a.category__link href="javascript:;" 最新
+      a.category__link href="javascript:;" AI Talk
+      a.category__link href="javascript:;" 线下活动
+      a.category__link href="javascript:;" 国外精选
+    .category__right
+      a.category__link.category__link--underline href="javascript:;" 更多视频
+

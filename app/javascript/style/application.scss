@@ -9,9 +9,11 @@
 // component level style
 @import './components/topic';
 @import './components/author-card';
+@import './components/category';
 
 // layout level style
 @import './layout/header';
 @import './layout/news';
 
 // page specific style
+@import './pages/home';
