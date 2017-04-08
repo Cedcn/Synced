@@ -31,3 +31,7 @@
   .news.news--video-list
     - 3.times do
       = render 'shared/components/topic_video', topic: @topic, classname: 'news__item'
+
+  .news.news--list
+    - 4.times do
+      = render 'shared/components/topic_full', topic: @topic, classname: 'topic--noborder news__item'
