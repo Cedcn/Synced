@@ -1,12 +1,41 @@
 .topic {
+  overflow: hidden;
   $padding: 1rem 3rem;
 
+  // common style
+  .topic__info {
+    padding: $padding;
+  }
+
+  .topic__title h2 {
+    margin: 1rem 0;
+    font-weight: 400;
+    font-size: 2rem;
+  }
+
+  .topic__author {
+    font-size: 1.4rem;
+  }
+
+  .topic__cover__container {
+    overflow: hidden;
+  }
+
+  .topic__cover {
+    transition: all 300ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // different type style
   &.topic--cover {
     position: relative;
+    display: flex;
 
     .topic__cover {
       width: 100%;
-      height: 100%;
       display: block;
       background-size: cover;
     }
@@ -18,7 +47,6 @@
       left: 0px;
       background: $gradient-black;
       color: $color-white;
-      padding: $padding;
     }
 
     .topic__summary {
@@ -45,6 +73,7 @@
       display: block;
 
       h2 {
+        font-size: 3rem;
         font-weight: 400;
         margin: 0;
       }
@@ -64,19 +93,28 @@
       background-repeat: no-repeat;
       background-position: center center;
     }
+  }
 
-    .topic__info {
-      padding: $padding;
+  &.topic--full {
+    display: flex;
+    align-items: center;
+
+    .topic__cover__container {
+      flex-shrink: 0;
+      width: 35%;
+    }
+
+    .topic__cover {
+      display: block;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 0;
+      padding-bottom: $ratio-image;
     }
 
     .topic__title h2 {
-      margin: 1rem 0;
-      font-weight: 400;
-      font-size: 2rem;
-    }
-
-    .topic__author {
-      font-size: 1.4rem;
+      font-size: 3.5rem;
     }
   }
 }

@@ -17,3 +17,4 @@
     .news--banner__bottom
       - 2.times do 
         = render 'shared/components/topic_short', topic: @topic, classname: "news--banner__bottom__item"
+  = render 'shared/components/topic_full', topic: @topic

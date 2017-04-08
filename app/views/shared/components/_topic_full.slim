@@ -1,11 +1,13 @@
 - classname = classname || ''
-article class="card card--border topic topic--short #{classname}"
-  a.topic__cover href="javascript:;" style="background-image: url(#{topic[:cover]})" title=topic[:title]
+article class="card card--border topic topic--full #{classname}"
+  .topic__cover__container
+    a.topic__cover href="javascript:;" style="background-image: url(#{topic[:cover]})" title=topic[:title]
   .topic__info
     - topic[:tags].each do |tag|
       a.tag.link--nohover href="javascript:;" =tag[:title]
     a.link--nohover.topic__title href="javascript:;"
       h2 =topic[:title]
+    p.topic__summary =topic[:summary]
     a.topic__author href="javascript:;"
       | By
       = topic[:author]
