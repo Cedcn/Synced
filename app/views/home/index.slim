@@ -35,3 +35,7 @@
   .news.news--list
     - 4.times do
       = render 'shared/components/topic_full', topic: @topic, classname: 'topic--noborder news__item'
+
+  a.button.button--line.button--large href="javascript:;"
+    span 加载更多
+    i.icon.icon-down

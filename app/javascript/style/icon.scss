@@ -1,4 +1,8 @@
 // icon files
+@mixin icon-full {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 .icon {
   display: inline-block;
@@ -8,12 +12,16 @@
 }
 
 .icon-search {
+  @include icon-full;
   background-image: url(../images/search.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .icon-play {
   background: url(../images/play.svg) center center no-repeat;
   background-size: 100% 100%;
+}
+
+.icon-down {
+  @include icon-full;
+  background-image: url(../images/down.svg);
 }

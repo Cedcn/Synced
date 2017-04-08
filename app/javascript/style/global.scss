@@ -14,7 +14,7 @@ body {
   font-size: 1.6em;
   padding: 0px;
   margin: 0px;
-  min-height: 200vh;
+  padding-bottom: 100vw;
 }
 
 .container {
@@ -129,5 +129,26 @@ input {
   &--border {
     border: 1px solid $color-grey-light;
     border-radius: $radius-card;
+  }
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  display: block;
+  padding: 2rem;
+  transition: all 300ms;
+
+  &.button--large {
+    font-size: 2rem;
+  }
+
+  &.button--line {
+    border: 1px solid $color-black;
+
+    &:hover {
+      border-color: $color-red;
+    }
   }
 }
