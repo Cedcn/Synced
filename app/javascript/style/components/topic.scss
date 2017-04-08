@@ -1,51 +1,79 @@
 .topic {
-}
+  $padding: 1rem 3rem;
 
-.topic--cover {
-  position: relative;
+  &.topic--cover {
+    position: relative;
 
-  .topic__cover {
-    width: 100%;
-    display: block;
-    background-size: cover;
-    height: 0px;
-    padding: 0;
-    padding-bottom: $ratio-image;
+    .topic__cover {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-size: cover;
+    }
+
+    .topic__info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0px;
+      background: $gradient-black;
+      color: $color-white;
+      padding: $padding;
+    }
+
+    .topic__summary {
+      max-height: 0;
+      overflow: hidden;
+      transition: 500ms all;
+      margin: 0;
+      padding-top: 5px;
+      font-size: 1.3rem;
+    }
+
+    .topic__author {
+      font-size: 1.3rem;
+    }
+
+    .topic:hover .topic__summary {
+      max-height: 100px;
+    }
+
+    .topic__title {
+      color: $color-white;
+      margin: 1rem 0;
+
+      h2 {
+        font-weight: 400;
+      }
+    }
   }
 
-  .topic__info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0px;
-    background: $gradient-black;
-    color: $color-white;
-    padding: 10px 30px;
-  }
+  &.topic--short {
+    display: flex;
+    align-items: center;
 
-  .topic__summary {
-    max-height: 0;
-    overflow: hidden;
-    transition: 500ms all;
-    margin: 0;
-    padding-top: 5px;
-    font-size: 1.3rem;
-  }
+    .topic__cover {
+      width: 30%;
+      padding-bottom: 30%;
+      height: 0;
+      flex-shrink: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
 
-  .topic__author {
-    font-size: 1.3rem;
-  }
+    .topic__info {
+      padding: $padding;
+    }
 
-  &:hover .topic__summary {
-    max-height: 100px;
-  }
-
-  .topic__title {
-    color: $color-white;
-    margin: 10px 0;
-
-    h2 {
+    .topic__title h2 {
+      margin: 1rem 0;
       font-weight: 400;
+      font-size: 2rem;
+    }
+
+    .topic__author {
+      font-size: 1.4rem;
     }
   }
 }
