@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   def index
     @topic = {
-      id: 123123,
+      id: 321,
       title: '2017 IJCAI 计算机与思想奖迎来女性获奖者 Devi Parikh',
       tags: [
         { id: 123, title: '人工智能' }
