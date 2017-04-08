@@ -32,18 +32,21 @@
 
     .topic__author {
       font-size: 1.3rem;
+      color: $color-white;
     }
 
-    .topic:hover .topic__summary {
+    &:hover .topic__summary {
       max-height: 100px;
     }
 
     .topic__title {
       color: $color-white;
-      margin: 1rem 0;
+      margin: 1rem 0 0.5rem 0;
+      display: block;
 
       h2 {
         font-weight: 400;
+        margin: 0;
       }
     }
   }

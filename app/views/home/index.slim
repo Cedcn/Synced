@@ -1,13 +1,6 @@
 .container
   .news.news--banner
-    .news--banner__left.topic.topic--cover
-      a.topic__cover style="background-image: url(http://jiqizhixin.com/data/upload/20170405/58e4c2dc45410.jpeg)" href="javascript:;"
-      .topic__info
-        a.tag.link--nohover href="javascript:;" 深度
-        a.link--nohover.topic__title href="javascript:;"
-          h2 2017 IJCAI 计算机与思想奖迎来女性获奖者 Devi Parikh
-        a.link--nohover.topic__author href="javascript:;" By 人工智能
-        p.topic__summary 国际人工智能联合会议（International Joint Conference onArtificial Intelligence，IJCAI）是聚集人工智能领域研究者和从业者的盛会...
+    = render 'shared/components/topic_cover', topic: @topic, classname: 'news--banner__left'
 
     .news--banner__right
       .card.card--border.author-card.news--banner__right__top
@@ -18,11 +11,9 @@
             p.author-card__title LSTM 之父 Dalle Molle 人工智能研究所主任
         a.author-card__description href="javascript:;"
           p 本文将指导你逐步在 AWS GPU 实例上运行深度学习 Jupyter notebook，并可在你的浏览器中从任何地方对其编辑。如果你的本地机器上没有 GPU，这将会是一个研究深度学习的理想设置。
-      .card.card--border.topic.topic--short
-        a.topic__cover href="javascript:;" style="background-image: url(http://jiqizhixin.com/data/upload/ueditor/20170407/58e749d822d96.png)"
-        .topic__info
-          a.tag.link--nohover href="javascript:;" 深度
-          a.tag.link--nohover href="javascript:;" 谷歌学习
-          a.link--nohover.topic__title href="javascript:;"
-            h2 OpenAI新研究发现无监督情感神经元：可直接调控生成文本的情感
-          a.topic__author href="javascript:;" By 李泽南
+
+      = render 'shared/components/topic_short', topic: @topic 
+
+    .news--banner__bottom
+      - 2.times do 
+        = render 'shared/components/topic_short', topic: @topic, classname: "news--banner__bottom__item"
