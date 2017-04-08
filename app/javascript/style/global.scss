@@ -14,7 +14,6 @@ body {
   font-size: 1.6em;
   padding: 0px;
   margin: 0px;
-  padding-bottom: 100vw;
 }
 
 .container {
@@ -35,6 +34,14 @@ a {
   &:not(.link--nohover):hover,
   &:not(.link--nohover):active {
     color: lighten($color-black, 30%);
+
+    &.link--white {
+      color: darken($color-white, 30%);
+    }
+
+    &.link--highlight {
+      color: lighten($color-red, 20%);
+    }
   }
 
   &.link--white {
@@ -129,26 +136,5 @@ input {
   &--border {
     border: 1px solid $color-grey-light;
     border-radius: $radius-card;
-  }
-}
-
-.button {
-  cursor: pointer;
-  border-radius: 2px;
-  text-align: center;
-  display: block;
-  padding: 2rem;
-  transition: all 300ms;
-
-  &.button--large {
-    font-size: 2rem;
-  }
-
-  &.button--line {
-    border: 1px solid $color-black;
-
-    &:hover {
-      border-color: $color-red;
-    }
   }
 }

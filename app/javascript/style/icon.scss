@@ -1,7 +1,43 @@
-// icon files
+// iconfont cn settings
+@font-face {font-family: "iconfont";
+            src: url('//at.alicdn.com/t/font_g4mrar8y5harlik9.eot?t=1491675309478'); /* IE9*/
+            src: url('//at.alicdn.com/t/font_g4mrar8y5harlik9.eot?t=1491675309478#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('//at.alicdn.com/t/font_g4mrar8y5harlik9.woff?t=1491675309478') format('woff'), /* chrome, firefox */
+            url('//at.alicdn.com/t/font_g4mrar8y5harlik9.ttf?t=1491675309478') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+            url('//at.alicdn.com/t/font_g4mrar8y5harlik9.svg?t=1491675309478#iconfont') format('svg'); /* iOS 4.1- */
+           }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: jnormal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconfont--white-bg {
+  padding: 3px;
+  background: #ffffff;
+  color: #000;
+}
+
+.icon-qq:before { content: "\e648"; }
+
+.icon-rss:before { content: "\e791"; }
+
+.icon-weibo:before { content: "\e609"; }
+
+.icon-wechat:before { content: "\e61c"; }
+
+
+// svg icons
 @mixin icon-full {
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+i {
+  font-style: normal;
 }
 
 .icon {
@@ -9,6 +45,14 @@
   vertical-align: middle;
   width: 22px;
   height: 22px;
+}
+
+.icon--round {
+  border-radius: 3px;
+}
+
+.icon--large {
+  font-size: 2.2rem;
 }
 
 .icon-search {
@@ -25,3 +69,5 @@
   @include icon-full;
   background-image: url(../images/down.svg);
 }
+
+

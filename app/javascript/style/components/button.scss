@@ -1,0 +1,42 @@
+.button {
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  display: inline-block;
+  padding: 2rem;
+  transition: all 300ms;
+
+  &.button--large {
+    font-size: 2rem;
+  }
+
+  &.button--line {
+    border: 1px solid $color-black;
+
+    &:hover {
+      border-color: $color-red;
+    }
+  }
+
+  &.button--red {
+    background-color: $color-red;
+    color: $color-white;
+
+    &:hover {
+      color: $color-white;
+      background-color: lighten($color-red, 15%);
+    }
+  }
+
+  &.button--bold {
+    font-weight: bold;
+  }
+
+  &.button--compact {
+    padding: .5rem .8rem;
+  }
+
+  &.button--block {
+    display: block;
+  }
+}
