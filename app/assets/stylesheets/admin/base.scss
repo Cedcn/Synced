@@ -29,6 +29,47 @@
   display: none;
 }
 
+.select2.select2-container {
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  height: 2rem;
+  line-height: 2rem;
+  .selection {
+    width: 100%;
+    display: block;
+    span {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+.select2-container {
+  display: block;
+  width: auto !important;
+  background-color: white;
+  border: 1px solid #9e9e9e;
+  border-radius: 3px;
+  z-index: 1003;
+  input {
+    margin: 0;
+    height: 2rem;
+    border-color: #9e9e9e !important;
+    box-shadow: none !important;
+  }
+  ul {
+    margin: 0;
+    li {
+      height: 2rem;
+      line-height: 2rem;
+      &:hover {
+        background-color: #00bcd4;
+        color: white;
+      }
+    }
+  }
+}
+
 #toast-container {
   top: 20%;
   left: 0;

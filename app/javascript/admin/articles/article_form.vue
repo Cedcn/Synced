@@ -33,11 +33,11 @@
             <div class="input-field col s12"><label for="title">文章标题(70字以内)</label><input id="title" name="article[title]" type="text" v-model="article.title" /></div>
           </div>
           <div class="row">
-            <div class="input-field col s5">
-              <select name="article[user_id]">
-                <option value="08c0ad5d-28d6-40e9-8c7d-0b02d4f8e016"></option>
-              </select>
+            <div class="col s5">
               <label>第一作者(显示在标题后面)</label>
+              <select class='select_search' name="article[user_id]">
+                <option>请选择作者</option>
+              </select>
             </div>
             <div class="input-field col s5 offset-s2">
               <select>
@@ -92,6 +92,7 @@
 
 <script>
 import $ from 'jquery';
+import 'select2';
 import upload_image_component from 'component/upload_image_component.vue';
 
 export default {
@@ -100,7 +101,22 @@ export default {
     upload_image_component
   },
   mounted() {
-    $('select').material_select();
+    $('.select_search').select2({
+      ajax: {
+        url: '/admin/users',
+        dataType: 'json',
+        placeholder: '选择一个作者',
+        data: function(data) {
+          return { 'q[name_or_username_cont]': data.term };
+        },
+        processResults: function(data) {
+          const result = data.map(function(item) {
+            return { id: item.id, text: item.name || item.username }
+          });
+          return { results: result };
+        }
+      }
+    });
     this.loadCategory();
   },
   updated() {
@@ -208,5 +224,4 @@ export default {
 </script>
 
 <style lang='scss'>
-
 </style>
