@@ -1,0 +1,8 @@
+- classname = classname || ''
+article class="topic topic--video #{classname}"
+  .topic__cover__container
+    a.topic__cover href="javascript:;" style="background-image: url(#{topic[:cover]})" title=topic[:title]
+      i.icon.icon-play.topic--video__icon
+  a.link--nohover.topic__title href="javascript:;"
+    h2 =topic[:title]
+  p.topic__summary =topic[:summary]

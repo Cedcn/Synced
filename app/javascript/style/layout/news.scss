@@ -1,0 +1,43 @@
+.news--banner {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__left,
+  &__right {
+    width: 49%;
+  }
+
+  &__right__top {
+    margin-bottom: 2rem;
+  }
+
+  &__bottom {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      width: 49%;
+    }
+  }
+}
+
+.news--video-list {
+  display: flex;
+  justify-content: space-between;
+
+  .news__item {
+    width: 31%;
+  }
+}
+
+.news--list {
+  margin: 5rem 0;
+  .news__item {
+    border-top: 1px solid $color-grey-light;
+    padding: 4rem 0;
+  }
+}

@@ -1,0 +1,41 @@
+.container
+  .news.news--banner
+    = render 'shared/components/topic_cover', topic: @topic, classname: 'news--banner__left'
+
+    .news--banner__right
+      .card.card--border.author-card.news--banner__right__top
+        .author-card__top
+          img.avatar.author-card--avatar src='http://jiqizhixin.com/data/upload/avatar/58326f6648106.jpg?t=1491565906'
+          .author-card__info
+            .author-card__name Jeff Dean
+            p.author-card__title LSTM 之父 Dalle Molle 人工智能研究所主任
+        a.author-card__description href='javascript:;'
+          p 本文将指导你逐步在 AWS GPU 实例上运行深度学习 Jupyter notebook，并可在你的浏览器中从任何地方对其编辑。如果你的本地机器上没有 GPU，这将会是一个研究深度学习的理想设置。
+
+      = render 'shared/components/topic_short', topic: @topic 
+
+    .news--banner__bottom
+      - 2.times do 
+        = render 'shared/components/topic_short', topic: @topic, classname: 'news--banner__bottom__item'
+  = render 'shared/components/topic_full', topic: @topic
+
+  .category.category--space-between.home-category-links
+    .category__left
+      a.category__link.is-active href='javascript:;' 最新
+      a.category__link href='javascript:;' AI Talk
+      a.category__link href='javascript:;' 线下活动
+      a.category__link href='javascript:;' 国外精选
+    .category__right
+      a.category__link.category__link--underline.link--nohover href='javascript:;' 更多视频
+
+  .news.news--video-list
+    - 3.times do
+      = render 'shared/components/topic_video', topic: @topic, classname: 'news__item'
+
+  .news.news--list
+    - 4.times do
+      = render 'shared/components/topic_full', topic: @topic, classname: 'topic--noborder news__item'
+
+  a.button.button--line.button--large.button--block href="javascript:;"
+    span 加载更多
+    i.icon.icon-down
