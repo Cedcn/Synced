@@ -10,6 +10,8 @@ module.exports = {
         {
           loader: 'postcss-loader',
           options: { config: '.postcssrc.yml' }
+        }, {
+          loader: 'sass-loader?sourceMap'
         }
       ]
     }),
