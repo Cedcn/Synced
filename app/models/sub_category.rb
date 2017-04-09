@@ -1,7 +1,9 @@
-class Category < ApplicationRecord
-  validates :title, presence: true, uniqueness: true
+class SubCategory < Category
+  belongs_to :main_category, foreign_key: 'category_id', touch: true
 
-  has_many :articles
+  def all_articles
+    articles
+  end
 end
 
 # == Schema Information

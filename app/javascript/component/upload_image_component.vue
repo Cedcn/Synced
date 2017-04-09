@@ -47,7 +47,6 @@ export default {
     upload_config() {
       const default_config = { add_btn: true, destroy_btn: true, file_key: 'file' };
       const merged_config = Object.assign({}, default_config, this.config);
-      console.log(merged_config);
       return merged_config;
     },
     image_blank() {

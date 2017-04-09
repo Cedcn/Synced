@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
     load_articles
     respond_to do |format|
       format.html
-      format.json { render json: @articles, include: { author: { only: :username } } }
+      format.json { render json: @articles, include: { author: { only: :username } , category: { } } }
     end
   end
 
@@ -27,7 +27,7 @@ class Admin::ArticlesController < Admin::BaseController
   private
 
   def load_articles
-    @q = Article.includes(:author).ransack(params[:q])
+    @q = Article.includes(:author, :category).ransack(params[:q])
     @articles = @q.result.order(created_at: :desc).page(params[:page]).per(10)
     authorize @articles
   end

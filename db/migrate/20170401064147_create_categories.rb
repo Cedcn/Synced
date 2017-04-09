@@ -4,7 +4,7 @@ class CreateCategories < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :type
 
-      t.uuid :sub_category_id
+      t.uuid :category_id
 
       t.timestamps
     end

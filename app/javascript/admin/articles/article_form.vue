@@ -52,7 +52,7 @@
               <input name="article[description]" type="text" v-model="article.description" />
             </div>
           </div>
-          <div class="row copy-right-radio">
+          <div class="row copy-right-radio" id='abc'>
             <div class="col s12">
               <label>版权声明：</label>
               <div class="radio-item"><input id="original" name="article[copyright]" type="radio" v-model="article.copyright" value="original" /><label for="original">原创</label></div>
@@ -65,6 +65,21 @@
           </div>
           <div class="row">
             <div class="col s12"><label>查看要求:</label><textarea class="materialize-textarea" name="article[check_content]" v-model="article.check_content"></textarea></div>
+          </div>
+          <div class="row category-radio" id='ab'>
+            <div class="col s12">
+              <label>频道：</label>
+              <div class="radio-item" v-for='(category, index) in categories'>
+                <input :id='category.id' name="article_main_category" type="radio" :value="main_category_id"/>
+                <label :for='category.id' v-on:click='choice(category)'>{{category.title}}</label>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="radio-item" v-for='(category, index) in sub_categories'>
+                <input :id='category.id' name="article_sub_category" type="radio" :value="article.category_id"/>
+                <label :for='category.id' v-on:click='choice(category)'>{{category.title}}</label>
+              </div>
+            </div>
           </div>
           <div class="row">
             <upload_image_component :config="{ destroy_btn: false, file_key: 'cover', temp: true }" :name_prefix="'article'" :url="(article.cover||{}).url"></upload_image_component>
@@ -86,9 +101,9 @@ export default {
   },
   mounted() {
     $('select').material_select();
+    this.loadCategory();
   },
   updated() {
-    console.log(this.edit_article);
   },
   props: {
     edit_article: {
@@ -105,7 +120,11 @@ export default {
         original: '本文由机器之心原创出品，版权归作者所有，转载请查看要求，机器之心对于违规侵权者保有法律追诉权。',
         translate: '本文由机器之心编译出品，原文来自quantamagazine，作者Ferris Jabr，转载请查看要求，机器之心对于违规侵权者保有法律追诉权。',
         reproduce: '本文由机器之心经授权转载自饶毅鲁白谢宇三位科学家主编的微信公号《知识分子》（ID：the-intellectual），禁止二次转载。'
-      }
+      },
+      category_url: '/admin/categories',
+      main_category_id: '',
+      categories: [],
+      sub_categories: []
     };
   },
   computed: {
@@ -117,6 +136,33 @@ export default {
     }
   },
   methods: {
+    choice(category){
+      if ((category.sub_categories || []).length > 0) {
+        this.sub_categories = category.sub_categories;
+      }
+      this.article.category_id = category.id;
+    },
+    loadCategory() {
+      $.ajax({
+        url: this.category_url,
+        type: 'GET',
+        dataType: 'json'
+      }).done( (data) => {
+        this.categories = data;
+      });
+    },
+    setCurrentCategory(){
+      const category_id = this.article.category_id;
+      if (category_id == null) return;
+      this.categories.each(function(category){
+        if (category_id == category.id) {
+          this.main_category_id == category_id;
+        };
+        category.sub_categories.each(function(sub_categroy) {
+          if (sub_category.id == category_id) { this.main_category_id == category_id };
+        });
+      })
+    },
     submitArticle(article_status) {
       const form_data = new FormData($('#new_article_form')[0]);
       form_data.append('article[status]', article_status);
