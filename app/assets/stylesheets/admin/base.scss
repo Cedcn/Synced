@@ -28,3 +28,23 @@
 .disappear {
   display: none;
 }
+
+#toast-container {
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  .toast-message {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    position: initial;
+    float: initial;
+  }
+  .success {
+    background-color: #00bcd4;
+  }
+  .error {
+    background-color: red;
+  }
+}

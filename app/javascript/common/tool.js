@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import 'jquery-ui/ui/widgets/sortable';
+import Materialize from 'materialize-css';
 
 export const scrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
@@ -68,6 +69,22 @@ export const addSortUtil = config => {
       });
     }
   });
+};
+
+// showMessage(message: 'this is a message', type: 'error', duration: 4000);
+// message is what you want to send, type control the background color, error is red, success is blue.
+// duration control the showing time.
+export const showMessage = config => {
+  const default_config = {
+    message: '',
+    type: 'success',
+    duration: 3000
+  };
+  config = Object.assign({}, default_config, config);
+  const message = config.message;
+  const type = config.type;
+  const duration = config.duration;
+  Materialize.toast(message, duration, `toast-message ${type}`);
 };
 
 // need a serch_util as container, need a search_input as input field , need a result dom to display search result.
