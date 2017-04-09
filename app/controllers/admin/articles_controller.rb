@@ -14,12 +14,22 @@ class Admin::ArticlesController < Admin::BaseController
     render json: @article, include: { author: { only: :username } }
   end
 
+  def update
+    load_article
+    @article.update!(article_params)
+  end
+
   private
 
   def load_articles
     @q = Article.includes(:author).ransack(params[:q])
     @articles = @q.result.order(created_at: :desc).page(params[:page]).per(10)
     authorize @articles
+  end
+
+  def load_article
+    @article = Article.find(params[:id])
+    authorize @article
   end
 
   def article_params

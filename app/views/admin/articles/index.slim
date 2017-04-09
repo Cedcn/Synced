@@ -9,104 +9,11 @@
             |mode_edit
         ul
           li
-            a.float-btn.small-btn.blue v-on:click='show_new_page'
+            a.float-btn.small-btn.blue v-on:click='editArticle()'
               |文章
           li
             a.float-btn.small-btn.green href='#'
               |视频
-  .wrapper-content
-    table
-      thead
-        tr
-          th 标题
-          th 作者
-          th 发布时间
-          th 操作
-      tbody
-        tr.striped v-for='(article, index) in articles'
-          td
-            | {{ article.title }}
-          td
-            | {{ (article.author || {}).username }}
-          td
-            | {{ article.pulished_at }}
-          td
-            a href='#'
-              |编辑
-            ||
-            a href='#'
-              |删除
-  transition name='fade'
-    .article_new v-show='show_new'
-      .new-header
-        .navbar-fixed
-          nav.nav-wrapper.cyan
-            .row
-              .col.s3
-                .btn-floating.waves-effect.waves-light.white v-on:click='hidden_new_page()'
-                  i.material-icons
-                    |keyboard_arrow_left
-              .col.s1.offset-s5
-                .btn
-                  |预览
-              .col.s1
-                .btn v-on:click="submitArticle('draft')"
-                  |保存草稿
-              .col.s1
-                .btn v-on:click="submitArticle('publishing')"
-                  |定时发布
-              .col.s1
-                .btn v-on:click="submitArticle('published')"
-                  |立即发布
-      .new-container
-        .form_container
-          form#new_article_form enctype='multipart/form-data'
-            input type='hidden' name='article[id]' :value='article.id'
-            .row
-              .input-field.col.s12
-                label for='title'
-                  |文章标题(70字以内)
-                input#title type='text' name='article[title]' v-model='article.title'
-            .row
-              .input-field.col.s5
-                select name='article[user_id]'
-                  option value='08c0ad5d-28d6-40e9-8c7d-0b02d4f8e016' select=1
-                label
-                  |第一作者(显示在标题后面)
-              .input-field.col.s5.offset-s2
-                select
-                label
-                  |联合作者(显示在文末)
-            .row
-              .input-field.col.s12
-                label for='description'
-                  |摘要(140字以内)
-                input type='text' name='article[description]' v-model='article.description'
-            .row.copy-right-radio
-              .col.s12
-                label
-                  |版权声明：
-                .radio-item
-                  input#original name='article[copyright]' type='radio' value='original' v-model='article.copyright'
-                  label for='original'
-                    |原创
-                .radio-item
-                  input#translate name='article[copyright]' type='radio' value='translate' v-model='article.copyright'
-                  label for='translate'
-                    |编译
-                .radio-item
-                  input#reproduce name='article[copyright]' type='radio' value='reproduce' v-model='article.copyright'
-                  label for='reproduce'
-                    |转载
-            .row
-              .col.s12
-                label
-                  |版权内容:
-                textarea.materialize-textarea name='article[copyright_content]' v-model='article.copyright_content'
-            .row
-              .col.s12
-                label
-                  |查看要求:
-                textarea.materialize-textarea name='article[check_content]' v-model='article.check_content'
-            .row
-              upload_image_component :url='(article.file||{}).url' :name_prefix="'article'" :config="{ destroy_btn: false, file_key: 'cover', temp: true }"
+  articles_list :articles='articles' v-on:edit-article='editArticle' v-on:destroy-article='destroyArticle'
+  transition name="fade"
+    article_form v-on:edit-success='refreshData' v-on:close='hidden_new_page' :edit_article='edit_article' v-show="show_new"

@@ -38,6 +38,11 @@ export default {
       delete_checked: false
     };
   },
+  watch: {
+    'url': function(){
+      this.file_url = this.url || '';
+    }
+  },
   computed: {
     upload_config() {
       const default_config = { add_btn: true, destroy_btn: true, file_key: 'file' };
