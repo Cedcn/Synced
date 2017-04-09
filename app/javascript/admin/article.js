@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Vue from 'vue/dist/vue.js';
 import articles_list from './articles/articles_list.vue';
 import article_form from './articles/article_form.vue';
-import { showMessage } from '../common/tool';
+import ensureAlert from '../component/alerts/alert';
 
 const article = () => {
   new Vue({
@@ -47,17 +47,24 @@ const article = () => {
         this.edit_article = article;
         this.show_new_page();
       },
-      destroyArticle() {
-        const article = this.articles[index];
-        $.ajax({
-          url: '/admin/articles',
-          action: 'DELETE',
-          data: { id: article.id },
-          dataType: 'json'
-        }).done( () =>{
-          this.refreshData();
-          console.log('loading need here');
-        })
+      destroyArticle(article) {
+        const v_this = this;
+        ensureAlert({
+          message: '你确定删除吗？',
+          agreeFun() {
+            $.ajax({
+              url: `/admin/articles/${article.id}`,
+              type: 'DELETE',
+              dataType: 'json'
+            }).done(() => {
+              v_this.refreshData();
+            }).fail(() => {
+
+            }).always(() => {
+
+            });
+          }
+        });
       }
     }
   });

@@ -24,7 +24,7 @@
           <td>{{ article.pulished_at }}</td>
           <td>
             <a v-on:click='notifyEditArticle(article)'>编辑</a>
-            <a v-on:click='notifyDestroyArticle(index)'>删除</a>
+            <a v-on:click='notifyDestroyArticle(article)'>删除</a>
           </td>
         </tr>
       </tbody>
@@ -48,8 +48,8 @@ export default {
     notifyEditArticle(article) {
       this.$emit('edit-article', article);
     },
-    notifyDestroyArticle(index) {
-      this.$emit('destroy-article', index);
+    notifyDestroyArticle(article) {
+      this.$emit('destroy-article', article);
     }
   }
 }

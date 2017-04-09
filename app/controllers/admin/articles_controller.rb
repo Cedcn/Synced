@@ -19,6 +19,11 @@ class Admin::ArticlesController < Admin::BaseController
     @article.update!(article_params)
   end
 
+  def destroy
+    load_article
+    @article.destroy
+  end
+
   private
 
   def load_articles
