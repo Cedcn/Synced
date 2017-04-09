@@ -3,6 +3,7 @@ import Vue from 'vue/dist/vue.js';
 import articles_list from './articles/articles_list.vue';
 import article_form from './articles/article_form.vue';
 import ensureAlert from '../component/alerts/alert';
+import LoadingView from '../component/loading/loading';
 
 const article = () => {
   new Vue({
@@ -29,12 +30,15 @@ const article = () => {
     methods: {
       refreshData() {
         this.hidden_new_page();
+        LoadingView.show();
         $.ajax({
           url: '/admin/articles',
           data: {},
           dataType: 'json'
         }).done(data => {
           this.articles = data;
+        }).always(() => {
+          LoadingView.close();
         });
       },
       show_new_page() {
@@ -59,8 +63,6 @@ const article = () => {
             }).done(() => {
               v_this.refreshData();
             }).fail(() => {
-
-            }).always(() => {
 
             });
           }
