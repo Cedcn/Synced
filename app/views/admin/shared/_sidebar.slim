@@ -1,0 +1,16 @@
+#sidebar.sidebar
+  el-menu default-active="2" @open="handleOpen" @close="handleClose" default-openeds="['1', '2']"
+    el-submenu index="1" 
+      template slot="title" 
+        i.el-icon-message
+        span =t('.event_about')
+      el-menu-item index="1-1"  
+        = link_to t('.events_management'), admin_events_path
+    el-submenu index="2" 
+      template slot="title" 
+        i.el-icon-menu
+        span =t('.metadata')
+      el-menu-item index="2-1"  
+        = link_to t('.guests_management'), admin_guests_path
+      el-menu-item index="2-2"  
+        = link_to t('.partners_management'), admin_partners_path

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
-import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 import 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import load_search_component from '../common/search_component';

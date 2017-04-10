@@ -1,8 +1,9 @@
 zh-CN:
-  shared:
-    admin_sidebar:
-      event_about: 会务相关
-      events_management: 活动管理
-      metadata: 元信息管理
-      guests_management: 嘉宾管理
-      partners_management: 合作伙伴
+  admin:
+    shared:
+      sidebar:
+        event_about: 会务相关
+        events_management: 活动管理
+        metadata: 元信息管理
+        guests_management: 嘉宾管理
+        partners_management: 合作伙伴

@@ -38,6 +38,9 @@ module.exports = {
   ],
 
   resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.common.js'
+    },
     extensions: paths.extensions,
     modules: [
       resolve(paths.source),
@@ -48,4 +51,4 @@ module.exports = {
   resolveLoader: {
     modules: [paths.node_modules]
   }
-}
+};
