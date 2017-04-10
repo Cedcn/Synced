@@ -4,10 +4,11 @@ class Article < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
-  enum status: { draft: 0, publishing: 1, published: 2, deleted: 3 }
+  enum status: { draft: 0, published: 1 }
   enum copyright: { original: 0, translate: 1, reproduce: 2 }
 
   mount_uploader :cover, ImageUploader
+  acts_as_taggable
 end
 
 # == Schema Information

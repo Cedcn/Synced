@@ -11,5 +11,4 @@ class Admin::UsersController < Admin::BaseController
     @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page]).per(10)
   end
-
 end

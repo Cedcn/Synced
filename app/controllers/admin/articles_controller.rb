@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
     load_articles
     respond_to do |format|
       format.html
-      format.json { render json: @articles, include: { author: { only: :username } , category: { } } }
+      format.json { render json: @articles, include: { author: { only: [:username, :id] }, category: {} } }
     end
   end
 
@@ -11,7 +11,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
     authorize @article
     @article.save!
-    render json: @article, include: { author: { only: :username } }
+    render json: @article, include: :author
   end
 
   def update
@@ -38,6 +38,10 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :description, :user_id, :status, :copyright, :cover, :copyright_content, :check_content)
+    params.require(:article).permit(
+      :title, :content, :description, :user_id,
+      :status, :copyright, :cover, :copyright_content,
+      :check_content, :tag_list
+    )
   end
 end

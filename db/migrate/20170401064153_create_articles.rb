@@ -4,12 +4,12 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string  :title, null: false
       t.string  :description
       t.text    :content
-      t.string  :cover
+      t.string  :cover_image
       t.integer :status, default: 0
       t.integer :copyright, default: 0
       t.string  :copyright_content
       t.string  :check_content
-      t.date    :published_at
+      t.date    :publish_at, :datetime
 
       t.uuid    :user_id
       t.uuid    :category_id

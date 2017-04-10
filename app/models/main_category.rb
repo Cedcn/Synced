@@ -1,5 +1,4 @@
 class MainCategory < Category
-  has_many :articles
   has_many :sub_categories, foreign_key: 'category_id', dependent: :destroy
 
   def all_articles

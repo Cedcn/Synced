@@ -39,6 +39,9 @@ gem 'ransack'
 # SortModel
 gem 'ranked-model'
 
+# Taggable
+gem 'acts-as-taggable-on', '~> 4.0'
+
 # Use dotenv for envs
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
