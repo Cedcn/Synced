@@ -1,0 +1,19 @@
+#article_index
+  .breadcrumbs-container
+    h5.breadcrumbs-title 文章管理
+    .right-btn
+      .float-action-btn
+        .hover-btn-background
+        a.float-btn.red href=new_admin_guest_path
+          i.material-icons
+            |mode_edit
+        ul
+          li
+            a.float-btn.small-btn.blue v-on:click='editArticle()'
+              |文章
+          li
+            a.float-btn.small-btn.green href='#'
+              |视频
+  articles_list :articles='articles' v-on:edit-article='editArticle' v-on:destroy-article='destroyArticle'
+  transition name="fade"
+    article_form v-on:edit-success='refreshData' v-on:close='hidden_new_page' :edit_article='edit_article' v-show="show_new"
