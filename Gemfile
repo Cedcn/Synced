@@ -56,7 +56,8 @@ gem 'perfect-scrollbar-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim', '~> 3.0', '>= 3.0.7'
-gem 'webpacker', github: 'rails/webpacker'
+
+gem 'webpacker', '1.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

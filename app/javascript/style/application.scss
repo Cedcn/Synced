@@ -1,0 +1,21 @@
+// lib style from node_modules
+@import 'normalize.css/normalize.css';
+
+// basic atomic style
+@import './settings';
+@import './icon';
+@import './global';
+
+// component level style
+@import './components/topic';
+@import './components/author-card';
+@import './components/category';
+@import './components/button';
+
+// layout level style
+@import './layout/header';
+@import './layout/footer';
+@import './layout/news';
+
+// page specific style
+@import './pages/home';

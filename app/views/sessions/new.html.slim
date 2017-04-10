@@ -1,6 +1,23 @@
-h1 LOGIN panel
+section.login-wrapper.session
+  .zoom
+    = form_for :user, url: "/login" do |f|
+      .field
+        input type="text" name="login_name" placeholder="手机号/邮箱" autofocus="autofocus"
+      .field
+        input type="password" name="password" placeholder="请输入密码"
+      = submit_tag '登 陆'
+      .field.extra-info
+        .rember-me
+          = f.check_box :rember_me
+          = f.label :rember_me, '记住我' 
+        a.forget_password href="javascript:;" 忘记密码？
+      .field.social-login
+        .social-title
+          span 社交账户登陆
+        .social-button
+          a.social-button-style.wechat href="javascript:;"
+            i.iconfont.icon-wechat
+          a.social-button-style.weibo href="javascript:;"
+            i.iconfont.icon-weibo
 
-= form_for :user, url: "/login" do |f|
-  input type="text" name="login_name"
-  input type="password" name="password"
-  button LOGIN
+    = link_to '还没有账户？立即注册', signup_path, class: 'redirect to-signup'

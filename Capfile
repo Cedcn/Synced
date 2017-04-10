@@ -19,6 +19,8 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma  # Default puma tasks
+install_plugin Capistrano::Puma::Workers
 require 'capistrano-db-tasks'
 require 'slackistrano/capistrano'
 require 'dotenv'

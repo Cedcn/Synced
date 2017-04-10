@@ -37,7 +37,9 @@ PreCommit:
   EsLint:
     enabled: true
     required_executable: './node_modules/.bin/eslint'
-    include: 'app/javascript/**/*.js'
+    include:
+      - 'app/javascript/**/*.js'
+      - 'app/javascript/**/*.jsx'
     # command: ['./node_modules/.bin/eslint', './app/javascript']
 CommitMsg:
   ALL:

@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Make javascript_pack_tag load assets from webpack-dev-server.
-  # config.x.webpacker[:dev_server_host] = "http://localhost:8080"
+  # config.x.webpacker[:dev_server_host] = 'http://localhost:8080'
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -24,16 +24,19 @@ Rails.application.configure do
       'Cache-Control' => 'public, max-age=172800'
     }
   else
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :null_store
+    config.cache_store = :redis_store, {
+      host: '127.0.0.1',
+      port: 6379,
+      db: 0,
+      namespace: 'cache',
+      expires_in: 2.hours
+    }
   end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.perform_caching = false
-
+  config.action_mailer.perform_caching = true
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

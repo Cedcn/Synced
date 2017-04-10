@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'gmis#index'
 
+  get 'home/index'
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
     resource :profile, only: [:index, :update]
     resource :security, only: :index
   end
+
+  get 'account', to: 'account#index'
+  get 'account/:nothings', to: 'account#index'
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
