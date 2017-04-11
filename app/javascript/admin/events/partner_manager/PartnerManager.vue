@@ -43,7 +43,6 @@
           dataType: 'json'
         })
         .done(data => {
-          console.log(data);
           this.data = data;
         })
         .always(() => {
