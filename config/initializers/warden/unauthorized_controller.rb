@@ -10,7 +10,7 @@ class UnauthorizedController < ActionController::Metal
   end
 
   def respond
-    session[:unauthorized_user] = env['warden'].message
+    session[:unauthorized_user] = request.env['warden'].message
     redirect_to login_path
   end
 end

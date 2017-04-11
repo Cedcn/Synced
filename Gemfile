@@ -22,12 +22,13 @@ gem 'redis-rails', '~> 5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Pagination
+# Tools
 gem 'kaminari'
-# Authorization
+gem 'omniauth-geekpark', '1.0.6'
 gem 'pundit'
-# Pinyin
 gem 'ruby-pinyin'
+gem 'rucaptcha'
+gem 'weixin_authorize'
 
 # UploadImage
 gem 'carrierwave-qiniu', '~> 1.1.0'
@@ -61,11 +62,6 @@ gem 'webpacker', '1.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
-# Wechat sdk
-gem 'weixin_authorize'
-# Captcha
-gem 'rucaptcha'
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
