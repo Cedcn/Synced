@@ -1,8 +1,8 @@
 <template>
   <el-row v-loading="isLoading">
     <el-button type="primary" icon="plus" @click="dialogVisible = true">添加分类</el-button>
-    <template v-for="item, index in data" :data-index="index">
-      <partner-manager-item :eventId="eventId" :category="item" :reloadData="fetchData">
+    <template v-for="item, index in data">
+      <partner-manager-item :eventId="eventId" :category="item" :fetchData="fetchData" :index="index" :count="data.length">
       </partner-manager-item>
     </template>
     <el-dialog title="添加合作伙伴分类" v-model="dialogVisible">

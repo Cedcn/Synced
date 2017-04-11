@@ -8,11 +8,7 @@ const events = () => {
 
   new Vue({
     el: mountPoint,
-    render: h => h(PartnerManager, { props: { eventId } }),
-    beforeMount() {
-      console.log(this);
-      console.log(this.$el);
-    }
+    render: h => h(PartnerManager, { props: { eventId } })
   });
 };
 
