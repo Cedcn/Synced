@@ -1,23 +1,46 @@
-.breadcrumbs-container.row
-  .col.s6
-    h5.breadcrumbs-title 活动管理
-  .col.s6
-    .btns
-      a.waves-effect.waves-light.btn.teal.accent-4 href=new_admin_event_path
-        | 添加活动
-  
-  .wrapper-content
-    table.striped.centered
-      thead
-        tr
-          th 名字
-          th 类型
-          th 状态
-          th 开始时间
-          th 结束时间
-          th 操作
-      tbody#events_table_body
-        - @events.each do |event|
-          =render partial: 'row', locals: { event: event }
-
-    = paginate @events
+#event-home
+  template
+    el-row
+      el-col
+        el-button type="primary" icon="plus" @click="open('new')" 添加活动
+      el-col
+        el-table :data=@events.to_json style=("width: 100%") 
+          el-table-column label="名字" prop="name"
+          el-table-column label="类型" prop="event_type"
+          el-table-column label="状态" prop="status" 
+          el-table-column label="开始时间" prop="start_date" 
+          el-table-column label="结束时间" prop="end_date" 
+          el-table-column label="操作" width="400" 
+            template scope="scope" 
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/edit`)"
+                  | 修改
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/guests`)"
+                | 嘉宾管理
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/partner_categories`)"
+                | 合作伙伴管理
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="deleteEvent(`${scope.row.id}`)"
+                | 删除
+        
+/ .breadcrumbs-container.row
+/   .col.s6
+/     h5.breadcrumbs-title 活动管理
+/   .col.s6
+/     .btns
+/       a.waves-effect.waves-light.btn.teal.accent-4 href=new_admin_event_path
+/         | 添加活动
+/   
+/   .wrapper-content
+/     table.striped.centered
+/       thead
+/         tr
+/           th 名字
+/           th 类型
+/           th 状态
+/           th 开始时间
+/           th 结束时间
+/           th 操作
+/       tbody#events_table_body
+/         - @events.each do |event|
+/           =render partial: 'row', locals: { event: event }
+/ 
+/     = paginate @events
