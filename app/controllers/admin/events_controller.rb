@@ -20,7 +20,12 @@ class Admin::EventsController < Admin::BaseController
 
   def edit
     load_event
-    @event
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: @events.to_json
+      end
+    end
   end
 
   def update

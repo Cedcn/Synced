@@ -1,11 +1,19 @@
 import $ from 'jquery';
 import Vue from 'vue';
+import EventForm from '../EventForm';
 
-const eventHome = () => {
+const eventsHome = () => {
   new Vue({
-    el: '#event-home',
+    el: '#events-home',
+    components: {
+      EventForm
+    },
+    data: {
+      showform: false,
+      eventFormData: {}
+    },
     methods: {
-      open(url) {
+      openWindow(url) {
         window.open(`/admin/events/${url}`, '_self');
       },
       deleteEvent(id) {
@@ -20,9 +28,13 @@ const eventHome = () => {
             window.location.reload();
           });
         }
+      },
+      openModal(data) {
+        this.showform = true;
+        this.eventFormData = data;
       }
     }
   });
 };
 
-export default eventHome;
+export default eventsHome;

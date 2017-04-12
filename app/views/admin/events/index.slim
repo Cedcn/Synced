@@ -1,8 +1,10 @@
-#event-home
+#events-home
   template
     el-row
       el-col
-        el-button type="primary" icon="plus" @click="open('new')" 添加活动
+        el-dialog title="修改活动信息" v-model="showform"
+          event-form :event-form-data="eventFormData"
+        el-button type="primary" icon="plus" @click="openWindow('new')" 添加活动
       el-col
         el-table :data=@events.to_json style=("width: 100%") 
           el-table-column label="名字" prop="name"
@@ -12,11 +14,11 @@
           el-table-column label="结束时间" prop="end_date" 
           el-table-column label="操作" width="400" 
             template scope="scope" 
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/edit`)"
-                  | 修改
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/guests`)"
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openModal(scope.row)"
+                | 修改
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openWindow(`${scope.row.id}/guests`)"
                 | 嘉宾管理
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="open(`${scope.row.id}/partner_categories`)"
+              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openWindow(`${scope.row.id}/partner_categories`)"
                 | 合作伙伴管理
               el-button class="delete-btn" :plain="true" size="small" type="danger" @click="deleteEvent(`${scope.row.id}`)"
                 | 删除
