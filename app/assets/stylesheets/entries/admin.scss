@@ -1,12 +1,17 @@
 /* @import 'materialize';
 @import 'material_icons'; */
+@import 'normalize-rails';
+@import '../common/iconfont';
+
 @import 'perfect-scrollbar';
 @import 'jquery-ui';
 
 @import '../admin/layout';
 @import '../admin/sidebar';
+@import '../admin/header';
 @import '../admin/loader';
 @import '../admin/base';
+
 @import '../admin/guest';
 @import '../admin/event';
 @import '../admin/article';

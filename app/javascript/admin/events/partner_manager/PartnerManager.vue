@@ -1,6 +1,11 @@
 <template>
   <el-row v-loading="isLoading">
-    <el-button type="primary" icon="plus" @click="dialogVisible = true">添加分类</el-button>
+    <div class="wrapper--title">
+      <span>活动管理-合作伙伴</span>
+    </div>
+    <div class="wrapper--header">
+      <el-button type="primary" icon="plus" @click="dialogVisible = true">添加分类</el-button>
+    </div>
     <template v-for="item, index in data">
       <partner-manager-item :eventId="eventId" :category="item" :fetchData="fetchData" :index="index" :count="data.length">
       </partner-manager-item>

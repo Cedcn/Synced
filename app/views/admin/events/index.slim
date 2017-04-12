@@ -4,8 +4,11 @@
       el-col
         el-dialog title="修改活动信息" v-model="showform"
           event-form :event-form-data="eventFormData"
-        el-button type="primary" icon="plus" @click="openWindow('new')" 添加活动
       el-col
+        .wrapper--title 
+          span 活动管理
+        .wrapper--header
+          el-button type="primary" icon="plus" @click="openWindow('new')" 添加活动
         el-table :data=@events.to_json style=("width: 100%") 
           el-table-column label="名字" prop="name"
           el-table-column label="类型" prop="event_type"

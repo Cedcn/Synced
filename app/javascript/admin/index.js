@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-default/index.css';
 import 'jquery-ujs';
 // import turbolinks from 'turbolinks';
 
+import header from './shared/header';
 import sidebar from './shared/sidebar';
 import { runPage } from '../common/tool';
 // import layout from './layout';
@@ -15,17 +16,16 @@ import { runPage } from '../common/tool';
 import partnerManager from './events/partner_manager';
 import guestsManager from './events/guests_manager';
 import eventsHome from './events/events_home';
-import eventsEdit from './events/events_edit';
 
 // turbolinks.start();
 
 const admin = () => {
   Vue.use(ElementUI);
+  header();
   sidebar();
   runPage('admin-events-partner_categories-index', partnerManager);
   runPage('admin-events-guests-index', guestsManager);
   runPage('admin-events-index', eventsHome);
-  runPage('admin-events-edit', eventsEdit);
   // $(document).on('turbolinks:load', () => {
     // layout();
     // runPage('admin-guests-index', guest);

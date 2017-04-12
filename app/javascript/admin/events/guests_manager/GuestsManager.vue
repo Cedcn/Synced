@@ -1,11 +1,16 @@
 <template>
   <el-row v-loading="isLoading">
-    <el-autocomplete
-      v-model="queryString"
-      :fetch-suggestions="querySearchAsync"
-      placeholder="添加嘉宾"
-      @select="handleSelect"
-    ></el-autocomplete>
+    <div class="wrapper--title">
+      <span>活动管理-嘉宾管理</span>
+    </div>
+    <div class="wrapper--header">
+      <el-autocomplete
+        v-model="queryString"
+        :fetch-suggestions="querySearchAsync"
+        placeholder="添加嘉宾"
+        @select="handleSelect"
+      ></el-autocomplete>
+    </div>
     <el-table ref="dragtable" :data="data" style="width: 100%">
      <el-table-column prop="guest.name" label="嘉宾名" width="180">
      </el-table-column>
