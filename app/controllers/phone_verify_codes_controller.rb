@@ -1,6 +1,6 @@
 class PhoneVerifyCodesController < ApplicationController
   def create
-    if verify_rucaptcha?(nil, keep_session: true)
+    if verify_rucaptcha?
       ShortMessageService.send_verify_code(params[:mobile])
       render json: { success: 'sended' }
     else

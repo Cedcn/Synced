@@ -18,5 +18,10 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'POST#create' do
+    context 'signup with email' do
+    end
+
+    context 'sighup with mobile' do
+    end
   end
 end
