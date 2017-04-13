@@ -19,12 +19,13 @@ end
 #  title             :string           not null
 #  description       :string
 #  content           :text
-#  cover             :string
+#  cover_image       :string
 #  status            :integer          default("draft")
 #  copyright         :integer          default("original")
 #  copyright_content :string
 #  check_content     :string
-#  published_at      :date
+#  publish_at        :date
+#  datetime          :date
 #  user_id           :uuid
 #  category_id       :uuid
 #  created_at        :datetime         not null
