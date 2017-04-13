@@ -14,6 +14,9 @@
     <el-form-item label="链接">
       <el-input name="partner[url]" v-model="formData.url"></el-input>
     </el-form-item>
+    <el-form-item label="LOGO">
+      <upload-image :data="formData.logos" />
+    </el-form-item>
     <el-form-item>
       <el-button type="primary" native-type="submit">保存</el-button>
       <el-button @click="closeFromModal()">取消</el-button>

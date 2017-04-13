@@ -34,8 +34,8 @@
             class="delete-btn"
             size="small"
             type="warning"
-            :data-partner-id="scope.row.partner.id"
-            @click="deleteParnterCategoriesPartner(scope.row.partner.id)"
+            :data-partner-id="scope.row.partner_id"
+            @click="deleteParnterCategoriesPartner(scope.row.partner_id)"
           >
             删除
           </el-button>

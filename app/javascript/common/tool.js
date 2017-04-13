@@ -36,6 +36,24 @@ export const runPage = (path, fn) => {
   }
 };
 
+// file to base64
+export const readFile = (event, complete) => {
+  event.preventDefault();
+  let files;
+  if (event.dataTransfer) {
+    files = event.dataTransfer.files;
+  } else if (event.target) {
+    files = event.target.files;
+  }
+  if (files.length <= 0) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    complete(reader.result);
+  };
+  reader.readAsDataURL(files[0]);
+};
+
 // elementSelector is container of the sort item list
 // itemSelector is sort item's class
 // you need to define the getUrl function and getParam function

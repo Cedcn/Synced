@@ -13,6 +13,10 @@ import { runPage } from '../common/tool';
 // import guest from './guest';
 // import partner from './partner';
 // import event from './event';
+
+// commom components
+import UploadImage from '../common/UploadImage.vue';
+
 import partnerManager from './events/partner_manager';
 import guestsManager from './events/guests_manager';
 import eventsHome from './events/events_home';
@@ -23,8 +27,11 @@ import partners from './partners';
 
 const admin = () => {
   Vue.use(ElementUI);
+  Vue.component(UploadImage.name, UploadImage);
+
   header();
   sidebar();
+
   runPage('admin-events-partner_categories-index', partnerManager);
   runPage('admin-events-guests-index', guestsManager);
   runPage('admin-events-index', eventsHome);

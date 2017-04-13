@@ -4,7 +4,7 @@
       <span>合作伙伴</span>
     </div>
     <div class="wrapper--header">
-      <el-button type="primary" icon="plus" @click="openFormModal('new', {})">添加合作伙伴</el-button>
+      <el-button type="primary" icon="plus" @click="openFormModal('new', { name: '', url: '', logos: [] })">添加合作伙伴</el-button>
     </div>
     <el-dialog title="修改合作伙伴信息" v-model="isShowFormModal">
       <partners-form
