@@ -7,6 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     warden.authenticate!
-    redirect_to redirect_url
+    redirect_back
+  end
+
+  def destroy
+    warden.logout if current_user
+    redirect_back
   end
 end

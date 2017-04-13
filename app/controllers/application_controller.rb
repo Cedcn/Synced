@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
     warden.user
   end
 
-  def redirect_url
-    session[:redirect_url] || root_path
+  def redirect_back
+    redirect_to(request.referer || root_path)
   end
 
   def warden
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
-    redirect_to(request.referer || root_path)
+    redirect_back
   end
 
   def set_request_variant

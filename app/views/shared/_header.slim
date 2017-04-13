@@ -15,5 +15,8 @@ header.header
           input.input--inverse
         i.icon.icon-search.search-group__icon.header-search__icon
       .header__user-action
-        a.link--highlight href=login_path 登录
-        a.link--highlight href=signup_path 注册
+        - unless current_user
+          a.link--highlight href=login_path 登录
+          a.link--highlight href=signup_path 注册
+        - else
+          = link_to '注销', logout_path, class: 'link--highlight', method: :delete
