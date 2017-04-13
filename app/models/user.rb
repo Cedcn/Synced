@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password validation: false
 
+  has_many :authorizations
+
   validates :name, length: { in: 2..20 }, allow_nil: true,
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+\z/ }
 
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   validates :username, length: { in: 2..20 },
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_]+\z/ },
     uniqueness: { case_sensitive: false }, on: :update
-  validates :password, length: { in: 6...32 }
+  validates :password, length: { in: 6...32 }, allow_nil: true
 
   validate :email_or_mobile, on: :create
   validate :check_phone_verify_code, if: proc { |u| u.mobile.present? && u.mobile_changed? }
@@ -38,7 +40,7 @@ class User < ApplicationRecord
     nil
   end
 
-  def nick_name
+  def nickname
     name || email_name || mobile
   end
 
@@ -49,8 +51,8 @@ class User < ApplicationRecord
   private
 
   def generate_username
-    pinyin_name = PinYin.of_string(nick_name).join.downcase
-    self[:username] = pinyin_name.length > 11 ? PinYin.abbr(nick_name).slice(0, 11) : pinyin_name
+    pinyin_name = PinYin.of_string(nickname).join.downcase
+    self[:username] = pinyin_name.length > 11 ? PinYin.abbr(nickname).slice(0, 11) : pinyin_name
     self[:username] = username + '_' + SecureRandom.hex(3) while User.exists? username: username
   end
 
