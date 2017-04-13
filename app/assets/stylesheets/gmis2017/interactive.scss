@@ -1,0 +1,31 @@
+$moon-ratio: 772 / 783;
+
+.interactive {
+  color: $red;
+  text-align: center;
+  padding: 50px 0;
+  overflow: hidden;
+  background-color: #161620;
+  background-image: image_url('gmis2017/vote/vote-bg.png');
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 10px;
+
+  .moon-elem {
+    display: inline-block;
+    width: 480px;
+    height: 480px * $moon-ratio;
+    background-image: image_url('gmis2017/vote/moon-02.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+  }
+}
+
+
+@media #{$container-and-down} {
+  .interactive .moon-elem {
+    width: 300px;
+    height: 300px * $moon-ratio;
+  }
+}
