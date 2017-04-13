@@ -32,6 +32,17 @@ class User < ApplicationRecord
       return unless q
       find_by('lower(email) = ? or mobile = ? or lower(username) = ?', q, q, q)
     end
+
+    def create_with_omniauth(auth)
+      ActiveRecord::Base.transaction do
+        user = User.new(name: auth['info']['nickname'])
+        user.save(validate: false)
+        user.authorizations.create!(provider: auth['provider'], uid: auth['uid'])
+        user
+      end
+    rescue ActiveRecord::RecordInvalid
+      nil
+    end
   end
 
   def authenticate(password)
