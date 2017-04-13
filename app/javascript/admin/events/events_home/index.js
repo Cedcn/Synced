@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Vue from 'vue';
-import EventForm from '../EventForm';
+import EventForm from '../EventForm.vue';
 
 const eventsHome = () => {
   new Vue({

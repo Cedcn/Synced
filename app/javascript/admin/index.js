@@ -17,6 +17,8 @@ import partnerManager from './events/partner_manager';
 import guestsManager from './events/guests_manager';
 import eventsHome from './events/events_home';
 
+import partners from './partners';
+
 // turbolinks.start();
 
 const admin = () => {
@@ -26,6 +28,7 @@ const admin = () => {
   runPage('admin-events-partner_categories-index', partnerManager);
   runPage('admin-events-guests-index', guestsManager);
   runPage('admin-events-index', eventsHome);
+  runPage('admin-partners-index', partners);
   // $(document).on('turbolinks:load', () => {
     // layout();
     // runPage('admin-guests-index', guest);

@@ -33,7 +33,7 @@
           <el-button
             class="delete-btn"
             size="small"
-            type="danger"
+            type="warning"
             :data-partner-id="scope.row.partner.id"
             @click="deleteParnterCategoriesPartner(scope.row.partner.id)"
           >

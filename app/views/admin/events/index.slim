@@ -17,13 +17,13 @@
           el-table-column label="结束时间" prop="end_date" 
           el-table-column label="操作" width="400" 
             template scope="scope" 
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openModal(scope.row)"
+              el-button class="delete-btn" :plain="true" size="small" type="warning" @click="openModal(scope.row)"
                 | 修改
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openWindow(`${scope.row.id}/guests`)"
+              el-button class="delete-btn" :plain="true" size="small" type="warning" @click="openWindow(`${scope.row.id}/guests`)"
                 | 嘉宾管理
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="openWindow(`${scope.row.id}/partner_categories`)"
+              el-button class="delete-btn" :plain="true" size="small" type="warning" @click="openWindow(`${scope.row.id}/partner_categories`)"
                 | 合作伙伴管理
-              el-button class="delete-btn" :plain="true" size="small" type="danger" @click="deleteEvent(`${scope.row.id}`)"
+              el-button class="delete-btn" size="small" type="danger" @click="deleteEvent(`${scope.row.id}`)"
                 | 删除
         
 / .breadcrumbs-container.row

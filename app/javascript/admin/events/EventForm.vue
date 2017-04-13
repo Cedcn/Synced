@@ -23,8 +23,6 @@
 </template>
 
 <script>
-  import $ from 'jquery';
-
   export default {
     props: ['eventFormData', 'closeModal'],
     methods: {

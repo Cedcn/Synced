@@ -29,7 +29,7 @@
          <el-button
            class="delete-btn"
            size="small"
-           type="danger"
+           type="warning"
            :data-guest-id="scope.row.guest.id"
            @click="deleteGuest(scope.row.guest.id)"
          >
