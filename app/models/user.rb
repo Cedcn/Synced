@@ -4,10 +4,10 @@ class User < ApplicationRecord
   has_secure_password validation: false
 
   has_many :authorizations
+  mount_uploader :avatar, AvatarUploader
 
   validates :name, length: { in: 2..20 }, allow_nil: true,
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+\z/ }
-
   validates :email,  uniqueness: { case_sensitive: false },
     format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ },
     allow_nil: true
@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
     def create_with_omniauth(auth)
       ActiveRecord::Base.transaction do
-        user = User.new(name: auth['info']['nickname'])
+        user = User.new(name: auth['info']['nickname'], remote_avatar_url: auth['info']['avatar'])
         user.save(validate: false)
         user.authorizations.create!(provider: auth['provider'], uid: auth['uid'])
         user
