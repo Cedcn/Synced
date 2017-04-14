@@ -5,6 +5,10 @@ FactoryGirl.define do
     company  'jixiezhixin'
     title    'developer'
 
+    trait :without_validation do
+      to_create { |instance| instance.save(validate: false) }
+    end
+
     trait :with_email do
       sequence(:email) { |n| "user#{n}@gmail.com" }
     end
@@ -15,6 +19,14 @@ FactoryGirl.define do
 
     trait :with_password do
       password 'password'
+    end
+
+    trait :with_wechat_authorization do
+      after(:create) { |user| create(:wechat_authorization, user: user) }
+    end
+
+    trait :with_weibo_authorization do
+      after(:create) { |user| create(:weibo_authorization, user: user) }
     end
 
     factory :basic_user do

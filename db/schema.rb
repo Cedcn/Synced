@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410001837) do
+ActiveRecord::Schema.define(version: 20170413111913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20170410001837) do
     t.datetime "updated_at",                    null: false
     t.index ["status"], name: "index_articles_on_status", using: :btree
     t.index ["title"], name: "index_articles_on_title", using: :btree
+  end
+
+  create_table "authorizations", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid", using: :btree
+    t.index ["user_id"], name: "index_authorizations_on_user_id", using: :btree
   end
 
   create_table "categories", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
