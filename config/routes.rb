@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
-
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -42,4 +40,6 @@ Rails.application.routes.draw do
     resources :guests, except: :show
     resources :partners, except: :show
   end
+
+  root to: 'home#index'
 end
