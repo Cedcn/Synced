@@ -17,6 +17,8 @@ header.header
       .header__user-action
         - unless current_user
           a.link--highlight href=login_path 登录
+          span.text--highlight.header__split-symbol
+            |/
           a.link--highlight href=signup_path 注册
         - else
           = link_to '注销', logout_path, class: 'link--highlight', method: :delete

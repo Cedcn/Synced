@@ -37,6 +37,15 @@
     line-height: 1.5;
   }
 
+  .topic__date {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+  }
+
+  .topic__right-bottom {
+    align-self: flex-end;
+  }
+
   // different type style
   &.topic--cover {
     position: relative;
@@ -116,7 +125,7 @@
     }
 
     .topic__title h2 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
     }
 
     .topic__info {
@@ -150,13 +159,39 @@
     }
 
     .topic__title h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin: 1.8rem 0;
       line-height: 1.5;
     }
   }
 
-  &.topic--noborder {
-    border: none;
+  &.topic--inline {
+    display: flex;
+
+    .topic__cover__container {
+      flex-shrink: 0;
+      width: 35%;
+    }
+
+    .topic__cover {
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-bottom: $ratio-image;
+    }
+
+    .topic__title h2 {
+      font-size: 2.5rem;
+    }
+
+    .topic__summary {
+      flex-grow: 1;
+    }
+
+    .topic__info {
+      padding: 0 3rem;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
