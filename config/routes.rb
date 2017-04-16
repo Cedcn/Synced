@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: :index
     resources :articles, except: %i[show new edit]
+    resources :tags, only: %i[index create]
     resources :categories, only: :index
     resources :events, except: :show do
       scope module: 'events' do

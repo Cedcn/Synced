@@ -11,7 +11,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
     authorize @article
     @article.save!
-    render json: @article, include: :author
+    render json: @article, include: :authors
   end
 
   def update
@@ -41,7 +41,7 @@ class Admin::ArticlesController < Admin::BaseController
     params.require(:article).permit(
       :title, :content, :description, :user_id,
       :status, :copyright, :cover, :copyright_content,
-      :check_content, :tag_list, author_ids: []
+      :check_content, tag_list: [], author_ids: []
     )
   end
 end
