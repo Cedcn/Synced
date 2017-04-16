@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def verify_rucaptcha!
+    render(json: { error: t(:wrong_captcha) }, status: 403) && return unless verify_rucaptcha?
+  end
+
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_back

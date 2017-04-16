@@ -1,24 +1,24 @@
 Rails.application.routes.draw do
+  # User account
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-
-  match 'vote_up/:id', to: 'votes#vote_up', via: %i[post put patch]
-
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
+  get 'check_exist', to: 'users#check_exist'
+  get 'password_reset', to: 'users#new_password_reset'
+  post 'password_reset', to: 'users#password_reset'
+  resource :phone_verify_code, only: :create
+  resource :email_verify_token, only: :create
   # Omniauth
   get '/auth/:provider/callback', to: 'sessions#create'
-
-  resource :phone_verify_code, only: :create
 
   namespace :settings do
     resource :profile, only: %i[index update]
     resource :security, only: :index
   end
 
-  get 'account', to: 'account#index'
-  get 'account/:nothings', to: 'account#index'
+  match 'vote_up/:id', to: 'votes#vote_up', via: %i[post put patch]
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
