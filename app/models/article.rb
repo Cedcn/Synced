@@ -2,7 +2,8 @@ class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  has_many :articles_authors, dependent: :destroy
+  has_many :authors, through: :articles_authors
 
   enum status: { draft: 0, published: 1 }
 
@@ -18,13 +19,12 @@ end
 #  title             :string           not null
 #  description       :string
 #  content           :text
-#  cover_image       :string
+#  cover             :string
 #  status            :integer          default("draft")
 #  copyright         :integer          default("original")
 #  copyright_content :string
 #  check_content     :string
-#  publish_at        :date
-#  datetime          :date
+#  published_at      :date
 #  user_id           :uuid
 #  category_id       :uuid
 #  created_at        :datetime         not null

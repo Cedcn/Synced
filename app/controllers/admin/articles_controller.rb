@@ -41,7 +41,7 @@ class Admin::ArticlesController < Admin::BaseController
     params.require(:article).permit(
       :title, :content, :description, :user_id,
       :status, :copyright, :cover, :copyright_content,
-      :check_content, :tag_list
+      :check_content, :tag_list, author_ids: []
     )
   end
 end

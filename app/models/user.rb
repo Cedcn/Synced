@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :authorizations
   has_many :remember_tokens
   mount_uploader :avatar, AvatarUploader
+  has_many :articles_authors, dependent: :destroy, foreign_key: 'author_id'
+  has_many :articles, through: :articles_authors
 
   validates :name, length: { in: 2..20 }, allow_nil: true,
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+\z/ }
