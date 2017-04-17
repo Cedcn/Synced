@@ -34,7 +34,7 @@
 
   .news.news--list
     - 4.times do
-      = render 'shared/components/topic_full', topic: @topic, classname: 'topic--noborder news__item'
+      = render 'shared/components/topic_inline', topic: @topic, classname: 'news__item'
 
   a.button.button--line.button--large.button--block href="javascript:;"
     span 加载更多

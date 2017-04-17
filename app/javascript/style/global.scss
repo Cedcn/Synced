@@ -89,6 +89,17 @@ a {
   &.link--highlight {
     color: $color-red;
   }
+
+  &.link--hot {
+    &::after {
+      content: 'HOT';
+      display: inline-block;
+      color: $color-red;
+      font-size: 1.2rem;
+      vertical-align: top;
+      transform: translateY(-12%);
+    }
+  }
 }
 
 input {
@@ -117,9 +128,9 @@ input {
   margin-right: 5px;
   background-color: $color-red;
   color: $color-white;
-  padding: 0 10px;
-  font-size: 1.4rem;
-  line-height: 1.8;
+  padding: 0 5px;
+  font-size: 1.2rem;
+  line-height: 1.6;
 
   &:hover {
     color: $color-white;
@@ -137,4 +148,8 @@ input {
     border: 1px solid $color-grey-light;
     border-radius: $radius-card;
   }
+}
+
+.text--highlight {
+  color: $color-red;
 }

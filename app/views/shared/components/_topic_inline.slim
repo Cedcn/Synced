@@ -1,0 +1,16 @@
+- classname = classname || ''
+article class="topic topic--inline #{classname}"
+  .topic__cover__container
+    a.topic__cover href="javascript:;" style="background-image: url(#{topic[:cover]})" title=topic[:title]
+  .topic__info
+    .topic__tags
+      - topic[:tags].each do |tag|
+        a.tag.link--nohover href="javascript:;" =tag[:title]
+    a.link--nohover.topic__title href="javascript:;"
+      h2 =topic[:title]
+    p.topic__summary =topic[:summary]
+    .topic__right-bottom
+      a.topic__author href="javascript:;"
+        | By
+        = topic[:author]
+      span.topic__date 3小时之前
