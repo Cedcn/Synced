@@ -75,6 +75,13 @@
         </el-col>
       </el-row>
       <el-row>
+        <el-col :span="20">
+          <el-form-item label='文章内容'>
+            <textarea id="editor" class="editor" v-model='article.content' />
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
         <el-col :span=6>
           <el-form-item label='标签'>
             <el-select v-model='article.tag_list' multiple filterable remote placeholder="搜索Tag" :remote-method='searchTag' style='width: 100%'>
@@ -123,6 +130,8 @@
 
 <script>
 import $ from 'jquery';
+import wangEditor from 'wangEditor';
+
 import 'jquery-form';
 
 export default {
@@ -130,6 +139,8 @@ export default {
   components: {  },
   mounted() {
     this.loadCategory();
+    var editor = new wangEditor('editor');
+    editor.create();
   },
   props: {
     article_id: {
@@ -145,7 +156,8 @@ export default {
         cooperation_author_ids: [],
         category_id: '',
         author: { id:'' },
-        tag_list: []
+        tag_list: [],
+        content: '请输入内容....'
       },
       categories: [],
       sub_categories: [],
@@ -261,5 +273,8 @@ export default {
 </script>
 
 <style lang='scss'>
+  .editor {
+    height: 380px;
+    max-height: 500px;
+  }
 </style>
-

@@ -70,6 +70,7 @@
     "vue": "^2.2.6",
     "vue-loader": "^11.3.4",
     "vue-template-compiler": "^2.2.6",
+    "wangeditor": "^2.1.23",
     "webpack": "^2.3.3",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"
