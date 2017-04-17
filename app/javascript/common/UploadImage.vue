@@ -1,33 +1,45 @@
 <template>
   <div class="upload-image">
-    <div class="upload-image--item" v-for="(image, index) in data">
-      <a
-        class="item--wrapper"
-        href="javascript:;"
-        :style="{ backgroundImage: `url(${image.file.url})` }"
-        @click="() => editFileInput(index)"
-      />
-      <input :name="`${formSpace}[files][${index}]`" type="hidden" v-model="image.file.url" />
+    <div
+      :class="`upload-image--item ${image.isDestroy ? 'destory' : ''} ${image.default ? 'default' : ''} ${!isEmpty(image) ? '' : 'item__add'}`"
+      v-for="(image, index) in imagesData"
+    >
+      <template v-if="!isEmpty(image)">
+        <a
+          class="item--wrapper"
+          href="javascript:;"
+          :style="{ backgroundImage: `url(${image.file.url})` }"
+          @click="() => editFileInput(index)"
+        />
+        <input :ref="`fileInput${index}`" :name="`${formSpace}[logos_attributes][${index}][file]`" type="file" @change="changeHandle" v-if="image.isChanged" />
+        <input :ref="`fileInput${index}`" type="file" @change="changeHandle" v-else/>
+        <input type='hidden' :name="`${formSpace}[logos_attributes][${index}][id]`" :value='image.id'>
+        <input type='checkbox' :name="`${formSpace}[logos_attributes][${index}][_destroy]`" :checked='image.isDestroy'>
+        <input type='hidden' :name="`${formSpace}[logos_attributes][${index}][default]`" :value='image.default ? 1 : 0' />
+        <a class="item--delete__btn" href="javascript:;" @click="() => destroy(index)">
+          <i class="iconfont icon-closed" />
+        </a>
+        <a class="item--default__btn" href="javascript:;" @click="() => setDefault(index)">
+          设为默认
+        </a>
+      </template>
+      <template v-else>
+        <a class="item--wrapper" href="javascript:;" @click="() => addFileInput(index)">
+          <i class="iconfont icon-plus" />
+        </a>
+        <input :ref="`fileInput${index}`" type="file" @change="changeHandle" />
+      </template>
     </div>
-    <a class="upload-image--item item__add" href="javascript:;" @click="addFileInput">
-      <i class="iconfont icon-plus" />
-    </a>
-    <input ref="fileInput" type="file" @change="changeHandle" />
   </div>
 </template>
 
 <script>
   import $ from 'jquery';
-  import { readFile } from './tool';
+  import { readImageFile } from './tool';
+  import { concat, isEmpty, cloneDeep } from 'lodash';
 
   export default {
     name: 'uploadImage',
-    data() {
-      return {
-        changeStatus: 'add',
-        inputIndex: 0,
-      }
-    },
     props: {
       data: {
         type: Array,
@@ -35,36 +47,76 @@
       },
       formSpace: {
         type: String,
-        default: 'partners'
+        default: 'partner'
+      }
+    },
+    data() {
+      return {
+        newData: this.data.map(item => ({ ...item, isChanged: false, isDestroy: false })),
+        changeStatus: 'add',
+        currentIndex: 0,
+        checks: []
+      }
+    },
+    computed: {
+      imagesData() {
+        return concat(this.newData, [{}]);
+      }
+    },
+    watch: {
+      data: function() {
+        this.newData = this.data.map(item => ({ ...item, isChanged: false, isDestroy: false }));
       }
     },
     methods: {
       changeHandle(e) {
-        readFile(e, result => {
-          if (result === '') return;
-
+        readImageFile(e).then(result => {
+          const s = cloneDeep(this.newData);
           if(this.changeStatus === 'add') {
-            this.data.push({ file : { url: result } });
+            s.push({ file : { url: result } });
+            s[this.currentIndex].isNew = true;
+            s[this.currentIndex].isChanged = true;
           }
 
           if (this.changeStatus === 'edit') {
-            this.data[this.inputIndex].file.url = result;
+            s[this.currentIndex].file.url = result;
+            s[this.currentIndex].isChanged = true;
           }
+          this.newData = s;
         })
       },
       triggerInput() {
-        $(this.$refs.fileInput).trigger('click');
+        $(this.$refs[`fileInput${this.currentIndex}`]).trigger('click');
       },
-      addFileInput() {
+      addFileInput(index) {
+        this.currentIndex = index;
         this.changeStatus = 'add';
         this.triggerInput();
       },
       editFileInput(index) {
-        this.inputIndex = index;
+        this.currentIndex = index;
         this.changeStatus = 'edit';
         this.triggerInput();
-      }
+      },
+      isEmpty(v) {
+        return isEmpty(v);
+      },
+      destroy(index) {
+        const s = cloneDeep(this.newData);
+        s[index].isDestroy = true;
+        s[index].isChanged = true;
+        this.newData = s;
+      },
+      setDefault(index) {
+        const s = cloneDeep(this.newData);
 
+        s.forEach(item => {
+          item.default = false;
+        });
+
+        s[index].default = true;
+        this.newData = s;
+      }
     }
   }
 </script>
@@ -74,22 +126,69 @@
     display: flex;
     flex-wrap: wrap;
 
-    input[type="file"] {
+    input[type="file"],
+    input[type="checkbox"] {
       display: none;
     }
 
     .upload-image--item {
+      position: relative;
       display: inline-block;
       line-height: 0;
       width: 120px;
       height: 120px;
       margin-right: 10px;
       margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+
+      &.destory {
+        display: none;
+      }
+
+      &.default {
+        border-color: #20a0ff;
+      }
+
+      &:hover {
+        border-color: #6c6c6c;
+
+        .item--delete__btn,
+        .item--default__btn {
+          display: block;
+        }
+      }
+
+      .item--delete__btn {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        text-align: center;
+      }
+
+      .item--default__btn {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 25px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #fff;
+      }
     }
 
     .item__add {
       position: relative;
       background-color: #eee;
+      border-style: dashed;
 
       .iconfont {
         position: absolute;
@@ -107,14 +206,8 @@
       height: 100%;
       background-size: contain;
       background-repeat: no-repeat;
-      border: 1px solid #ddd;
       background-size: 90%;
       background-position: center;
-      border-radius: 5px;
-
-      &:hover {
-        border-color: #20a0ff;
-      }
     }
   }
 </style>

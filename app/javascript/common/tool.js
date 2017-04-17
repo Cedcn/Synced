@@ -37,7 +37,7 @@ export const runPage = (path, fn) => {
 };
 
 // file to base64
-export const readFile = (event, complete) => {
+export const readImageFile = event => {
   event.preventDefault();
   let files;
   if (event.dataTransfer) {
@@ -45,13 +45,18 @@ export const readFile = (event, complete) => {
   } else if (event.target) {
     files = event.target.files;
   }
-  if (files.length <= 0) return;
 
-  const reader = new FileReader();
-  reader.onload = () => {
-    complete(reader.result);
-  };
-  reader.readAsDataURL(files[0]);
+  return new Promise((resolve, reject) => {
+    if (files.length <= 0) {
+      reject('文件为空');
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+    }
+  });
 };
 
 // elementSelector is container of the sort item list

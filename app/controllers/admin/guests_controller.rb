@@ -24,7 +24,7 @@ class Admin::GuestsController < Admin::BaseController
 
   def update
     load_guest
-    @guest.update(guest_params)
+    @guest.update!(guest_params)
   end
 
   def destroy

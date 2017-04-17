@@ -25,7 +25,7 @@ class Admin::PartnersController < Admin::BaseController
 
   def update
     load_partner
-    @partner.update(partner_params)
+    @partner.update!(partner_params)
   end
 
   def destroy
