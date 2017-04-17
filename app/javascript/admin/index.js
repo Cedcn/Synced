@@ -22,6 +22,7 @@ import guestsManager from './events/guests_manager';
 import eventsHome from './events/events_home';
 
 import partners from './partners';
+import guests from './guests';
 import articles from './articles';
 
 // turbolinks.start();
@@ -38,6 +39,8 @@ const admin = () => {
   runPage('admin-events-index', eventsHome);
   runPage('admin-partners-index', partners);
   runPage('admin-articles-index', articles);
+  runPage('admin-guests-index', guests);
+
   // $(document).on('turbolinks:load', () => {
     // layout();
     // runPage('admin-guests-index', guest);

@@ -40,7 +40,7 @@ end
 #  copyright         :integer          default("original")
 #  copyright_content :string
 #  check_content     :string
-#  published_at      :date
+#  publish_at        :datetime
 #  author_id         :uuid
 #  category_id       :uuid
 #  created_at        :datetime         not null

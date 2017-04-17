@@ -11,13 +11,16 @@
     <input name="utf8" type="hidden" value="✓">
     <input v-if="type === 'edit'" type="hidden" name="_method" value="patch">
     <el-form-item label="名称">
-      <el-input name="partner[name]" v-model="formData.name"></el-input>
+      <el-input name="guest[name]" v-model="formData.name"></el-input>
     </el-form-item>
-    <el-form-item label="链接">
-      <el-input name="partner[url]" v-model="formData.url"></el-input>
+    <el-form-item label="公司">
+      <el-input name="guest[company]" v-model="formData.company"></el-input>
     </el-form-item>
-    <el-form-item label="LOGO">
-      <upload-image :data="formData.logos" />
+    <el-form-item label="职位">
+      <el-input name="guest[title]" v-model="formData.title"></el-input>
+    </el-form-item>
+    <el-form-item label="头像">
+      <upload-image :data="formData.avatars" formSpace="guest[avatars_attributes]" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" name="commit" native-type="submit">保存</el-button>
@@ -29,12 +32,13 @@
 <script>
   import $ from 'jquery';
   import 'jquery-form';
+  import { filter } from 'lodash';
 
   export default {
     props: ['formData', 'type', 'fetchData', 'closeFromModal'],
     computed: {
       url() {
-        return this.type === 'edit' ? `/admin/partners/${this.formData.id}`: '/admin/partners'
+        return this.type === 'edit' ? `/admin/guests/${this.formData.id}`: '/admin/guests'
       }
     },
     mounted() {

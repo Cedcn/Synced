@@ -11,11 +11,11 @@
           :style="{ backgroundImage: `url(${image.file.url})` }"
           @click="() => editFileInput(index)"
         />
-        <input :ref="`fileInput${index}`" :name="`${formSpace}[logos_attributes][${index}][file]`" type="file" @change="changeHandle" v-if="image.isChanged" />
+        <input :ref="`fileInput${index}`" :name="`${formSpace}[${index}][file]`" type="file" @change="changeHandle" v-if="image.isChanged" />
         <input :ref="`fileInput${index}`" type="file" @change="changeHandle" v-else/>
-        <input type='hidden' :name="`${formSpace}[logos_attributes][${index}][id]`" :value='image.id'>
-        <input type='checkbox' :name="`${formSpace}[logos_attributes][${index}][_destroy]`" :checked='image.isDestroy'>
-        <input type='hidden' :name="`${formSpace}[logos_attributes][${index}][default]`" :value='image.default ? 1 : 0' />
+        <input type='hidden' :name="`${formSpace}[${index}][id]`" :value='image.id'>
+        <input type='checkbox' :name="`${formSpace}[${index}][_destroy]`" :checked='image.isDestroy'>
+        <input type='hidden' :name="`${formSpace}[${index}][default]`" :value='image.default ? 1 : 0' />
         <a class="item--delete__btn" href="javascript:;" @click="() => destroy(index)">
           <i class="iconfont icon-closed" />
         </a>
@@ -47,7 +47,7 @@
       },
       formSpace: {
         type: String,
-        default: 'partner'
+        default: 'partner[logos_attributes]'
       }
     },
     data() {
