@@ -12,18 +12,18 @@ class Article < ApplicationRecord
   before_validation :check_publish_time
   after_save :delay_publish
 
-  mount_uploader :cover, ImageUploader
+  mount_uploader :cover_image, ImageUploader
   acts_as_taggable
 
   def check_publish_time
-    self.publish_at ||= Time.now if status == 'published'
+    self.publish_at ||= Time.current if status == 'published'
   end
 
   def delay_publish
     return unless publish_at
-    delay_time = Time.now - publish_at
-    return if delay_time > 0
-    #create a delay job to set topic status published
+    delay_time = Time.current - publish_at
+    return if delay_time.positive?
+    # create a delay job to set topic status published
   end
 end
 
