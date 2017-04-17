@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   get 'check_exist', to: 'users#check_exist'
-  get 'password_reset', to: 'users#new_password_reset'
-  post 'password_reset', to: 'users#password_reset'
   resource :phone_verify_code, only: :create
-  resource :email_verify_token, only: :create
   # Omniauth
   get '/auth/:provider/callback', to: 'sessions#create'
+  # ResetPassword
+  post 'send_login_verification_code', to: 'users#send_login_verification_code'
+  post 'password_reset', to: 'users#password_reset'
 
   namespace :settings do
     resource :profile, only: %i[index update]

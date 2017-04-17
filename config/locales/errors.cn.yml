@@ -1,0 +1,4 @@
+zh-CN:
+  mobile_number_exists: 手机号码已被注册。
+  wrong_paramter: 参数错误
+  invalid_reset_code: 验证码不正确

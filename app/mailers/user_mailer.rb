@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: 'welcome')
   end
 
-  def reset_token_email(user)
+  def send_login_verification_code(user)
+    @code = user.generate_reset_code
     mail(to: user.email, subject: 'reset password')
   end
 end

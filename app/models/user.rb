@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   before_create :generate_username
 
-  attr_accessor :phone_verify_code
+  attr_accessor :phone_verify_code, :reset_code
 
   class << self
     def search_by_login_name(identify)
@@ -57,6 +57,18 @@ class User < ApplicationRecord
 
   def email_name
     email&.split('@')&.first
+  end
+
+  def generate_reset_code
+    Rails.cache.fetch "reset_code:#{id}", expires_in: 30.minutes do
+      rand(100_000..999_999).to_s
+    end
+  end
+
+  def verify_reset_code(reset_code)
+    code = Rails.cache.fetch "reset_code:#{id}"
+    Rails.cache.delete "reset_code:#{id}"
+    code.present? && code == reset_code
   end
 
   private
