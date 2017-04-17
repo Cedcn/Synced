@@ -1,0 +1,57 @@
+.article {
+  padding: 100px 0;
+  max-width: $article-width;
+
+  &__title {
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  &__author {
+    &::after {
+      content: "|";
+      margin: 0 10px;
+    }
+  }
+
+  &__author__name {
+    font-weight: bold;
+    margin-left: 3px;
+  }
+
+  &__content {
+    margin-top: 80px;
+    word-wrap: break-word;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    padding: 50px 0;
+    border-top: 1px solid $color-grey-light;
+    border-bottom: 1px solid $color-grey-light;
+  }
+
+  &__share {
+    .iconfont {
+      background-color: $color-grey-light;
+    }
+    
+    a {
+      margin: 0 5px;
+
+      &:hover .iconfont {
+        background-color: $color-grey;
+      }
+    }
+  }
+}
