@@ -1,13 +1,5 @@
 <template>
-  <el-row>
-    <div class='wrapper--title'>
-      <span>文章管理</span>
-    </div>
-    <div class="wrapper--header">
-      <el-button type="primary" icon="plus" @click="openFormModal('new', { name: '', url: '', logos: [] })">添加文章</el-button>
-    </div>
-    <article-list/>
-  </el-row>
+  <article-list/>
 </template>
 
 <script>
@@ -19,10 +11,21 @@ export default {
   components: {
     ArticleList,
   },
+  props: {
+    editArticle: {
+      type: Function,
+      default: function() {},
+      require: true
+    }
+  },
   data() {
     return {}
   },
   mounted() {},
-  methods: {}
+  methods: {
+    test() {
+      console.log('abc');
+    }
+  }
 };
 </script>

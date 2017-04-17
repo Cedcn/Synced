@@ -1,1 +1,7 @@
 #articles
+  el-tabs v-model='activeName' @tab-click='tapClick'
+    el-tab-pane label='文章管理' name='first'
+      article-list :edit-article='editArticle'
+    el-tab-pane label='添加文章' name='second'
+      article-form
+

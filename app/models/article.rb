@@ -7,9 +7,24 @@ class Article < ApplicationRecord
   has_many :cooperation_authors, through: :articles_cooperation_authors
 
   enum status: { draft: 0, published: 1 }
+  enum copyright: { original: 0, translate: 1, reproduce: 2 }
+
+  before_validation :check_publish_time
+  after_save :delay_publish
 
   mount_uploader :cover, ImageUploader
   acts_as_taggable
+
+  def check_publish_time
+    self.publish_at ||= Time.now if status == 'published'
+  end
+
+  def delay_publish
+    return unless publish_at
+    delay_time = Time.now - publish_at
+    return if delay_time > 0
+    #create a delay job to set topic status published
+  end
 end
 
 # == Schema Information
@@ -20,7 +35,7 @@ end
 #  title             :string           not null
 #  description       :string
 #  content           :text
-#  cover             :string
+#  cover_image       :string
 #  status            :integer          default("draft")
 #  copyright         :integer          default("original")
 #  copyright_content :string
