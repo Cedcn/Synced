@@ -1,3 +1,7 @@
+.news--category  {
+  padding-top: 50px;
+}
+
 .news--banner {
   padding: 50px 0;
   display: flex;
@@ -28,9 +32,11 @@
 .news--video-list {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   .news__item {
     width: 31%;
+    margin-bottom: 40px;
   }
 }
 

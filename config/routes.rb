@@ -41,5 +41,8 @@ Rails.application.routes.draw do
     resources :partners, except: :show
   end
 
+  # just for front-end page test
+  get 'category/topic', to: 'home#topic'
+  get 'category/video', to: 'home#video'
   root to: 'home#index'
 end
