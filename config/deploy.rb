@@ -21,6 +21,8 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to true if using ActiveRecord
 
+set :sidekiq_config, 'config/sidekiq.yml'
+
 # DB tasks
 set :db_local_clean, true
 set :db_remote_clean, true

@@ -23,6 +23,7 @@ install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Workers
 require 'capistrano-db-tasks'
 require 'slackistrano/capistrano'
+require 'capistrano/sidekiq'
 require 'dotenv'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

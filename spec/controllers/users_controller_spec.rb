@@ -61,6 +61,7 @@ RSpec.describe UsersController, type: :controller do
       it 'sended by email' do
         expect(post(:send_login_verification_code, params: { login_name: user.email, format: :js }))
           .to be_success
+        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq 1
       end
 
       it 'sended by mobile' do

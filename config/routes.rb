@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   # User account
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     end
     resources :guests, except: :show
     resources :partners, except: :show
+    mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
   end
 
   root to: 'home#index'
