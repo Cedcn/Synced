@@ -31,6 +31,9 @@ gem 'rucaptcha'
 gem 'sidekiq', '~> 4.0'
 gem 'weixin_authorize'
 
+# Sentry.io
+gem 'sentry-raven'
+
 # UploadImage
 gem 'carrierwave-qiniu', '~> 1.1.0'
 gem 'remotipart', '~> 1.2'
