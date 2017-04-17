@@ -40,6 +40,10 @@ FactoryGirl.define do
       factory :organizer do
         roles ['organizer']
       end
+
+      factory :editor do
+        roles ['editor']
+      end
     end
   end
 end

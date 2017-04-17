@@ -1,6 +1,6 @@
 class TagPolicy < ApplicationPolicy
   def index?
-    user.roles.include?('organizer') || admin?
+    user.roles.include?('editor') || admin?
   end
 
   alias create? index?

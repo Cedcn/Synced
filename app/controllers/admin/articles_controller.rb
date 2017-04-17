@@ -11,7 +11,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
     authorize @article
     @article.save!
-    render json: @article, include: :authors
+    render json: @article, include: :author
   end
 
   def update

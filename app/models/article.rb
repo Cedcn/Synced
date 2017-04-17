@@ -2,8 +2,9 @@ class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   belongs_to :category
-  has_many :articles_authors, dependent: :destroy
-  has_many :authors, through: :articles_authors
+  belongs_to :author, class_name: 'User'
+  has_many :articles_cooperation_authors, dependent: :destroy
+  has_many :cooperation_authors, through: :articles_cooperation_authors
 
   enum status: { draft: 0, published: 1 }
 
@@ -25,7 +26,7 @@ end
 #  copyright_content :string
 #  check_content     :string
 #  published_at      :date
-#  user_id           :uuid
+#  author_id         :uuid
 #  category_id       :uuid
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

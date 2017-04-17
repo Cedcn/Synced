@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::TagsController, type: :controller do
-  before { warden.set_user create(:organizer) }
+  before { warden.set_user create(:editor) }
 
   describe 'Get #index' do
     it 'return 200' do
