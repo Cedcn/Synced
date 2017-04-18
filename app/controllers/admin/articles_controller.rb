@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
     load_articles
     respond_to do |format|
       format.html
-      format.json {
+      format.json do
         render json: @articles, include: {
           author: {
             only: [:username, :id]
@@ -12,7 +12,7 @@ class Admin::ArticlesController < Admin::BaseController
           cooperation_authors: {}
         },
         methods: :tag_list
-      }
+      end
     end
   end
 

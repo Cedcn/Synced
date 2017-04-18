@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Vue from 'vue';
 import ArticleList from './ArticleList.vue';
 import ArticleForm from './ArticleForm.vue';
@@ -26,7 +27,7 @@ const articles = () => {
       }
     },
     computed: {
-      article_form_height: function(){
+      article_form_height() {
         return this.show_form ? `${$('.article-form').height()}px` : 'auto';
       }
     }
