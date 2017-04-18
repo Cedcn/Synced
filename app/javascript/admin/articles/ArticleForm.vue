@@ -10,7 +10,7 @@
       </el-row>
       <el-row>
         <el-col :span=6>
-          <el-form-item label="作者">
+          <el-form-item label="文章作者">
             <el-select v-model='article.author_id' filterable remote placeholder="搜索作者" :remote-method='searchAuthor' style='width: 100%'>
               <el-option v-for='author in authors' :key='author.id' :label='author.name || author.username' :value='author.id'></el-option>
             </el-select>
@@ -43,7 +43,7 @@
       <el-row>
         <input type='hidden' name='article[category_id]' :value='article.category_id'>
         <el-col :span=12>
-          <el-form-item label='分类'>
+          <el-form-item label='文章分类'>
             <el-radio-group v-model='main_category_id' name='main_category'>
               <el-radio :label='category.id' @click.native='choice(category, true)' v-for='category in categories'>{{category.title}}</el-radio>
             </el-radio-group>
@@ -68,7 +68,7 @@
       </el-row>
       <el-row>
         <el-col :span=6>
-          <el-form-item label='标签'>
+          <el-form-item label='文章标签'>
             <el-select v-model='article.tag_list' multiple filterable remote placeholder="搜索Tag" :remote-method='searchTag' style='width: 100%'>
               <el-option v-for='tag in tags' :key='tag.name' :label='tag.name' :value='tag.name'></el-option>
             </el-select>
@@ -81,7 +81,9 @@
       </el-row>
       <el-row>
         <el-col :span=6>
-          <upload-single-image keyword='article[cover_image]' delete-keyword='article[_destroy]' :imageUrl="article.cover_image.url || ''"/>
+          <el-form-item label='文章图片'>
+            <upload-single-image keyword='article[cover_image]' delete-keyword='article[_destroy]' :imageUrl="article.cover_image.url || ''"/>
+          </el-form-item>
         </el-col>
       </el-row>
       <el-row>
@@ -124,6 +126,18 @@ import wangEditor from 'wangEditor';
 
 import 'jquery-form';
 
+const default_article = {
+  title: '',
+  copyright: 'original',
+  publish_at: '',
+  author_id: '',
+  content: '',
+  cooperation_author_ids: [],
+  category_id: '',
+  author: { id: '' },
+  tag_list: [],
+  cover_image: {}
+}
 export default {
   name: 'ArticleForm',
   mounted() {
@@ -135,35 +149,16 @@ export default {
     edit_article: {
       type: Object,
       default: function(){
-        return {
-          title: '',
-          copyright: 'original',
-          publish_at: '',
-          author_id: '',
-          content: '',
-          cooperation_author_ids: [],
-          category_id: '',
-          author: { id: '' },
-          tag_list: [],
-          cover_image: {}
-        }
+        return default_article;
       }
+    },
+    closeEditArticle: {
+      type: Function
     }
   },
   data() {
     return {
-      article: {
-        title: '',
-        copyright: 'original',
-        publish_at: '',
-        author_id: '',
-        content: '',
-        cooperation_author_ids: [],
-        category_id: '',
-        author: { id: '' },
-        tag_list: [],
-        cover_image: {}
-      },
+      article: default_article,
       main_category_id: '',
       categories: [],
       sub_categories: [],
@@ -236,6 +231,7 @@ export default {
         },
         success: () => {
           this.$message({ showClose: true, message: '保存成功' });
+          this.closeEditArticle();
           this.timepickerDialogVisible = false;
         },
         error: (e) => {

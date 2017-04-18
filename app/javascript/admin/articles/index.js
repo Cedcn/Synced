@@ -9,22 +9,25 @@ const articles = () => {
     data: {
       isShowFormModal: false,
       edit_article: {},
-      activeName: 'index'
+      show_form: false
     },
     components: {
       ArticleList,
       ArticleForm
     },
     methods: {
-      tapClick(tab, event) {
-        if (tab.name == 'index') this.$refs.articleList.refreshData();
-      },
       editArticle(article) {
         this.edit_article = article;
-        this.activeName = 'form';
+        this.show_form = true;
       },
       closeEditArticle() {
-        this.activeName = 'index';
+        this.show_form = false;
+        this.$refs.articleList.refreshData();
+      }
+    },
+    computed: {
+      article_form_height: function(){
+        return this.show_form ? `${$('.article-form').height()}px` : 'auto';
       }
     }
   });

@@ -1,9 +1,11 @@
-#articles
-  el-tabs v-model='activeName' @tab-click='tapClick'
-    el-tab-pane label='文章管理' name='index'
+#articles :style='{ height: article_form_height }'
+  .wrapper--header
+    el-button type='primary' icon='plus' @click='editArticle()'
+      |添加文章
+  article-list ref='articleList' :edit-article='editArticle'
+  transition name='fade'
+    .article-form v-show='show_form'
       .wrapper--header
-        el-button type='primary' icon='plus' @click='editArticle()'
-          |添加文章
-      article-list ref='articleList' :edit-article='editArticle'
-    el-tab-pane label='文章编辑' name='form'
-      article-form :edit_article='edit_article'
+        el-button type='primary' icon='arrow-left' @click='closeEditArticle()'
+          |返回
+      article-form :edit_article='edit_article' :close-edit-article='closeEditArticle'

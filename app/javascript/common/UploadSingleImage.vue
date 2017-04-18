@@ -54,8 +54,6 @@
     },
     watch: {
       imageUrl: function(val) {
-        console.log('abc');
-        console.log(val);
         this.backgroundImage = val;
       }
     }
