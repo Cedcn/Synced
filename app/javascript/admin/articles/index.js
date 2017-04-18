@@ -8,8 +8,8 @@ const articles = () => {
     el: mountPoint,
     data: {
       isShowFormModal: false,
-      edit_article_id: '',
-      activeName: 'second'
+      edit_article: {},
+      activeName: 'index'
     },
     components: {
       ArticleList,
@@ -17,14 +17,14 @@ const articles = () => {
     },
     methods: {
       tapClick(tab, event) {
-        console.log(tab, event);
+        if (tab.name == 'index') this.$refs.articleList.refreshData();
       },
       editArticle(article) {
-        this.isShowFormModal = true;
-        this.edit_article_id = article.id;
+        this.edit_article = article;
+        this.activeName = 'form';
       },
       closeEditArticle() {
-        this.isShowFormModal = false;
+        this.activeName = 'index';
       }
     }
   });

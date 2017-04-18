@@ -1,7 +1,9 @@
 #articles
   el-tabs v-model='activeName' @tab-click='tapClick'
-    el-tab-pane label='文章管理' name='first'
-      article-list :edit-article='editArticle'
-    el-tab-pane label='添加文章' name='second'
-      article-form
-
+    el-tab-pane label='文章管理' name='index'
+      .wrapper--header
+        el-button type='primary' icon='plus' @click='editArticle()'
+          |添加文章
+      article-list ref='articleList' :edit-article='editArticle'
+    el-tab-pane label='文章编辑' name='form'
+      article-form :edit_article='edit_article'

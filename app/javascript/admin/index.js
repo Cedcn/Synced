@@ -16,6 +16,7 @@ import { runPage } from '../common/tool';
 
 // commom components
 import UploadImage from '../common/UploadImage.vue';
+import UploadSingleImage from '../common/UploadSingleImage.vue';
 
 import partnerManager from './events/partner_manager';
 import guestsManager from './events/guests_manager';
@@ -30,6 +31,7 @@ import articles from './articles';
 const admin = () => {
   Vue.use(ElementUI);
   Vue.component(UploadImage.name, UploadImage);
+  Vue.component(UploadSingleImage.name, UploadSingleImage);
 
   header();
   sidebar();

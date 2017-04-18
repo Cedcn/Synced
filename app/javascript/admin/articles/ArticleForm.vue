@@ -11,14 +11,7 @@
       <el-row>
         <el-col :span=6>
           <el-form-item label="作者">
-            <el-select
-              v-model='article.author_id'
-              :value='{value: article.author.id, label: article.author.name||article.author.username}'
-              filterable
-              remote
-              placeholder="搜索作者"
-              :remote-method='searchAuthor'
-              style='width: 100%'>
+            <el-select v-model='article.author_id' filterable remote placeholder="搜索作者" :remote-method='searchAuthor' style='width: 100%'>
               <el-option v-for='author in authors' :key='author.id' :label='author.name || author.username' :value='author.id'></el-option>
             </el-select>
             <input type='hidden' name='article[author_id]' :value='article.author_id' >
@@ -26,16 +19,7 @@
         </el-col>
         <el-col :span=6>
           <el-form-item label='合作作者'>
-            <el-select
-              v-model='article.cooperation_author_ids'
-              :value='{value: article.author.id, label: article.author.name||article.author.username}'
-              filterable
-              multiple
-              disabled
-              remote
-              placeholder="搜索作者"
-              :remote-method='searchAuthor'
-              style='width: 100%'>
+            <el-select v-model='article.cooperation_author_ids' filterable multiple disabled remote placeholder="搜索作者" :remote-method='searchAuthor' style='width: 100%'>
               <el-option
                 v-for='author in authors'
                 :key='author.id'
@@ -57,10 +41,11 @@
         </el-col>
       </el-row>
       <el-row>
+        <input type='hidden' name='article[category_id]' :value='article.category_id'>
         <el-col :span=12>
           <el-form-item label='分类'>
-            <el-radio-group v-model='article.category_id' name='article[category_id]'>
-              <el-radio :label='category.id' @click.native='choice(category)' v-for='category in categories'>{{category.title}}</el-radio>
+            <el-radio-group v-model='main_category_id' name='main_category'>
+              <el-radio :label='category.id' @click.native='choice(category, true)' v-for='category in categories'>{{category.title}}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -68,8 +53,8 @@
       <el-row v-show='sub_categories.length > 0'>
         <el-col :span=12>
           <el-form-item>
-            <el-radio-group v-model='article.category_id' name='article[category_id]'>
-              <el-radio :data='category' :label='category.id' v-for='category in sub_categories'>{{category.title}}</el-radio>
+            <el-radio-group v-model='article.category_id' name='vice_category'>
+              <el-radio :label='category.id' @click.native='choice(category)' v-for='category in sub_categories'>{{category.title}}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -95,6 +80,11 @@
         </el-col>
       </el-row>
       <el-row>
+        <el-col :span=6>
+          <upload-single-image keyword='article[cover_image]' delete-keyword='article[_destroy]' :imageUrl="article.cover_image.url || ''"/>
+        </el-col>
+      </el-row>
+      <el-row>
         <el-col :span=12>
           <el-form-item>
             <el-button type="primary" @click="submitArticle">预览</el-button>
@@ -106,7 +96,7 @@
       </el-row>
       <input type='hidden' v-model='article.publish_at' name='article[publish_at]'/>
       <el-dialog title='定时发送' v-model='timepickerDialogVisible' size='tiny' close='cancelPublishat'>
-        <el-form-item>
+        <el-form-item label='时间选择'>
           <el-date-picker v-model='article.publish_at' type='datetime' placeholder='选择发布时间'></el-date-picker>
         </el-form-item>
         <span slot="footer" class="dialog-footer">
@@ -136,29 +126,45 @@ import 'jquery-form';
 
 export default {
   name: 'ArticleForm',
-  components: {  },
   mounted() {
     this.loadCategory();
     var editor = new wangEditor('editor');
     editor.create();
   },
   props: {
-    article_id: {
-      type: String
+    edit_article: {
+      type: Object,
+      default: function(){
+        return {
+          title: '',
+          copyright: 'original',
+          publish_at: '',
+          author_id: '',
+          content: '',
+          cooperation_author_ids: [],
+          category_id: '',
+          author: { id: '' },
+          tag_list: [],
+          cover_image: {}
+        }
+      }
     }
   },
   data() {
     return {
       article: {
+        title: '',
         copyright: 'original',
         publish_at: '',
         author_id: '',
+        content: '',
         cooperation_author_ids: [],
         category_id: '',
-        author: { id:'' },
+        author: { id: '' },
         tag_list: [],
-        content: '请输入内容....'
+        cover_image: {}
       },
+      main_category_id: '',
       categories: [],
       sub_categories: [],
       timepickerDialogVisible: false,
@@ -168,26 +174,24 @@ export default {
       article_url: '/admin/articles',
       category_url: '/admin/categories',
       author_url: '/admin/users',
-      tag_url: '/admin/tags'
+      tag_url: '/admin/tags',
     };
   },
   computed: {
     isThisANewArticle(){
-      return this.article_id == null;
+      return this.article.id == null;
     },
     postUrl() {
-      return (this.isThisANewArticle ? '/admin/articles' : `/admin/articles/${this.article_id }`)
+      return (this.isThisANewArticle ? '/admin/articles' : `/admin/articles/${this.article.id }`)
     }
   },
   methods: {
     cancelPublishat() {
       this.article.publish_at = '';
     },
-    choice(category) {
-      if ((category.sub_categories || []).length > 0) {
-        this.sub_categories = category.sub_categories;
-      } else {
-        this.sub_categories = [];
+    choice(category, is_main_category=false) {
+      if (is_main_category) {
+        this.sub_categories = category.sub_categories || [];
       }
       this.article.category_id = category.id;
     },
@@ -202,21 +206,30 @@ export default {
     },
     setCurrentCategory(){
       const category_id = this.article.category_id;
-      if (category_id == null) return;
-      this.categories.each(function(category){
+      this.main_category_id = category_id;
+      if (category_id == null) {
+        this.choice({}, true);
+      }
+      const v_this = this;
+      this.categories.forEach(function(category){
         if (category_id == category.id) {
-          this.main_category_id == category_id;
+          v_this.main_category_id = category_id;
+          return;
         };
-        category.sub_categories.each(function(sub_categroy) {
-          if (sub_category.id == category_id) { this.main_category_id == category_id };
+        (category.sub_categories||[]).forEach(function(sub_category) {
+          if (sub_category.id == category_id) {
+            v_this.sub_categories = category.sub_categories || [];
+            v_this.main_category_id = category.id;
+            v_this.article.category_id = category_id;
+          };
         });
       })
     },
     submitArticle(article_status) {
       const $form = $(this.$refs.form.$el);
       $form.ajaxSubmit({
-        url: this.article_url,
-        method: 'POST',
+        url: this.postUrl,
+        method: this.isThisANewArticle ? 'POST' : 'PATCH',
         dataType: 'json',
         data: {
           'article[status]': article_status
@@ -268,6 +281,14 @@ export default {
     }
   },
   watch: {
+    edit_article: function(val, oldval){
+      this.article = val;
+      if (this.article.author != null) {
+        this.authors = [{ id: this.article.author.id, name: this.article.author.name || this.article.author.username }];
+      }
+      this.setCurrentCategory();
+      this.article.cooperation_author_ids = [];
+    }
   }
 }
 </script>
