@@ -31,6 +31,7 @@ RSpec.describe SessionsController, type: :controller do
     it 'login fail with wrong password' do
       post :create, params: { login_name: user.email, password: 'wrong password' }
       expect(warden.user).to eq nil
+      expect(response).to redirect_to(login_path)
     end
 
     it 'login success when with right password' do
