@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413111913) do
+ActiveRecord::Schema.define(version: 20170418065803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,20 +150,24 @@ ActiveRecord::Schema.define(version: 20170413111913) do
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest", default: "", null: false
-    t.string "username"
-    t.string "mobile"
-    t.string "roles",           default: [],              array: true
-    t.string "city"
-    t.string "company"
-    t.string "title"
-    t.string "avatar"
-    t.string "bio"
-    t.string "name"
-    t.string "pinyin"
-    t.string "pinyin_abbr"
+    t.string   "email"
+    t.string   "password_digest",               default: "", null: false
+    t.string   "username"
+    t.string   "mobile"
+    t.string   "roles",                         default: [],              array: true
+    t.string   "company"
+    t.string   "title"
+    t.string   "avatar"
+    t.string   "bio"
+    t.string   "name"
+    t.string   "pinyin"
+    t.string   "pinyin_abbr"
+    t.integer  "city"
+    t.string   "email_verify_token"
+    t.datetime "email_verify_token_created_at"
+    t.datetime "email_verified_at"
     t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["email_verify_token"], name: "index_users_on_email_verify_token", unique: true, using: :btree
     t.index ["mobile"], name: "index_users_on_mobile", using: :btree
     t.index ["pinyin"], name: "index_users_on_pinyin", using: :btree
     t.index ["pinyin_abbr"], name: "index_users_on_pinyin_abbr", using: :btree

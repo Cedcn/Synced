@@ -94,26 +94,30 @@ end
 #
 # Table name: users
 #
-#  id              :uuid             not null, primary key
-#  email           :string
-#  password_digest :string           default(""), not null
-#  username        :string
-#  mobile          :string
-#  roles           :string           default([]), is an Array
-#  city            :string
-#  company         :string
-#  title           :string
-#  avatar          :string
-#  bio             :string
-#  name            :string
-#  pinyin          :string
-#  pinyin_abbr     :string
+#  id                            :uuid             not null, primary key
+#  email                         :string
+#  password_digest               :string           default(""), not null
+#  username                      :string
+#  mobile                        :string
+#  roles                         :string           default([]), is an Array
+#  company                       :string
+#  title                         :string
+#  avatar                        :string
+#  bio                           :string
+#  name                          :string
+#  pinyin                        :string
+#  pinyin_abbr                   :string
+#  city                          :integer
+#  email_verify_token            :string
+#  email_verify_token_created_at :datetime
+#  email_verified_at             :datetime
 #
 # Indexes
 #
-#  index_users_on_email        (email)
-#  index_users_on_mobile       (mobile)
-#  index_users_on_pinyin       (pinyin)
-#  index_users_on_pinyin_abbr  (pinyin_abbr)
-#  index_users_on_username     (username)
+#  index_users_on_email               (email)
+#  index_users_on_email_verify_token  (email_verify_token) UNIQUE
+#  index_users_on_mobile              (mobile)
+#  index_users_on_pinyin              (pinyin)
+#  index_users_on_pinyin_abbr         (pinyin_abbr)
+#  index_users_on_username            (username)
 #
