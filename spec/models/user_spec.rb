@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     it 'should validate phone verify code when mobile changed' do
       user = build(:user, :with_mobile)
       user.valid?
-      expect(user.errors[:mobile]).to include('手机验证码错误')
+      expect(user.errors[:mobile]).to include('验证码错误')
     end
   end
 
@@ -42,6 +42,19 @@ RSpec.describe User, type: :model do
     it 'should sliced when pinyin is too long' do
       user2 = create(:basic_user, name: '机器之心' * 5)
       expect(user2.username).to eq('jqzxjqzxjqz')
+    end
+  end
+
+  describe 'reset_code' do
+    let!(:code) { user.generate_reset_code }
+
+    it 'should verify reset code' do
+      expect(user.verify_reset_code(code)).to eq(true)
+    end
+
+    it 'should delete reset code after verify' do
+      expect(user.verify_reset_code('112')).to be_falsey
+      expect(user.verify_reset_code(code)).to be_falsey
     end
   end
 end

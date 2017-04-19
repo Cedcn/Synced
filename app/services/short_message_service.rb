@@ -7,5 +7,10 @@ class ShortMessageService
       end
       Rails.logger.info code
     end
+
+    def send_login_verification_code(user)
+      code = user.generate_reset_code
+      Rails.logger.info code
+    end
   end
 end

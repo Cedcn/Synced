@@ -28,7 +28,11 @@ gem 'omniauth-geekpark', '1.0.6'
 gem 'pundit'
 gem 'ruby-pinyin'
 gem 'rucaptcha'
+gem 'sidekiq', '~> 4.0'
 gem 'weixin_authorize'
+
+# Sentry.io
+gem 'sentry-raven'
 
 # UploadImage
 gem 'carrierwave-qiniu', '~> 1.1.0'
@@ -73,6 +77,7 @@ group :development, :test do
   gem 'capistrano-db-tasks', require: false
   gem 'capistrano-rails',    require: false
   gem 'capistrano-rbenv',    require: false
+  gem 'capistrano-sidekiq',  require: false
   gem 'capistrano3-puma',    require: false
   gem 'slackistrano'
 

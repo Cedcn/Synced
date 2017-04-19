@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  # User account
   get 'login',  to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-
-  match 'vote_up/:id', to: 'votes#vote_up', via: %i[post put patch]
-
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
+  get 'check_exist', to: 'users#check_exist'
+  resource :phone_verify_code, only: :create
   # Omniauth
   get '/auth/:provider/callback', to: 'sessions#create'
-
-  resource :phone_verify_code, only: :create
+  # ResetPassword
+  post 'send_login_verification_code', to: 'users#send_login_verification_code'
+  post 'password_reset', to: 'users#password_reset'
 
   namespace :settings do
     resource :profile, only: %i[index update]
     resource :security, only: :index
   end
 
-  get 'account', to: 'account#index'
-  get 'account/:nothings', to: 'account#index'
+  match 'vote_up/:id', to: 'votes#vote_up', via: %i[post put patch]
 
   constraints subdomain: 'gmis' do
     root 'gmis#index', as: :gmis
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     end
     resources :guests, except: :show
     resources :partners, except: :show
+    mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
   end
 
   # just for front-end page test
