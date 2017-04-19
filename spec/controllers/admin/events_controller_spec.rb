@@ -11,20 +11,6 @@ RSpec.describe Admin::EventsController, type: :controller do
     end
   end
 
-  describe 'Get #new' do
-    it 'return 200' do
-      get :index
-      expect(response).to be_success
-    end
-  end
-
-  describe 'Get #edit' do
-    it 'return 200' do
-      get :edit, params: { id: event.id }
-      expect(response).to be_success
-    end
-  end
-
   describe 'Post #create' do
     let(:event_params) { attributes_for(:event) }
     it 'create a post' do

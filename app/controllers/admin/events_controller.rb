@@ -7,11 +7,6 @@ class Admin::EventsController < Admin::BaseController
     end
   end
 
-  def new
-    @event = Event.new
-    authorize @event
-  end
-
   def create
     @event = Event.new(event_params)
     authorize @event

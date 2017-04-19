@@ -4,7 +4,15 @@
     <el-table-column label='作者'>
       <template scope='scope'>{{authorName(scope.row.author)}}</template>
     </el-table-column>
-    <el-table-column prop='publish_at' label='发布时间'/>
+    <el-table-column label='标签'>
+      <template scope='scope'>{{scope.row.tag_list.join()}}</template>
+    </el-table-column>
+    <el-table-column prop='publish_at' label='发布时间'>
+      <template scope='scope'>{{publish_at(scope.row.publish_at)}}</template>
+    </el-table-column>
+    <el-table-column label='状态'>
+      <template scope='scope'>{{article_status(scope.row.status)}}</template>
+    </el-table-column>
     <el-table-column label='操作'>
       <template scope='scope'>
         <el-button size='small' type='success' @click='editArticle(scope.row)'>编辑</el-button>
@@ -15,6 +23,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name: 'ArticleList',
   props: {
@@ -54,6 +64,12 @@ export default {
     authorName(user) {
       if (user == null) return '';
       return user.username || user.name;
+    },
+    publish_at(time_string) {
+      return moment(time_string).format('MM-DD HH:mm');
+    },
+    article_status(status) {
+      return { draft: '草稿', published: '已发布' }[status];
     },
     refreshData() {
       this.isloading = true;

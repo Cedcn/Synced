@@ -62,7 +62,7 @@
       <el-row>
         <el-col :span="20">
           <el-form-item label='文章内容'>
-            <textarea id="editor" class="editor" v-model='article.content' />
+            <textarea id="editor" class="editor" name='article[content]' v-model='article.content'/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -142,8 +142,8 @@ export default {
   name: 'ArticleForm',
   mounted() {
     this.loadCategory();
-    var editor = new wangEditor('editor');
-    editor.create();
+    this.editor = new wangEditor('editor');
+    this.editor.create();
   },
   props: {
     edit_article: {
@@ -158,6 +158,7 @@ export default {
   },
   data() {
     return {
+      editor: {},
       article: default_article,
       main_category_id: '',
       categories: [],
@@ -173,7 +174,7 @@ export default {
     };
   },
   computed: {
-    isThisANewArticle(){
+    isThisANewArticle() {
       return this.article.id == null;
     },
     postUrl() {
@@ -181,6 +182,9 @@ export default {
     }
   },
   methods: {
+    initEditorContent() {
+      this.editor.$txt.html(this.article.content);
+    },
     cancelPublishat() {
       this.article.publish_at = '';
     },
@@ -282,6 +286,7 @@ export default {
       if (this.article.author != null) {
         this.authors = [{ id: this.article.author.id, name: this.article.author.name || this.article.author.username }];
       }
+      this.initEditorContent();
       this.setCurrentCategory();
       this.article.cooperation_author_ids = [];
     }
