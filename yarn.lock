@@ -42,8 +42,8 @@ ajv-keywords@^1.0.0, ajv-keywords@^1.1.1:
   resolved "http://registry.npm.taobao.org/ajv-keywords/download/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
 
 ajv@^4.11.2, ajv@^4.7.0, ajv@^4.9.1:
-  version "4.11.6"
-  resolved "http://registry.npm.taobao.org/ajv/download/ajv-4.11.6.tgz#947e93049790942b2a2d60a8289b28924d39f987"
+  version "4.11.7"
+  resolved "http://registry.npm.taobao.org/ajv/download/ajv-4.11.7.tgz#8655a5d86d0824985cc471a1d913fb6729a0ec48"
   dependencies:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
@@ -407,28 +407,13 @@ babel-helper-replace-supers@^6.24.1:
     babel-traverse "^6.24.1"
     babel-types "^6.24.1"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-babel-helpers@^6.24.1:
-  version "6.24.1"
-  resolved "http://registry.npm.taobao.org/babel-helpers/download/babel-helpers-6.24.1.tgz#3471de9caec388e5c850e597e58a26ddf37602b2"
-=======
-=======
->>>>>>> Add editor
 babel-helper-vue-jsx-merge-props@^2.0.0:
   version "2.0.2"
   resolved "http://registry.npm.taobao.org/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.2.tgz#aceb1c373588279e2755ea1cfd35c22394fd33f8"
 
-<<<<<<< HEAD
-babel-helpers@^6.23.0:
-  version "6.23.0"
-  resolved "http://registry.npm.taobao.org/babel-helpers/download/babel-helpers-6.23.0.tgz#4f8f2e092d0b6a8808a4bde79c27f1e2ecf0d992"
->>>>>>> Use Element UI and edit sidebar
-=======
 babel-helpers@^6.24.1:
   version "6.24.1"
   resolved "http://registry.npm.taobao.org/babel-helpers/download/babel-helpers-6.24.1.tgz#3471de9caec388e5c850e597e58a26ddf37602b2"
->>>>>>> Add editor
   dependencies:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
@@ -1712,8 +1697,8 @@ ee-first@1.1.1:
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.2.7:
-  version "1.3.3"
-  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.3.tgz#651eb63fe89f39db70ffc8dbd5d9b66958bc6a0e"
+  version "1.3.4"
+  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.4.tgz#e51769c0cf550e0cf5aedf6aa2b803a264b3a900"
 
 element-ui@^1.2.8:
   version "1.2.8"
@@ -2228,8 +2213,8 @@ flat-cache@^1.2.1:
     write "^0.2.1"
 
 flatpickr@^2.4.4:
-  version "2.5.4"
-  resolved "http://registry.npm.taobao.org/flatpickr/download/flatpickr-2.5.4.tgz#ea5a30e46d7d5e40423de0696df6afb479020e3e"
+  version "2.5.7"
+  resolved "http://registry.npm.taobao.org/flatpickr/download/flatpickr-2.5.7.tgz#52b2c98880a5500e7ae8c04244d5a0c133152e00"
 
 flatten@^1.0.2:
   version "1.0.2"
@@ -2727,8 +2712,8 @@ inquirer@^0.12.0:
     through "^2.3.6"
 
 interpret@^1.0.0:
-  version "1.0.2"
-  resolved "http://registry.npm.taobao.org/interpret/download/interpret-1.0.2.tgz#f4f623f0bb7122f15f5717c8e254b8161b5c5b2d"
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/interpret/download/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
 invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
@@ -3278,8 +3263,8 @@ math-expression-evaluator@^1.2.14:
   resolved "http://registry.npm.taobao.org/math-expression-evaluator/download/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
 mathjs@^3.11.5:
-  version "3.11.5"
-  resolved "http://registry.npm.taobao.org/mathjs/download/mathjs-3.11.5.tgz#34e9e75e2bd3740986e96fc8a0815999f331f28d"
+  version "3.12.0"
+  resolved "http://registry.npm.taobao.org/mathjs/download/mathjs-3.12.0.tgz#d8d71f01362afd56c7662fab31065026a27a0030"
   dependencies:
     complex.js "2.0.1"
     decimal.js "7.1.1"
@@ -3616,15 +3601,7 @@ normalize-url@^1.4.0:
 
 normalize.css@^6.0.0:
   version "6.0.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
   resolved "http://registry.npm.taobao.org/normalize.css/download/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
-=======
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
->>>>>>> Use Element UI and edit sidebar
-=======
-  resolved "http://registry.npm.taobao.org/normalize.css/download/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
->>>>>>> Add editor
 
 noty@^2.4.1:
   version "2.4.1"
