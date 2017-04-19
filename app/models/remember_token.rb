@@ -3,6 +3,15 @@ class RememberToken < ApplicationRecord
 
   before_create :set_default
 
+  default_scope { where('created_at > ?', 30.days.ago) }
+
+  def refresh_active(request)
+    self.ip = request.ip
+    self.ua = request.user_agent
+    self.last_actived_at = Time.current
+    save
+  end
+
   private
 
   def set_default

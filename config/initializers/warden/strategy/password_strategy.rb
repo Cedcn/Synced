@@ -6,6 +6,7 @@ class PasswordStrategy < ::Warden::Strategies::Base
   def authenticate!
     user = User.search_by_login_name(params['login_name'])
     if user&.authenticate(params['password'])
+      store_cookie(user) if params['remember_me']
       success!(user)
     else
       fail!(params['login_name'])

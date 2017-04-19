@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    warden.user
+    warden.user || user_from_cookie
+  end
+
+  def user_from_cookie
+    warden.authenticate(:cookie) if cookies[:remember_user]
   end
 
   def redirect_back
