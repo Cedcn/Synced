@@ -122,7 +122,7 @@
 
 <script>
 import $ from 'jquery';
-import wangEditor from 'wangEditor';
+import wangeditor from 'wangeditor';
 
 import 'jquery-form';
 
@@ -142,7 +142,7 @@ export default {
   name: 'ArticleForm',
   mounted() {
     this.loadCategory();
-    this.editor = new wangEditor('editor');
+    this.editor = new wangeditor('editor');
     this.editor.create();
   },
   props: {
