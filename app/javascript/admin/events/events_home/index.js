@@ -8,30 +8,51 @@ const eventsHome = () => {
     components: {
       EventForm
     },
+    mounted() {
+      this.fetchData();
+    },
     data: {
+      events: [],
       showform: false,
       eventFormData: {}
     },
     methods: {
-      openWindow(url) {
-        window.open(`/admin/events/${url}`, '_self');
+      fetchData() {
+        this.isLoading = true;
+        $.ajax({
+          url: `/admin/events?page=${this.currentPage}`,
+          dataType: 'json'
+        })
+        .done(data => {
+          this.events = data;
+        })
+        .always(() => {
+          this.isLoading = false;
+        });
       },
       deleteEvent(id) {
-        const result = confirm('Are you sure?');
-        if (result) {
+        this.$confirm('确定删除?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
           $.ajax({
             method: 'DELETE',
             url: `/admin/events/${id}`
           })
           .done(() => {
             this.$message({ showClose: true, message: '删除成功' });
-            window.location.reload();
+            this.fetchData();
           });
-        }
+        }).catch(() => {});
       },
       openModal(data) {
         this.showform = true;
         this.eventFormData = data;
+      },
+      closeModal() {
+        this.showform = false;
+        this.fetchData();
       }
     }
   });

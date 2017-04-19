@@ -45,7 +45,7 @@
         <el-col :span=12>
           <el-form-item label='文章分类'>
             <el-radio-group v-model='main_category_id' name='main_category'>
-              <el-radio :label='category.id' @click.native='choice(category, true)' v-for='category in categories'>{{category.title}}</el-radio>
+              <el-radio :label='category.id' @click.native='choice(category, true)' :key='category.id' v-for='category in categories'>{{category.title}}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -54,7 +54,7 @@
         <el-col :span=12>
           <el-form-item>
             <el-radio-group v-model='article.category_id' name='vice_category'>
-              <el-radio :label='category.id' @click.native='choice(category)' v-for='category in sub_categories'>{{category.title}}</el-radio>
+              <el-radio :label='category.id' @click.native='choice(category)' :key='category.id' v-for='category in sub_categories'>{{category.title}}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>

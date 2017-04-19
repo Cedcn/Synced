@@ -4,17 +4,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 
 import 'jquery-ujs';
-// import turbolinks from 'turbolinks';
 
 import header from './shared/header';
 import sidebar from './shared/sidebar';
 import { runPage } from '../common/tool';
-// import layout from './layout';
-// import guest from './guest';
-// import partner from './partner';
-// import event from './event';
-
-// commom components
 import UploadImage from '../common/UploadImage.vue';
 import UploadSingleImage from '../common/UploadSingleImage.vue';
 
@@ -25,8 +18,6 @@ import eventsHome from './events/events_home';
 import partners from './partners';
 import guests from './guests';
 import articles from './articles';
-
-// turbolinks.start();
 
 const admin = () => {
   Vue.use(ElementUI);
