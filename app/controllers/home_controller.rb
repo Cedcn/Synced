@@ -1,6 +1,20 @@
 # coding: utf-8
 class HomeController < ApplicationController
   def index
+    mock_topic
+  end
+
+  def topic
+    mock_topic
+  end
+
+  def video
+    mock_topic
+  end
+
+  private
+
+  def mock_topic
     @topic = {
       id: 321,
       title: '2017 IJCAI 计算机与思想奖迎来女性获奖者 Devi Parikh',

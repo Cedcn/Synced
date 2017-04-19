@@ -1,0 +1,15 @@
+.container
+  .news.news--category
+    = render 'shared/components/topic_video_full', topic: @topic
+  .category.category--space-between.home-category-links
+    .category__left
+      a.category__link.is-active href='javascript:;' 文章
+      a.category__link href='javascript:;' 视频
+
+  .news.news--video-list
+    - 24.times do
+      = render 'shared/components/topic_video', topic: @topic, classname: 'news__item'
+
+  a.button.button--line.button--large.button--block href="javascript:;"
+    span 加载更多
+    i.icon.icon-down

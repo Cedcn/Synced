@@ -1,0 +1,28 @@
+article.container.article
+  h1.article__title
+    = @article[:title]
+
+  .article__meta
+    span.article__author
+      | By
+      span.article__author__name
+        = @article[:authors].first[:name]
+    span.article__publish-date
+      = @article[:publish_at]
+
+  .article__content
+    = raw(@article[:content])
+
+  .article__footer
+    .article__footer__left
+      - @article[:tags].each do |tag|
+        .tags
+          a.tag href="javascript:;" =tag[:title]
+    .article__footer__right.article__sharetting
+      a href="javascript:;"
+        i.iconfont.icon--large.icon--round.icon-qq.iconfont--white-bg
+      a href="javascript:;"
+        i.iconfont.icon--large.icon--round.icon-wechat.iconfont--white-bg
+      a href="javascript:;"
+        i.iconfont.icon--large.icon--round.icon-weibo.iconfont--white-bg
+      a href="javascript:;"
