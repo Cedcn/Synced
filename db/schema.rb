@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418065803) do
+ActiveRecord::Schema.define(version: 20170419033949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,18 @@ ActiveRecord::Schema.define(version: 20170418065803) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "remember_tokens", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "token",           null: false
+    t.string   "ua"
+    t.string   "ip"
+    t.datetime "last_actived_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["created_at"], name: "index_remember_tokens_on_created_at", using: :btree
+    t.index ["user_id", "token"], name: "index_remember_tokens_on_user_id_and_token", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|

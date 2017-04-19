@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_secure_password validation: false
 
   has_many :authorizations
+  has_many :remember_tokens
   mount_uploader :avatar, AvatarUploader
 
   validates :name, length: { in: 2..20 }, allow_nil: true,
