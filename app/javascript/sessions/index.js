@@ -8,10 +8,13 @@ import 'modal-layer/dist/style.css';
 import forEach from 'lodash/forEach';
 import noty from 'noty';
 import particlesBG from './particlesBG';
+import resetPassword from './resetPassword';
 
 
 const sessions = () => {
   particlesBG();
+  resetPassword();
+
   $('.zoom').addClass('active');
 
   $.ajaxSetup({ dataType: 'json' });

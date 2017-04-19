@@ -105,3 +105,16 @@ body .modal-layer-container .modal-layer-content {
     }
   }
 }
+
+.reset-password-modal {
+  display: none;
+  padding: 20px;
+
+  input {
+    height: 40px;
+    margin-right: 30px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #dfdfdf;
+  }
+}

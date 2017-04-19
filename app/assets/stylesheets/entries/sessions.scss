@@ -1,6 +1,37 @@
 @import 'normalize-rails';
 @import '../common/iconfont.scss';
 @import '../sessions/base.scss';
+@import '../sessions/reset_password.scss';
+
+.field.password {
+  position: relative;
+
+  input {
+    padding-right: 50px;
+  }
+
+  .icon-eye {
+    position: absolute;
+    padding: 5px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: #d3d3d3;
+    text-decoration: line-through;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #9f9f9f;
+    }
+  }
+
+  &.active {
+    .icon-eye {
+      color: #4166ec;
+      text-decoration: none;
+    }
+  }
+}
 
 .session {
   position: absolute;
@@ -128,36 +159,6 @@
       &.disable {
         background: none;
         cursor: default;
-      }
-    }
-  }
-
-  .field.password {
-    position: relative;
-
-    input {
-      padding-right: 50px;
-    }
-
-    .icon-eye {
-      position: absolute;
-      padding: 5px;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      color: #d3d3d3;
-      text-decoration: line-through;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #9f9f9f;
-      }
-    }
-
-    &.active {
-      .icon-eye {
-        color: #4166ec;
-        text-decoration: none;
       }
     }
   }
