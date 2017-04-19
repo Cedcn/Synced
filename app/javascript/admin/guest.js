@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 import upload_multiple_image_component from '../component/upload_multiple_image_component.vue';
 
 const guest = () => {

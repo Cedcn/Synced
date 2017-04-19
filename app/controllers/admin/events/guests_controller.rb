@@ -2,6 +2,13 @@ class Admin::Events::GuestsController < Admin::BaseController
   before_action :load_event
   def index
     @events_guests = @event.events_guests.rank(:rank_order)
+
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: @events_guests.to_json(include: :guest)
+      end
+    end
   end
 
   def create

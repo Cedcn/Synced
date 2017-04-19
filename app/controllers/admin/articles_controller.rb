@@ -3,7 +3,16 @@ class Admin::ArticlesController < Admin::BaseController
     load_articles
     respond_to do |format|
       format.html
-      format.json { render json: @articles, include: { author: { only: [:username, :id] }, category: {} } }
+      format.json do
+        render json: @articles, include: {
+          author: {
+            only: [:username, :id]
+          },
+          category: {},
+          cooperation_authors: {}
+        },
+        methods: :tag_list
+      end
     end
   end
 
@@ -40,8 +49,9 @@ class Admin::ArticlesController < Admin::BaseController
   def article_params
     params.require(:article).permit(
       :title, :content, :description, :user_id,
-      :status, :copyright, :cover, :copyright_content,
-      :check_content, :tag_list
+      :status, :copyright, :cover_image, :copyright_content,
+      :check_content, :author_id, :publish_at, :tag_list,
+      :category_id
     )
   end
 end

@@ -2,13 +2,29 @@ class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :author, class_name: 'User'
+  has_many :articles_cooperation_authors, dependent: :destroy
+  has_many :cooperation_authors, through: :articles_cooperation_authors
 
   enum status: { draft: 0, published: 1 }
   enum copyright: { original: 0, translate: 1, reproduce: 2 }
 
-  mount_uploader :cover, ImageUploader
+  before_validation :check_publish_time
+  after_save :delay_publish
+
+  mount_uploader :cover_image, ImageUploader
   acts_as_taggable
+
+  def check_publish_time
+    self.publish_at ||= Time.current if status == 'published'
+  end
+
+  def delay_publish
+    return unless publish_at
+    delay_time = Time.current - publish_at
+    return if delay_time.positive?
+    # create a delay job to set topic status published
+  end
 end
 
 # == Schema Information
@@ -24,9 +40,8 @@ end
 #  copyright         :integer          default("original")
 #  copyright_content :string
 #  check_content     :string
-#  publish_at        :date
-#  datetime          :date
-#  user_id           :uuid
+#  publish_at        :datetime
+#  author_id         :uuid
 #  category_id       :uuid
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

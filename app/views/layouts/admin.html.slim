@@ -7,17 +7,14 @@ html lang='en'
     title = content_for(:title) || t(:synced)
     = csrf_meta_tags
     = stylesheet_link_tag 'entries/admin', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'entries/admin', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'admin', 'data-turbolinks-track': 'reload'
 
-
   body class='page' id=page_id
-    header.header
-      = render 'shared/admin_header'
+    = render 'admin/shared/header'
 
+    = render 'admin/shared/sidebar'
     section.main
-      = render 'shared/admin_sidebar'
-
       .wrapper
         = yield
+    = javascript_include_tag 'entries/admin', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'

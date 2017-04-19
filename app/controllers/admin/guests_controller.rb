@@ -3,7 +3,7 @@ class Admin::GuestsController < Admin::BaseController
     load_guests
     respond_to do |format|
       format.html
-      format.js { render json: @guests.to_json(only: [:id, :name], methods: :default_avatar) }
+      format.js { render json: @guests.to_json(include: :avatars) }
     end
   end
 
@@ -16,6 +16,7 @@ class Admin::GuestsController < Admin::BaseController
     @guest = Guest.new(guest_params)
     authorize @guest
     @guest.save
+    render json: { status: 200 }
   end
 
   def edit
@@ -24,12 +25,13 @@ class Admin::GuestsController < Admin::BaseController
 
   def update
     load_guest
-    @guest.update(guest_params)
+    @guest.update!(guest_params)
   end
 
   def destroy
     load_guest
     @guest.destroy
+    render json: { status: 200 }
   end
 
   private

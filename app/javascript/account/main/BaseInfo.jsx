@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import $ from 'jquery';
-import Input from 'react-toolbox/lib/input';
-import DatePicker from 'react-toolbox/lib/date_picker';
-import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
-// import CitySelect from '../components/CitySelect';
 import { observer, inject } from 'mobx-react';
 import { Row, Col } from 'react-flexbox-grid';
 
+import Input from 'react-toolbox/lib/input';
+import DatePicker from 'react-toolbox/lib/date_picker';
+import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
+import { Button } from 'react-toolbox/lib/button';
+
+import CitySelect from '../components/CitySelect';
 import ColumnTitle from '../shared/ColumnTitle';
 import AvatarCrop from '../components/AvatarCrop';
 
@@ -41,7 +43,7 @@ class BaseInfo extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={9}>
             <div className="avatar-crop-wrapper">
               <div className="text-label">头像设置</div>
               <input ref="imageInput" type="file" accept="image/*" onChange={this.upLoadImage} />
@@ -53,35 +55,40 @@ class BaseInfo extends React.Component {
               </div>
               <AvatarCrop />
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
-            <Input
-              type="text"
-              label="昵称"
-              name="name"
-              required
-              value={name}
-              onChange={value => this.textChange('name', value)}
-              maxLength={15}
-            />
-            <Input
-              type="text"
-              label="真实姓名"
-              name="realname"
-              value={realname}
-              onChange={value => this.textChange('realname', value)}
-            />
+            <Row>
+              <Col md={6}>
+                <Input
+                  type="text"
+                  label="昵称"
+                  name="name"
+                  required
+                  value={name}
+                  onChange={value => this.textChange('name', value)}
+                  maxLength={15}
+                />
+              </Col>
+              <Col md={6}>
+                <Input
+                  type="text"
+                  label="真实姓名"
+                  name="realname"
+                  value={realname}
+                  onChange={value => this.textChange('realname', value)}
+                  maxLength={10}
+                />
+              </Col>
+            </Row>
             <div className="text-label">性别</div>
-            <RadioGroup name="gender" value={gender} onChange={value => this.textChange('gender', value)}>
+            <RadioGroup className="radio-group" name="gender" value={gender} onChange={value => this.textChange('gender', value)}>
               <RadioButton label="男" value="1" />
               <RadioButton label="女" value="2" />
               <RadioButton label="其他" value="3" />
             </RadioGroup>
+            <CitySelect />
             <DatePicker
               label="生日"
               sundayFirstDayOfWeek
+              inputFormat={value => `${value.getFullYear()}年${value.getMonth() + 1}月${value.getDate()}日`}
               onChange={value => this.textChange('birthdate', value)}
               value={birthdate}
             />
@@ -96,14 +103,14 @@ class BaseInfo extends React.Component {
               type="text"
               label="简介"
               name="intro"
+              multiline
               value={intro}
               onChange={value => this.textChange('intro', value)}
             />
           </Col>
         </Row>
-        {/* <CitySelect /> */}
-
         <br />
+        <Button label="提 交" raised primary />
       </div>
     );
   }

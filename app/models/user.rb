@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :authorizations
   has_many :remember_tokens
   mount_uploader :avatar, AvatarUploader
+  has_many :articles
+  has_many :articles_cooperation_authors, dependent: :destroy
+  has_many :cooperation_articles, source: :article, through: :articles_cooperation_authors
 
   validates :name, length: { in: 2..20 }, allow_nil: true,
     format: { with: /\A(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+\z/ }

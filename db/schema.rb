@@ -25,14 +25,22 @@ ActiveRecord::Schema.define(version: 20170419033949) do
     t.integer  "copyright",         default: 0
     t.string   "copyright_content"
     t.string   "check_content"
-    t.date     "publish_at"
-    t.date     "datetime"
-    t.uuid     "user_id"
+    t.datetime "publish_at"
+    t.uuid     "author_id"
     t.uuid     "category_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["status"], name: "index_articles_on_status", using: :btree
     t.index ["title"], name: "index_articles_on_title", using: :btree
+  end
+
+  create_table "articles_cooperation_authors", force: :cascade do |t|
+    t.uuid     "article_id"
+    t.uuid     "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_articles_cooperation_authors_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_articles_cooperation_authors_on_user_id", using: :btree
   end
 
   create_table "authorizations", force: :cascade do |t|

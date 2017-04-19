@@ -3,7 +3,7 @@ class Admin::PartnersController < Admin::BaseController
     load_partners
     respond_to do |format|
       format.html
-      format.js { render json: @partners.to_json(only: [:id, :name]), methods: :default_logo }
+      format.js { render json: @partners.to_json(include: :logos), methods: :default_logo }
     end
   end
 
@@ -20,16 +20,18 @@ class Admin::PartnersController < Admin::BaseController
     @partner = Partner.new(partner_params)
     authorize @partner
     @partner.save
+    render json: { status: 200 }
   end
 
   def update
     load_partner
-    @partner.update(partner_params)
+    @partner.update!(partner_params)
   end
 
   def destroy
     load_partner
     @partner.destroy
+    render json: { status: 200 }
   end
 
   private

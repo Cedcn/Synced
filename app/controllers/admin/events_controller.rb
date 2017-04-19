@@ -1,38 +1,28 @@
 class Admin::EventsController < Admin::BaseController
   def index
     load_events
-  end
-
-  def new
-    @event = Event.new
-    authorize @event
+    respond_to do |format|
+      format.html
+      format.js { render json: @events }
+    end
   end
 
   def create
     @event = Event.new(event_params)
     authorize @event
-    if @event.save
-      redirect_to admin_events_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    load_event
-    @event
+    @event.save!
+    render json: { status: 200 }
   end
 
   def update
     load_event
-    @event.update(event_params)
-    render :edit
+    @event.update!(event_params)
   end
 
   def destroy
     load_event
     @event.destroy
-    redirect_to admin_events_path
+    render json: { status: 200 }
   end
 
   private
