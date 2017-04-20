@@ -8,7 +8,8 @@ const resetPassword = () => {
   const modal = new ModalLayer('#js-reset-password-modal', {
     maskcolor: 'rgba(0, 0, 0, 0.4)',
     openStartFun: () => {
-      $('.step').first().addClass('active').siblings().removeClass('active');
+      $('.step').first().addClass('active').siblings()
+        .removeClass('active');
       updateRucaptcha();
     }
   });
@@ -46,12 +47,12 @@ const resetPassword = () => {
   });
 
   const $prevStepBtn = $('.prev-step');
-  $prevStepBtn.on('click', function() {
+  $prevStepBtn.on('click', function () {
     const $this = $(this);
     const $currentStep = $this.closest('.step');
     $currentStep.removeClass('active').prev().addClass('active');
     updateRucaptcha();
-  })
+  });
 
   const $passwordReset = $('#js-password-reset');
   $passwordReset.on('click', function () {
@@ -75,7 +76,7 @@ const resetPassword = () => {
       modal.close();
       setTimeout(() => {
         window.location.reload();
-      }, 200)
+      }, 200);
     })
     .fail(xhr => {
       noty({
