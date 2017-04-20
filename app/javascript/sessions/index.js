@@ -17,7 +17,6 @@ const sessions = () => {
   resetPassword();
 
   $('.zoom').addClass('active');
-
   $.ajaxSetup({ dataType: 'json' });
 
   // set noty

@@ -11,7 +11,7 @@ html lang="en"
 
   body
     = yield
-    #js-sessions-bg
+    #js-sessions-bg.sessions-bg
     = javascript_pack_tag 'sessions'
 
     - if Rails.env.development? && browser.device.mobile?

@@ -3,36 +3,6 @@
 @import '../sessions/base.scss';
 @import '../sessions/reset_password.scss';
 
-.field.password {
-  position: relative;
-
-  input {
-    padding-right: 50px;
-  }
-
-  .icon-eye {
-    position: absolute;
-    padding: 5px;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: #d3d3d3;
-    text-decoration: line-through;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #9f9f9f;
-    }
-  }
-
-  &.active {
-    .icon-eye {
-      color: #4166ec;
-      text-decoration: none;
-    }
-  }
-}
-
 .session {
   position: absolute;
   top: 50%;
@@ -252,5 +222,43 @@
         color: #da2b3e;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  section.session {
+    width: 100%;
+    height: 100vh;
+    position: static;
+    transform: translate(0, 0);
+
+    .zoom {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  body .modal-layer-container .modal-layer-content {
+    min-width: 100px;
+    width: 100%;
+    height: 100vh;
+    padding-top: 40px;
+
+    .modal-layer-close {
+      transform: translate3d(-40%, 40%, 0);
+    }
+  }
+
+  .reset-password .step-verify {
+    width: 100%;
+    min-width: 100px;
+  }
+
+  .reset-password .step {
+    width: 100%; 
+  }
+
+  .sessions-bg {
+    display: none;
   }
 }
