@@ -2,6 +2,9 @@ body {
   background: radial-gradient(rgb(255, 255, 255) 30%, rgb(235, 235, 235) 70%);
 }
 
+$gray: #767676;
+$blue: #5e7dec;
+
 input {
   line-height: 2;
   font-size: 16px;
@@ -78,6 +81,7 @@ button {
 
 body .modal-layer-container .modal-layer-content {
   min-height: 100px;
+  min-width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -103,18 +107,5 @@ body .modal-layer-container .modal-layer-content {
       border: 0;
       border-bottom: 1px solid #dfdfdf;
     }
-  }
-}
-
-.reset-password-modal {
-  display: none;
-  padding: 20px;
-
-  input {
-    height: 40px;
-    margin-right: 30px;
-    padding: 5px;
-    border: 0;
-    border-bottom: 1px solid #dfdfdf;
   }
 }

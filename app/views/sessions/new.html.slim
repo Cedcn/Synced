@@ -22,21 +22,29 @@ section.login-wrapper.session
 
     = link_to '还没有账户？立即注册', signup_path, class: 'redirect to-signup'
 
+
 #js-reset-password-modal.reset-password-modal.reset-password
   .reset-password-modal-wrapper
-    .step.step-verify.active
-      .field
-        p 校验码将会发送至你的注册邮箱或手机
+    .step.step-verify
+      .step-header
+        h3 找回密码
+        label 校验码将会发送至你的注册邮箱或手机
       .field
         input type="text" name="login_name" placeholder="手机号/邮箱" autofocus="autofocus"
-      .field
+      .field.rucaptcha-control
         = rucaptcha_input_tag(class: 'form-control', placeholder: '图形验证码')
         = rucaptcha_image_tag(alt: '图形验证码')
-      a.next-step href="javascript:;" 下一步
+      a.next-step.step-btn href="javascript:;" 下一步
     .step.step-reset
-      .field
-        input type="text" name="reset_code" placeholder="校验码"
+      a.prev-step href="javascript:;" 上一步
+      .step-header
+        h3 重置密码
+        label 
+          span 手机号/邮箱: 
+          span.login-name
       .field.password
         input type="password" name="password" placeholder="新密码"
         a.js-switch-password.iconfont.icon-eye href="javascript:;"
-      a#js-password-reset href="javascript:;" 提 交
+      .field
+        input type="text" name="reset_code" placeholder="短信/邮件校验码"
+      a#js-password-reset.step-btn href="javascript:;" 提 交

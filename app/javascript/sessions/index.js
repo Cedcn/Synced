@@ -10,6 +10,7 @@ import noty from 'noty';
 import particlesBG from './particlesBG';
 import resetPassword from './resetPassword';
 
+import { updateRucaptcha } from './util';
 
 const sessions = () => {
   particlesBG();
@@ -140,11 +141,6 @@ const sessions = () => {
       });
     });
   })();
-
-  function updateRucaptcha() {
-    const $rucaptcha = $('.rucaptcha-image');
-    $rucaptcha.attr('src', $rucaptcha.attr('src'));
-  }
 };
 
 export default sessions;

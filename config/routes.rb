@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :phone_verify_code, only: :create
   # Omniauth
   get '/auth/:provider/callback', to: 'sessions#create'
+
   # ResetPassword
   post 'send_login_verification_code', to: 'users#send_login_verification_code'
   post 'password_reset', to: 'users#password_reset'
